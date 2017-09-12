@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>农场--大转盘</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+		<meta content="telephone=no" name="format-detection">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" href="css/dial.css" />
+		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="js/awardRotate.js"></script>		
+		<script>
+			(function() {
+				var html = document.documentElement;
+				var hWidth = html.getBoundingClientRect().width;
+				html.style.fontSize = hWidth / 15 + "px";
+			})();
+		</script>
+	</head>
+
+	<body>
+		<header class="header"><img src="img/dial/draw-logo.png" alt="" /></header>
+		<section class="main">
+			<div class="turntable">	<!--转盘-->				
+				<div class="rotate"><img id="rotate" src="img/dial/draw-bg.png"></div>
+				<div class="pointer"><img src="img/dial/draw.png" alt="pointer"></div>				
+			</div>
+			<div class="turntable-bottom"><img src="img/dial/column.png" alt="" /></div>
+			<div class="rules">
+				<div class="ruleimg"><img src="img/dial/rules.png"/></div>
+			</div>
+			<div class="rulestext">一楼带院及复式房源享受20000元/套的购房基金优惠，剩余房源享受10000元/套的购房优惠。</div>
+		</section>
+		<!--弹窗-->
+		<section class="mark">
+			<div class="box">
+				<div class="close"><img src="img/dial/close.png"/></div>
+				<div class="award">
+					<p class="award-top">20元</p>
+					<p class="award-bottom">恭喜获得红包</p>
+				</div>
+				<div class="sure">我知道了</div>
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="js/dial.js"></script>
+</html>

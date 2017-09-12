@@ -1,0 +1,321 @@
+@charset "utf-8";
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffcd;
+  overflow-x: hidden;
+}
+input::-webkit-input-placeholder {
+  color: #fff;
+}
+input::-moz-input-placeholder {
+  color: #fff;
+}
+body {
+  background-image: url("../img/login/bg.jpg");
+  background-size: cover;
+  position: relative;
+}
+.register {
+  display: none;
+  width: 11.26rem;
+  margin: auto;
+  margin-top: 3.6rem;
+  overflow: hidden;
+}
+.register .phone {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.register .phone input {
+  display: block;
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  color: #fff;
+  padding-left: 0.9rem;
+  font-size: 0.56rem;
+}
+.register .name {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  margin-top: 0.6rem;
+}
+.register .name input {
+  display: block;
+  width: 10rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  border-radius: 1.2rem;
+  background-color: #76af20;
+  color: #fff;
+  padding-left: 0.9rem;
+  font-size: 0.56rem;
+}
+.register .code {
+  margin-top: 0.6rem;
+}
+.register .code .code-l {
+  width: 5.6rem;
+  height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  padding-left: 0.9rem;
+  font-size: 0.56rem;
+  color: #fff;
+}
+.register .code .code-r {
+  display: inline-block;
+  width: 4rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  text-align: center;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  margin-left: 0.6rem;
+  font-size: 0.56rem;
+  color: #fff;
+}
+.register .psw {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.6rem;
+}
+.register .psw input {
+  display: block;
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  color: #fff;
+  padding-left: 0.9rem;
+  font-size: 0.56rem;
+  border-radius: 1.2rem;
+}
+.register .r-register {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.6rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.56rem;
+}
+.register .r-register input {
+  display: block;
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  color: #fff;
+  font-size: 0.56rem;
+  border-radius: 1.2rem;
+}
+.login {
+  width: 11.26rem;
+  margin: auto;
+  margin-top: 3.6rem;
+  overflow: hidden;
+}
+.login .username {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.login .username i {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.86rem;
+  background-image: url(../img/login/ico01.png);
+  background-size: 100%;
+  position: absolute;
+  left: 0.52rem;
+  top: 0.4rem;
+}
+.login .username input {
+  display: inline-block;
+  margin-left: 1.8rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  width: 9rem;
+  background-color: #76af20;
+  font-size: 0.7rem;
+  color: #fff;
+}
+.login .password {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.9rem;
+}
+.login .password i {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.86rem;
+  background-image: url(../img/login/ico02.png);
+  background-size: 100%;
+  position: absolute;
+  left: 0.52rem;
+  top: 0.4rem;
+}
+.login .password input {
+  display: inline-block;
+  margin-left: 1.8rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  width: 9rem;
+  background-color: #76af20;
+  font-size: 0.7rem;
+  color: #fff;
+}
+.login .submit {
+  display: block;
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  margin-top: 1.54rem;
+  color: #fff;
+  font-size: 0.6rem;
+}
+.login .forget {
+  margin-top: 0.8rem;
+  color: #588c1b;
+  font-size: 0.5rem;
+}
+.login .forget .toregister {
+  display: block;
+  float: left;
+}
+.login .forget .torevise {
+  display: block;
+  float: right;
+}
+.revise {
+  display: none;
+  width: 11.26rem;
+  margin: auto;
+  margin-top: 3.6rem;
+  overflow: hidden;
+}
+.revise .phone {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.revise .phone input {
+  display: block;
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  color: #fff;
+  padding-left: 0.9rem;
+  font-size: 0.56rem;
+}
+.revise .code {
+  margin-top: 0.94rem;
+}
+.revise .code .code-l {
+  width: 5.6rem;
+  height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  padding-left: 0.9rem;
+  font-size: 0.56rem;
+  color: #fff;
+}
+.revise .code .code-r {
+  display: inline-block;
+  width: 4rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  text-align: center;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  margin-left: 0.6rem;
+  font-size: 0.56rem;
+  color: #fff;
+}
+.revise .newpassword {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.94rem;
+}
+.revise .newpassword input {
+  display: block;
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  color: #fff;
+  padding-left: 0.9rem;
+  font-size: 0.56rem;
+  border-radius: 1.2rem;
+}
+.revise .r-sure {
+  width: 11.26rem;
+  height: 1.66rem;
+  line-height: 1.66rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.94rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.56rem;
+}
+.prompt {
+  display: none;
+  width: 10rem;
+  height: 2.3rem;
+  line-height: 2.3rem;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.6rem;
+  font-size: 0.56rem;
+  position: absolute;
+  left: 2.4rem;
+  top: 7rem;
+}

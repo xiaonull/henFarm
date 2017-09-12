@@ -1,0 +1,133 @@
+@r: 50rem;
+@charset "utf-8";
+body {
+    width: 100%;
+    height: 100%;
+    background: url("../img/expedition/expedition-bg01.jpg") no-repeat;
+    background-size: cover;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    .count-down {
+        width: 661/@r;
+        height: 83/@r;
+        margin: auto;
+        margin-top: 343/@r;
+        img {
+            width: 661/@r;
+        }
+    }
+    .time {
+        font-size: 100/@r;
+        color: #000;
+        font-family: simhei;
+        font-weight: 600;
+        margin-top: 106/@r;
+        overflow: hidden;
+        position: relative;
+        .time-bg {
+            i {
+                display: inline-block;
+                width: 190/@r;
+                height: 190/@r;
+                border-radius: 30/@r;
+                background-color: #fff;
+            }
+        }
+        .time-bg i:nth-child(1) {
+            margin-right: 20/@r;
+        }
+        .time-num {
+            position: absolute;
+            left: 230/@r;
+            top: 70/@r;
+            letter-spacing: 170/@r;
+        }
+    }
+    .exploring {
+        color: #fff;
+        font-size: 68/@r;
+        margin-top: 100/@r;
+    }
+}
+
+.mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    display: none;
+    .box {
+        width: 644/@r;
+        height: 490/@r;
+        margin: auto;
+        background-image: url("../img/expedition/box-bg01.png");
+        background-size: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        margin-top: 324/@r;       
+        .success {
+            width: 342/@r;
+            height: 92/@r;
+            margin: auto;
+            position: absolute;
+            top: -45/@r;
+            left: 147/@r;
+            img {
+                width: 342/@r;
+                height: 92/@r;
+            }
+        }
+        .close {
+            width: 54/@r;
+            height: 56/@r;
+            position: absolute;
+            right: 0/@r;
+            top: 0/@r;
+            img {
+                width: 54/@r;
+                height: 56/@r;
+            }
+        }
+        .box-glod{
+            width: 405/@r;
+            height: 134/@r; 
+            margin: auto;    
+            text-align: center; 
+            padding-top: 140/@r;
+            .box-glod-l{
+                float: left;
+                img{
+                    width: 83/@r;
+                    height: 83/@r;
+                }
+            }    
+            .box-glod-r{
+                float: left;
+                margin-left: 20/@r;
+                font-size: 50/@r;
+                li{
+                    line-height: 1.5;
+                }
+            }
+        }
+        .sure{
+            width: 196/@r;
+            height: 64/@r;
+            margin: auto;
+            margin-top: 60/@r;
+            img{
+                width: 196/@r;
+                height: 64/@r;
+            }
+        }
+    }
+}

@@ -1,0 +1,128 @@
+@charset "utf-8";
+body {
+  width: 100%;
+  height: 100%;
+  background: url("../img/expedition/expedition-bg01.jpg") no-repeat;
+  background-size: cover;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+.main .count-down {
+  width: 13.22rem;
+  height: 1.66rem;
+  margin: auto;
+  margin-top: 6.86rem;
+}
+.main .count-down img {
+  width: 13.22rem;
+}
+.main .time {
+  font-size: 2rem;
+  color: #000;
+  font-family: simhei;
+  font-weight: 600;
+  margin-top: 2.12rem;
+  overflow: hidden;
+  position: relative;
+}
+.main .time .time-bg i {
+  display: inline-block;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 0.6rem;
+  background-color: #fff;
+}
+.main .time .time-bg i:nth-child(1) {
+  margin-right: 0.4rem;
+}
+.main .time .time-num {
+  position: absolute;
+  left: 4.6rem;
+  top: 1.4rem;
+  letter-spacing: 3.4rem;
+}
+.main .exploring {
+  color: #fff;
+  font-size: 1.36rem;
+  margin-top: 2rem;
+}
+.mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: none;
+}
+.mark .box {
+  width: 12.88rem;
+  height: 9.8rem;
+  margin: auto;
+  background-image: url("../img/expedition/box-bg01.png");
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: 6.48rem;
+}
+.mark .box .success {
+  width: 6.84rem;
+  height: 1.84rem;
+  margin: auto;
+  position: absolute;
+  top: -0.9rem;
+  left: 2.94rem;
+}
+.mark .box .success img {
+  width: 6.84rem;
+  height: 1.84rem;
+}
+.mark .box .close {
+  width: 1.08rem;
+  height: 1.12rem;
+  position: absolute;
+  right: 0rem;
+  top: 0rem;
+}
+.mark .box .close img {
+  width: 1.08rem;
+  height: 1.12rem;
+}
+.mark .box .box-glod {
+  width: 8.1rem;
+  height: 2.68rem;
+  margin: auto;
+  text-align: center;
+  padding-top: 2.8rem;
+}
+.mark .box .box-glod .box-glod-l {
+  float: left;
+}
+.mark .box .box-glod .box-glod-l img {
+  width: 1.66rem;
+  height: 1.66rem;
+}
+.mark .box .box-glod .box-glod-r {
+  float: left;
+  margin-left: 0.4rem;
+  font-size: 1rem;
+}
+.mark .box .box-glod .box-glod-r li {
+  line-height: 1.5;
+}
+.mark .box .sure {
+  width: 3.92rem;
+  height: 1.28rem;
+  margin: auto;
+  margin-top: 1.2rem;
+}
+.mark .box .sure img {
+  width: 3.92rem;
+  height: 1.28rem;
+}

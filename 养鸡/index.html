@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>农场--首页</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="full-screen" content="yes" <meta name="x5-fullscreen" content="true">
+		<meta name="browsermode" content="application">
+		<meta name="x5-page-mode" content="app">
+		<meta name="msapplication-tap-highlight" content="no">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+		<script>
+			(function() {
+				var html = document.documentElement;
+				var hWidth = html.getBoundingClientRect().width;
+				html.style.fontSize = hWidth / 15 + "px";
+			})();
+		</script>
+	</head>
+
+	<body>
+		<!--注册-->
+		<section class="register">
+			<form action="" method="post" id="register">
+				<div class="phone">
+					<input type="text" name="phone" placeholder="请输入手机号码" maxlength="11" />
+				</div>
+				<div class="name">
+					<input type="text" name="phone" placeholder="请输入昵称" />
+				</div>
+				<div class="code">
+					<input type="text" name="code" class="code-l" placeholder="请输入验证码" />
+					<span class="code-r">发送验证码</span>
+				</div>
+				<div class="password psw">
+					<input type="password" name="newpassword" placeholder="请输入密码" />
+				</div>
+				<div class="newpassword psw">
+					<input type="password" name="newpassword" placeholder="请再次输入密码" />
+				</div>
+				<div class="r-register">
+					<input type="submit" name="register" id="" value="注&nbsp册" />
+				</div>
+			</form>
+		</section>
+		<!--登录-->
+		<section class="login">
+			<form action="" method="post" id="login">
+				<div class="username">
+					<i></i>
+					<input type="text" name="username" />
+				</div>
+				<div class="password">
+					<i></i>
+					<input type="password" name="password" />
+				</div>
+				<input type="submit" value="登&nbsp&nbsp录" class="submit" />
+			</form>
+			<div class="forget clearfix">
+				<span class="toregister">注册</span>
+				<span class="torevise">忘记密码？</span>
+			</div>
+		</section>
+		<!--修改密码-->
+		<section class="revise">
+			<div class="phone">
+				<input type="text" name="phone" placeholder="请输入手机号码" maxlength="11" />
+			</div>
+			<div class="code">
+				<input type="text" name="code" class="code-l" placeholder="请输入验证码" />
+				<span class="code-r">发送验证码</span>
+			</div>
+			<div class="newpassword">
+				<input type="password" name="newpassword" placeholder="请输入新密码" />
+			</div>
+			<div class="r-sure">确认修改</div>
+		</section>
+		<section class="animated zoomIn prompt"></section>
+	</body>
+	<script src="js/index.js"></script>
+
+</html>

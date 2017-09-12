@@ -1,0 +1,111 @@
+@r: 50rem;
+@charset "utf-8";
+body,html{
+    width: 100%;
+    height: 100%;
+    background: url("../img/expedition/expedition-bg.jpg") no-repeat;
+    background-size: cover;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    .jungle{
+        width: 705/@r;
+        height: 110/@r;
+        margin:auto; 
+        padding-top:970/@r;  
+        .jungle-l{
+            float: left;
+            img{
+               width: 500/@r;
+               height: 110/@r; 
+            }
+        }
+        .jungle-r{
+            float: left;
+            margin-left: 20/@r;
+            img{
+                
+                width: 180/@r;
+                height: 110/@r;
+            }
+        }
+    }
+    .mark{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;       
+        background-color: rgba(0,0,0,0.6);
+        overflow: hidden; 
+        display: block;
+        opacity: 0;   
+//      z-index: -1;  
+        .box{
+            width: 690/@r;
+            height: 850/@r;
+            margin: auto;
+            background-image:url("../img/expedition/box-bg.png");
+            background-size:100%;
+            background-position:center center;
+            background-repeat:no-repeat ;
+            margin-top: 267/@r;
+            position: relative;
+            .box-bt{
+                width: 493/@r;
+                height: 124/@r;              
+                position: absolute;
+                top: -57/@r;
+                left: 108/@r;
+                img{
+                    width: 493/@r;
+                    height: 124/@r;
+                }
+            }
+            .close{
+                width: 54/@r;
+                height: 56/@r;
+                position: absolute;
+                right: 0/@r;
+                top: 0/@r;
+                img{
+                    width: 54/@r;   
+                    height: 56/@r;                
+                }
+            }
+            #wrapper{
+                width: 590/@r;
+                height: 564/@r;
+                margin: auto;              
+                overflow: hidden;                
+                box-sizing: border-box;
+                position: relative;
+                top: 120/@r;
+                ul{
+                    font-size: 28/@r;
+                    li{
+                        line-height: 2;
+                        span{
+                            display: inline-block;
+                            margin-right: 30/@r;                            
+                        }                        
+                    }
+                }
+            }
+            .sure{
+                width: 196/@r;
+                height: 68/@r;
+                margin: auto;
+                margin-top: 150/@r;
+                img{
+                    width: 196/@r;
+                    height: 68/@r;
+                }
+            }
+        }
+    }
+}
