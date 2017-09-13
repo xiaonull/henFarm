@@ -148,12 +148,76 @@ div.date-record{
 }
 
 /* 修改密码 */
+.modifyPassword {
+  text-align: center;
+}
+
+.modifyPassword > div {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.modifyPassword label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  width: 30%;
+  margin-top: 0.2rem;
+}
+
 .modifyPassword input {
-  width: 11.26rem;
-  height: 1.66rem;
-  line-height: 1.66rem;
-  border-radius: 1.2rem;
-  border: 1px solid #00A508;
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
   position: relative;
   overflow: hidden;
+  display: block;
+  float: left;
+  width: 60%;
+}
+
+.modifyPassword input::-webkit-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}/* WebKit browsers */
+
+.modifyPassword input:-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}/* Mozilla Firefox 4 to 18 */
+
+.modifyPassword input::-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}/* Mozilla Firefox 19+ */
+
+.modifyPassword input:-ms-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}/* Mozilla Firefox 19+ */
+
+.modifyPassword .confirmSubmit input {
+  width: 13rem;
+  height: 1.4rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  background-color: #76af20;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
 }

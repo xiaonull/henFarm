@@ -28,9 +28,32 @@ $(function(){
 		var psw = $('.register .password input').val();
 		var repsw = $('.register .newpassword input').val();		
 		if(myreg.test(phone) && name != '' && code != '' && mypsw.test(psw) && psw == repsw){
-			$('#register')[0].submit();
-			prompt.show().delay(2000).hide(300);
-			prompt.html('注册成功！');
+			// $('#register')[0].submit();
+			var data = {
+				phone: phone,
+				verification_code: code,
+				name: name,
+				password: psw,
+				password_confirmation: repsw
+			};
+
+			$.ajax({
+				url: 'http://farmapi.niowoo.cn/api/register',
+				type: 'GET',
+				dataType: 'jsonp',
+				data: data,
+				success: function(result) {
+					if(result.status_code === 0) {
+						prompt.show().delay(2000).hide(300);
+						prompt.html(result.message);
+    					sessionStorage.token = result.data;
+    					setTimeout(function() {
+    						window.location.assign("home.html");
+    					}, 2000);	
+					}    	
+				}
+			});
+
 		}else if(!myreg.test(phone)){
 			prompt.show().delay(2000).hide(300);
 			prompt.html('请输入正确的手机号码！');
@@ -56,7 +79,32 @@ $(function(){
 		
 		var psw = $('.login .password input').val();		
 		if(userName != '' && mypsw.test(psw)){
-			$('#login')[0].submit();
+			// $('#login')[0].submit();
+			var data = {
+				name: userName,
+				password: psw
+			};
+
+			$.ajax({
+				url: 'http://farmapi.niowoo.cn/api/login',
+				type: 'GET',
+				dataType: 'jsonp',
+				data: data,
+				success: function(result) {
+					if(result.status_code === 0) {
+						// 保存token
+						sessionStorage.token = result.data;
+						// 登录成功，页面跳转
+						window.location.assign("home.html");
+					}else {
+						prompt.show().delay(2000).hide(300);
+						prompt.html(result.message);
+					}
+
+ 
+				}
+			});
+
 		}else if(userName == ''){
 			prompt.show().delay(2000).hide(300);
 			prompt.html('请输入用户名！');				
@@ -68,14 +116,35 @@ $(function(){
 		}	
 	});	
 	
-	//修改密码
+	//重置密码
 	$('.r-sure').on('click',function(){
 		var phone = $('.revise .phone input').val();
 		var code = $('.revise .code-l').val();
 		var newpsw = $('.revise .newpassword input').val();
-		if(myreg.test(phone) && code != '' && mypsw.test(newpsw)){			
-			prompt.show().delay(2000).hide(300);
-			prompt.html('修改密码成功！');
+		if(myreg.test(phone) && code != '' && mypsw.test(newpsw)){	
+			var data = {
+				phone: phone,
+				verification_code: code,
+				new_password: newpsw
+			};
+
+			$.ajax({
+				url: 'http://farmapi.niowoo.cn/api/login/resetpassword',
+				type: 'GET',
+				dataType: 'jsonp',
+				data: data,
+				success: function(result) {
+					if(result.status_code === 0) {
+						prompt.show().delay(2000).hide(300);
+						prompt.html('修改密码成功！');
+					}else {
+						prompt.show().delay(2000).hide(300);
+						prompt.html(result.message);
+					}
+
+ 
+				}
+			});
 		}else if(!myreg.test(phone)){
 			prompt.show().delay(2000).hide(300);
 			prompt.html('请输入正确的手机号码！');
@@ -88,3 +157,6 @@ $(function(){
 		}
 	});
 });
+
+
+

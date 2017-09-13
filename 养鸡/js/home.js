@@ -18,7 +18,64 @@ window.onload = function() {
 		new Chicken(aChickens[i]).move();
 	}
 
+	showResources();
+
 }
+
+function showResources() {
+	$.ajax({
+		url: 'http://farmapi.niowoo.cn/api/henyard',
+		type: 'GET',
+		dataType: 'jsonp',
+		success: function(result) {
+			$(".box-left p").eq(0).html("&nbsp;" + result.data.hen_num);
+			$(".box-left p").eq(1).html("&nbsp;" + result.data.egg_num);
+			$(".box-left p").eq(2).html("&nbsp;" + result.data.golden_egg_num);
+			$(".box-left p").eq(3).html("&nbsp;" + result.data.coins);
+			$(".box-left p").eq(4).html("&nbsp;" + result.data.medikit_num);
+			$(".box-left p").eq(5).html("&nbsp;" + result.data.fodder_num);
+		}
+	});		
+			
+}
+
+function collectEgg() {
+	$.ajax({
+		url: 'http://farmapi.niowoo.cn/api/interaction/hen',
+		type: 'GET',
+		dataType: 'jsonp',
+		data: {
+			action: 'cure'
+		},
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+				setTimeout(function(){
+					$('.popup').css('display','none');
+			},3000);
+		}
+	});	
+}
+
+function sweep() {
+	$.ajax({
+		url: 'http://farmapi.niowoo.cn/api/interaction/hen',
+		type: 'GET',
+		dataType: 'jsonp',
+		data: {
+			action: 'sweep'
+		},
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+				setTimeout(function(){
+					$('.popup').css('display','none');
+			},3000);
+		}
+	});	
+}
+
+
 
 $(function(){
 	//显示排行榜
@@ -47,11 +104,56 @@ $(function(){
 		$('.ranking').css('display','none');
 	});
 	$('.i-buy').on('click',function(){
-		$('.s-success').css('display','block');
-		setTimeout(function(){
-			$('.s-success').css('display','none');
-		},3000);
+		var data = {};
+		if($(this) === $('.i-buy').eq(0)[0]) {
+			data = {
+				medikit: 1
+			}
+		}
+		if($(this) === $('.i-buy').eq(1)[0]) {
+			data = {
+				fodder: 1
+			}
+		}
+		if($(this) === $('.i-buy').eq(2)[0]) {
+			data = {
+				adventure_kit: 1
+			}
+		}
+
+		$.ajax({
+			url: 'http://farmapi.niowoo.cn/api/shop/props',
+			type: 'GET',
+			dataType: 'jsonp',
+			data: data,
+			success: function(result) {
+				if(result.status_code === 0) {
+					$('.s-success').css('display','block');
+					setTimeout(function(){
+						$('.s-success').css('display','none');
+					},3000);
+				}else {
+					$('.s-error').css('display','block');
+					setTimeout(function(){
+						$('.s-error').css('display','none');
+					},3000);
+				}
+			},
+			error: function() {
+				$('.s-error').css('display','block');
+					setTimeout(function(){
+					$('.s-error').css('display','none');
+				},3000);
+			}
+		});
+
 	});
+
+	// 商店道具购买
+	$(".s-sure").on("click", function() {
+		$('.mark').css('display','none');
+		$('.ranking').css('display','none');
+	})
 	
 });
 
