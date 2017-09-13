@@ -22,59 +22,169 @@ window.onload = function() {
 
 }
 
+
 function showResources() {
-	$.ajax({
-		url: 'http://farmapi.niowoo.cn/api/henyard',
-		type: 'GET',
-		dataType: 'jsonp',
-		success: function(result) {
+	var option = {
+		url: 'api/henyard',
+		success: function(result, status, xhr) {
+			// 头部资源
 			$(".box-left p").eq(0).html("&nbsp;" + result.data.hen_num);
 			$(".box-left p").eq(1).html("&nbsp;" + result.data.egg_num);
 			$(".box-left p").eq(2).html("&nbsp;" + result.data.golden_egg_num);
 			$(".box-left p").eq(3).html("&nbsp;" + result.data.coins);
 			$(".box-left p").eq(4).html("&nbsp;" + result.data.medikit_num);
 			$(".box-left p").eq(5).html("&nbsp;" + result.data.fodder_num);
+
+			// 页尾资源
+			$(".rail-inf .rail-num li").eq(0).append('&nbsp;x&nbsp;<span>' + result.data.hen_num + '</span>')
+			$(".rail-inf .rail-num li").eq(1).append('&nbsp;x&nbsp;<span>' + result.data.egg_num + '</span>')
+			$(".rail-inf .rail-num li").eq(2).append('&nbsp;x&nbsp;<span>' + result.data.golden_egg_num + '</span>')
+
+		},
+		beforeSend: function(xhr) {
+			// console.log(sessionStorage.token);
+			// xhr.setRequestHeader("Authorization", sessionStorage.token);
+		},
+		complete: function(xhr) {
+			// sessionStorage.token = xhr.getResponseHeader("Authorization");
+			// console.log(xhr.getResponseHeader("Authorization"));
 		}
-	});		
-			
+	}
+
+	myAjax(option);
+
 }
 
-function collectEgg() {
-	$.ajax({
-		url: 'http://farmapi.niowoo.cn/api/interaction/hen',
-		type: 'GET',
-		dataType: 'jsonp',
+
+// 收蛋
+function collectEggs() {
+	var option = {
+		url: 'api/interaction/hen',
 		data: {
-			action: 'cure'
+			action: 'pickupeggs'
 		},
+		type: 'POST',
 		success: function(result) {
 			$('.popup').text(result.message);
 			$('.popup').css('display','block');
-				setTimeout(function(){
-					$('.popup').css('display','none');
+			setTimeout(function(){
+				$('.popup').css('display','none');
 			},3000);
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
 		}
-	});	
+	}
+
+	myAjax(option);
+
 }
 
+
+// 打扫
 function sweep() {
-	$.ajax({
-		url: 'http://farmapi.niowoo.cn/api/interaction/hen',
-		type: 'GET',
-		dataType: 'jsonp',
+	var option = {
+		url: 'api/interaction/hen',
 		data: {
 			action: 'sweep'
 		},
+		type: 'POST',
 		success: function(result) {
 			$('.popup').text(result.message);
 			$('.popup').css('display','block');
-				setTimeout(function(){
-					$('.popup').css('display','none');
+			setTimeout(function(){
+				$('.popup').css('display','none');
 			},3000);
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
 		}
-	});	
+	}
+
+	myAjax(option);
+
 }
 
+// 照顾小鸡
+function consideration() {
+	var option = {
+		url: 'api/interaction/hen',
+		data: {
+			action: 'attend'
+		},
+		type: 'POST',
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},3000);
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		}
+	}
+
+	myAjax(option);
+}
+
+
+
+// 喂养小鸡
+function feed() {
+
+	var option = {
+		url: 'api/interaction/hen',
+		data: {
+			action: 'feed'
+		},
+		type: 'POST',
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},3000);
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		}
+	}
+
+	myAjax(option);
+
+}
+
+
+// 治疗小鸡
+function cure() {
+
+	var option = {
+		url: 'api/interaction/hen',
+		data: {
+			action: 'cure'
+		},
+		type: 'POST',
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},3000);
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		}
+	}
+
+	myAjax(option);
+
+}
 
 
 $(function(){
@@ -82,6 +192,25 @@ $(function(){
 	$('.toranking').on('click',function(){
 		$('.mark').css('display','block');
 		$('.ranking').css('display','block');
+
+		// 加载数据
+		var option = {
+			url: 'api/henyard/leaderboard',
+			beforeSend: function(xhr) {
+			},
+			complete: function(xhr) {
+			},
+			success: function(result) {
+				var list = [];
+				list = result.data.leader_board;
+				for(var i = 0, j = list.length; i < j; i++) {
+					$(".ranking-list").append((new RankingList(list[i]), i).template);
+				}
+			}
+		}
+
+		myAjax(option);
+
 	});
 	//关闭排行榜
 	$('.r-close').on('click',function(){
@@ -102,50 +231,84 @@ $(function(){
 	$('.s-close').on('click',function(){
 		$('.mark').css('display','none');
 		$('.ranking').css('display','none');
+		window.location.assign("home.html");
 	});
+
+	// 购买商品
 	$('.i-buy').on('click',function(){
 		var data = {};
-		if($(this) === $('.i-buy').eq(0)[0]) {
+		if(this === $('.i-buy').eq(0)[0]) {
 			data = {
 				medikit: 1
 			}
 		}
-		if($(this) === $('.i-buy').eq(1)[0]) {
+		if(this === $('.i-buy').eq(1)[0]) {
 			data = {
 				fodder: 1
 			}
 		}
-		if($(this) === $('.i-buy').eq(2)[0]) {
+		if(this === $('.i-buy').eq(2)[0]) {
 			data = {
 				adventure_kit: 1
 			}
 		}
 
-		$.ajax({
-			url: 'http://farmapi.niowoo.cn/api/shop/props',
-			type: 'GET',
-			dataType: 'jsonp',
+		var option = {
+			url: 'api/shop/props',
 			data: data,
+			type: 'POST',
 			success: function(result) {
 				if(result.status_code === 0) {
+					$('.s-success').text(result.message);
 					$('.s-success').css('display','block');
 					setTimeout(function(){
 						$('.s-success').css('display','none');
 					},3000);
 				}else {
+					$('.s-error').text(result.message);
 					$('.s-error').css('display','block');
 					setTimeout(function(){
 						$('.s-error').css('display','none');
 					},3000);
 				}
 			},
-			error: function() {
-				$('.s-error').css('display','block');
-					setTimeout(function(){
-					$('.s-error').css('display','none');
-				},3000);
+			beforeSend: function(xhr) {
+				// console.log(sessionStorage.token);
+				// xhr.setRequestHeader("Authorization", "Bearer " + sessionStorage.token);
+			},
+			complete: function(xhr) {
+				// sessionStorage.token = xhr.getResponseHeader("Authorization");
+				// console.log(xhr.getResponseHeader("Authorization"));
 			}
-		});
+		}
+
+		myAjax(option);
+
+		// $.ajax({
+		// 	url: 'api/shop/props',
+		// 	type: 'GET',
+		// 	dataType: 'jsonp',
+		// 	data: data,
+		// 	success: function(result) {
+		// 		if(result.status_code === 0) {
+		// 			$('.s-success').css('display','block');
+		// 			setTimeout(function(){
+		// 				$('.s-success').css('display','none');
+		// 			},3000);
+		// 		}else {
+		// 			$('.s-error').css('display','block');
+		// 			setTimeout(function(){
+		// 				$('.s-error').css('display','none');
+		// 			},3000);
+		// 		}
+		// 	},
+		// 	error: function() {
+		// 		$('.s-error').css('display','block');
+		// 		setTimeout(function(){
+		// 			$('.s-error').css('display','none');
+		// 		},3000);
+		// 	}
+		// });
 
 	});
 
@@ -153,9 +316,21 @@ $(function(){
 	$(".s-sure").on("click", function() {
 		$('.mark').css('display','none');
 		$('.ranking').css('display','none');
+		window.location.assign("home.html");
 	})
 	
 });
+
+
+function RankingList(data, index) {
+	var templ = '';
+	templ += '<li class="clearfix">';
+	templ += 	'<i>' + index +'</i>';
+	templ += 	'<span class="r-username">' + data.username + '</span>';
+	templ += 	'<span class="r-num">'+ data.sum +'</span>';
+	templ += '</li>';
+
+}
 
 
 ////获取非行间样式

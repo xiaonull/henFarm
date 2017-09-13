@@ -1,23 +1,39 @@
-var token = sessionStorage.token;
-
-$.ajax({
-	url: 'http://farmapi.niowoo.cn/api/henyard/growthrecords',
-	type: 'GET',
-	dataType: 'jsonp',
+var option = {
+	url: 'api/henyard/growthrecords',
 	beforeSend: function(xhr) {
-        xhr.setRequestHeader("Authorization", "Bearer " + JSON.stringify(token));
-    },
+	},
+	complete: function(xhr) {
+	},
 	success: function(result) {
 		var list = [];
 		list = result.data.growth_records;
 		for(var i = 0, j = list.length; i < j; i++) {
-			$(".container").append((new Records(list[i])).template);
+			$(".container").append((new GrowRecords(list[i])).template);
 		}
 	}
-});
+}
+
+myAjax(option);
 
 
-function Records(data) {
+// $.ajax({
+// 	url: 'api/henyard/growthrecords',
+// 	type: 'GET',
+// 	dataType: 'jsonp',
+// 	beforeSend: function(xhr) {
+//         xhr.setRequestHeader("Authorization", "Bearer " + JSON.stringify(token));
+//     },
+// 	success: function(result) {
+// 		var list = [];
+// 		list = result.data.growth_records;
+// 		for(var i = 0, j = list.length; i < j; i++) {
+// 			$(".container").append((new GrowRecords(list[i])).template);
+// 		}
+// 	}
+// });
+
+
+function GrowRecords(data) {
 	var templ = '';
 		templ += '<div class="do-record">';
 		templ += 	'<font class="prop-name">' + data.item + '</font>';

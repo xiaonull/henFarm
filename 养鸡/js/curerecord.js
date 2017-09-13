@@ -1,21 +1,39 @@
-$.ajax({
-	url: 'http://farmapi.niowoo.cn/api/henyard/curerecords',
-	type: 'GET',
-	dataType: 'jsonp',
+var option = {
+	url: 'api/henyard/curerecords',
 	beforeSend: function(xhr) {
-        xhr.setRequestHeader("Authorization", "Bearer " + JSON.stringify(token));
-    },
+	},
+	complete: function(xhr) {
+	},
 	success: function(result) {
 		var list = [];
 		list = result.data.cure_records;
 		for(var i = 0, j = list.length; i < j; i++) {
-			$(".container").append((new Records(list[i])).template);
+			$(".container").append((new CureRecords(list[i])).template);
 		}
 	}
-});
+}
+
+myAjax(option);
 
 
-function Records(data) {
+// $.ajax({
+// 	url: 'api/henyard/curerecords',
+// 	type: 'GET',
+// 	dataType: 'jsonp',
+// 	beforeSend: function(xhr) {
+//         xhr.setRequestHeader("Authorization", "Bearer " + JSON.stringify(token));
+//     },
+// 	success: function(result) {
+// 		var list = [];
+// 		list = result.data.cure_records;
+// 		for(var i = 0, j = list.length; i < j; i++) {
+// 			$(".container").append((new Records(list[i])).template);
+// 		}
+// 	}
+// });
+
+
+function CureRecords(data) {
 	var templ = '';
 		templ += '<div class="do-record">';
 		templ += 	'<font class="prop-name">治疗</font>';

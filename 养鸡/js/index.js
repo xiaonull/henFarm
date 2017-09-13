@@ -22,37 +22,61 @@ $(function(){
 //注册功能
 	$('#register').on('submit',function(event){
 		event.preventDefault();
-		var phone = $('.register .phone input').val();
+		var phone = $('.register .phone input').val() * 1;
 		var name = $('.register .name input').val();
-		var code = $('.register .code-l').val();
+		var code = $('.register .code-l').val() * 1;
 		var psw = $('.register .password input').val();
 		var repsw = $('.register .newpassword input').val();		
 		if(myreg.test(phone) && name != '' && code != '' && mypsw.test(psw) && psw == repsw){
 			// $('#register')[0].submit();
 			var data = {
 				phone: phone,
-				verification_code: code,
+				verification_code: 12345,
 				name: name,
 				password: psw,
 				password_confirmation: repsw
 			};
 
-			$.ajax({
-				url: 'http://farmapi.niowoo.cn/api/register',
-				type: 'GET',
-				dataType: 'jsonp',
+			var option = {
+				url: 'api/register',
 				data: data,
+				type: 'POST',
 				success: function(result) {
 					if(result.status_code === 0) {
 						prompt.show().delay(2000).hide(300);
 						prompt.html(result.message);
-    					sessionStorage.token = result.data;
+    					sessionStorage.token = result.data.token;
     					setTimeout(function() {
     						window.location.assign("home.html");
     					}, 2000);	
-					}    	
+					}else {
+						prompt.show().delay(2000).hide(300);
+						prompt.html(result.message);
+					}  
 				}
-			});
+			}
+
+			myAjax(option);
+
+			// $.ajax({
+			// 	url: 'api/register',
+			// 	type: 'GET',
+			// 	dataType: 'jsonp',
+			// 	data: data,
+			// 	success: function(result) {
+			// 		if(result.status_code === 0) {
+			// 			prompt.show().delay(2000).hide(300);
+			// 			prompt.html(result.message);
+   //  					sessionStorage.token = result.data.token;
+   //  					setTimeout(function() {
+   //  						window.location.assign("home.html");
+   //  					}, 2000);	
+			// 		}else {
+			// 			prompt.show().delay(2000).hide(300);
+			// 			prompt.html(result.message);
+			// 		}    	
+			// 	}
+			// });
 
 		}else if(!myreg.test(phone)){
 			prompt.show().delay(2000).hide(300);
@@ -76,34 +100,50 @@ $(function(){
 	$('#login').on('submit',function(event){
 		event.preventDefault();
 		var userName = $('.login .username input').val();	
-		
 		var psw = $('.login .password input').val();		
 		if(userName != '' && mypsw.test(psw)){
 			// $('#login')[0].submit();
 			var data = {
-				name: userName,
+				phone: userName,
 				password: psw
 			};
 
-			$.ajax({
-				url: 'http://farmapi.niowoo.cn/api/login',
-				type: 'GET',
-				dataType: 'jsonp',
+			var option = {
+				url: 'api/login',
 				data: data,
+				type: 'POST',
 				success: function(result) {
 					if(result.status_code === 0) {
 						// 保存token
-						sessionStorage.token = result.data;
+						sessionStorage.token = result.data.token;
 						// 登录成功，页面跳转
 						window.location.assign("home.html");
 					}else {
 						prompt.show().delay(2000).hide(300);
 						prompt.html(result.message);
 					}
-
- 
 				}
-			});
+			}
+
+			myAjax(option);
+
+			// $.ajax({
+			// 	url: 'api/login',
+			// 	type: 'GET',
+			// 	dataType: 'jsonp',
+			// 	data: data,
+			// 	success: function(result) {
+			// 		if(result.status_code === 0) {
+			// 			// 保存token
+			// 			sessionStorage.token = result.data.token;
+			// 			// 登录成功，页面跳转
+			// 			window.location.assign("home.html");
+			// 		}else {
+			// 			prompt.show().delay(2000).hide(300);
+			// 			prompt.html(result.message);
+			// 		}
+			// 	}
+			// });
 
 		}else if(userName == ''){
 			prompt.show().delay(2000).hide(300);
@@ -128,23 +168,44 @@ $(function(){
 				new_password: newpsw
 			};
 
-			$.ajax({
-				url: 'http://farmapi.niowoo.cn/api/login/resetpassword',
-				type: 'GET',
-				dataType: 'jsonp',
+			var option = {
+				url: 'api/login/resetpassword',
 				data: data,
+				type: 'POST',
 				success: function(result) {
 					if(result.status_code === 0) {
+						sessionStorage.token = result.data.token;
 						prompt.show().delay(2000).hide(300);
 						prompt.html('修改密码成功！');
+						setTimeout(function() {
+							$('.login').css('display','block');
+							$('.revise').css('display','none');
+						}, 2000);
+
 					}else {
 						prompt.show().delay(2000).hide(300);
 						prompt.html(result.message);
 					}
-
- 
 				}
-			});
+			}
+
+			myAjax(option);
+
+			// $.ajax({
+			// 	url: 'api/login/resetpassword',
+			// 	type: 'GET',
+			// 	dataType: 'jsonp',
+			// 	data: data,
+			// 	success: function(result) {
+			// 		if(result.status_code === 0) {
+			// 			prompt.show().delay(2000).hide(300);
+			// 			prompt.html('修改密码成功！');
+			// 		}else {
+			// 			prompt.show().delay(2000).hide(300);
+			// 			prompt.html(result.message);
+			// 		}
+			// 	}
+			// });
 		}else if(!myreg.test(phone)){
 			prompt.show().delay(2000).hide(300);
 			prompt.html('请输入正确的手机号码！');
@@ -156,6 +217,43 @@ $(function(){
 			prompt.html('请输入6~20位密码！');
 		}
 	});
+
+	//验证码发送请求
+	$(".code-r").on('click',function(){
+		var curPhone = $('.register .phone input').val() || $('.revise .phone input').val();
+		var data = {
+			phone: curPhone
+		};
+
+		var option = {
+			url: 'api/verificationcode/get',
+			data: data,
+			type: 'POST',
+			success: function(result) {
+				prompt.show().delay(2000).hide(300);
+				prompt.html(result.message);
+			}
+		}
+
+		myAjax(option); 
+
+
+		// $.ajax({
+		// 	url:"api/verificationcode/get",
+		// 	data:{
+		// 		phone:curPhone
+		// 	},
+		// 	// method:"post",
+		// 	dataType:"jsonp",
+		// 	// jsonp:'onJsonPLoad',
+		// 	success:function(result){
+		// 		prompt.show().delay(2000).hide(300);
+		// 		prompt.html(result.message);
+		// 	}
+		// });
+	});
+
+
 });
 
 
