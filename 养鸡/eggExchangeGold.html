@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>个人中心</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+	<meta content="telephone=no" name="format-detection">		
+	<meta name="screen-orientation" content="portrait">		
+	<meta name="x5-orientation" content="portrait">	
+	<meta name="full-screen" content="yes">		
+	<meta name="x5-fullscreen" content="true">	
+	<meta name="browsermode" content="application">		
+	<meta name="x5-page-mode" content="app">		
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" href="css/mycenter.css" />
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script>
+		(function() {
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth / 15 + "px";
+		})();
+	</script>
+</head>
+<body>
+	<header class="fixed"><a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>鸡蛋兑换</header>
+	<div class="container">
+		<div class="eggExchangeGold">
+			<div class="egg">
+				<label for="egg">鸡 蛋</label>
+				<input type="number" class="eggInput" name="egg" placeholder="" />
+				<div class="confirmSubmit">
+					<input type="submit" class="confirmSubmit-egg" value="兑 换" />
+				</div>
+			</div>
+			<div class="goldEgg">
+				<label for="goldEgg">金 蛋</label>
+				<input type="number" class="goldEggInput" name="goldEgg" placeholder="" />
+				<div class="confirmSubmit">
+					<input type="submit" class="confirmSubmit-goldEgg" value="兑 换" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="animated zoomIn prompt"></section>
+	<script src="js/base.js"></script>
+	<script type="text/javascript" src="js/eggExchangeGold.js"></script>
+</body>
+</html>

@@ -8,13 +8,31 @@ var $prompt = $('.prompt');
 
 $(".confirmSubmit-btn").on('click', function(event) {
 	event.preventDefault();
-	var passwordType = $(".passwordType input").val(),
-	password = $(".password input").val(),
+	var password = $(".password input").val(),
 	newPassword = $(".newPassword input").val(),
 	confirmPassword = $(".confirmPassword input").val();
 	if(mypsw.test(password) && mypsw.test(newPassword) && mypsw.test(confirmPassword) && newPassword === confirmPassword){
-		$prompt.show().delay(2000).hide(300);
-		$prompt.html('ok！');
+		var option = {
+			url: 'api/login/changepassword',
+			data: {
+				password: password,
+				new_password: newPassword,
+				new_password_confirmation: confirmPassword
+			},
+			type: 'POST',
+			success: function(result) {
+				$prompt.show().delay(2000).hide(300);
+				$prompt.html(result.message);
+			},
+			beforeSend: function(xhr) {
+			},
+			complete: function(xhr) {
+			}
+		}
+
+		myAjax(option);
+
+
 	}else if(!mypsw.test(password) || !mypsw.test(newPassword) || !mypsw.test(confirmPassword)) {
 		$prompt.show().delay(2000).hide(300);
 		$prompt.html('请输入6~20位密码！');

@@ -1,28 +1,104 @@
-function Chicken(obj) {
-	this.oChicken = obj;
+function Chicken(id) {
+	// this.oChicken = obj;
+	this.cla = '.runs .run' + id;
 	this.timer = null;
-	this.oChicken.style.top = Math.random() * 100 + '%';
-	this.oChicken.style.left = Math.random() * 100 + '%';	
+	// this.oChicken.style.top = Math.random() * 100 + '%';
+	// this.oChicken.style.left = Math.random() * 100 + '%';
+	$(this.cla).css({
+		"top": Math.random() * 100 + '%',
+		"left": Math.random() * 100 + '%'
+	});
 }
+
 Chicken.prototype.move = function() {
-	this.oChicken.style.top = Math.random() * 100 + '%';
-	this.oChicken.style.left = Math.random() * 100 + '%';	
+	// this.oChicken.style.top = Math.random() * 100 + '%';
+	// this.oChicken.style.left = Math.random() * 100 + '%';
+	$(this.cla).css({
+		"top": Math.random() * 100 + '%',
+		"left": Math.random() * 100 + '%'
+	});
 	this.timer = setInterval(function() {
-		this.oChicken.style.top = Math.random() * 100 + '%';
-		this.oChicken.style.left = Math.random() * 100 + '%';	
-	}.bind(this), 20000);
+		// this.oChicken.style.top = Math.random() * 100 + '%';
+		// this.oChicken.style.left = Math.random() * 100 + '%';	
+		$(this.cla).css({
+			"top":  Math.random() * 100 + '%',
+			"left":  Math.random() * 100 + '%'
+		});
+
+	}.bind(this), 1000);
 }
+
+// function isRandomPlus() {
+// 	var n = Math.floor(Math.random() * 10 + 1);
+// 	if(n % 2 === 0) {
+// 		console.log('+');
+// 		return '+';
+// 	}else {
+// 		console.log('-');
+// 		return '-';
+// 	}
+// }
+
+
 window.onload = function() {
-	var aChickens = document.querySelectorAll('.runs div');
-	for(var i = 0, len = aChickens.length; i < len; i++) {
-		new Chicken(aChickens[i]).move();
-	}
-
+	
 	showResources();
+	
+	//轮询公告
+	(function() {
+		var left = 10;
+		var interval1 = setInterval(function() {
+			left -= 4;
+			$(".notice .noticeText").css({
+				left: left + 'px'
+			});
+		}, 300);
+		showNotice();
+		var interval2 = setInterval(function() {
+			showNotice();
+		}, 120000);
+	})();
 
+	// 轮询是否喂食
+	showFeedBubble();
+	setInterval(function() {
+		showFeedBubble();
+	}, 500000);
+
+	
+	
 }
 
+// 显示喂食提示气泡框
+function showFeedBubble() {
+	var option = {
+		url: 'api/henyard/getpersonalnotices',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			var list = [];
+			list = result.data.personal_notices;
+			// console.log(list);
+			if(list[0] === "") {
+				$(".feedBubble").css({
+					display: 'none'
+				});
+				return;
+			}else {
+				var feedBubbleText = list[0];
+				$(".feedBubble .feedBubbleText").append(feedBubbleText);
+				$(".feedBubble").css({
+					display: 'block'
+				});
+			}
+		}
+	}
+	myAjax(option);
+}
 
+// 显示主页面的资源
 function showResources() {
 	var option = {
 		url: 'api/henyard',
@@ -36,25 +112,105 @@ function showResources() {
 			$(".box-left p").eq(5).html("&nbsp;" + result.data.fodder_num);
 
 			// 页尾资源
-			$(".rail-inf .rail-num li").eq(0).append('&nbsp;x&nbsp;<span>' + result.data.hen_num + '</span>')
-			$(".rail-inf .rail-num li").eq(1).append('&nbsp;x&nbsp;<span>' + result.data.egg_num + '</span>')
-			$(".rail-inf .rail-num li").eq(2).append('&nbsp;x&nbsp;<span>' + result.data.golden_egg_num + '</span>')
+			$(".rail-inf .rail-num li").eq(0).append('&nbsp;x&nbsp;<span>' + result.data.hen_num + '</span>');
+			$(".rail-inf .rail-num li").eq(1).append('&nbsp;x&nbsp;<span>' + result.data.egg_num + '</span>');
+			$(".rail-inf .rail-num li").eq(2).append('&nbsp;x&nbsp;<span>' + result.data.golden_egg_num + '</span>');
+
+			// 显示蛋窝的蛋的图片
+			var img = document.createElement("img");
+			if((result.data.egg_num + result.data.golden_egg_num) > 0) {
+				img.src = "img/home/egg.png";
+				$(".footer .egg").append(img);
+			}
+			
+			// 生成鸡群
+			var hens = result.data.hen_details;
+			// console.log(hens);
+			for(var i = 0, j = hens.length; i < j; i++) {
+				if(hens[i].is_grown === "false") {
+					// 生成小鸡
+					var n = Math.floor(Math.random() * 10 + 1);
+					var img = '';
+					if(n >= 0 && n <=2) {
+						img = '<img src="img/home/chook01.png" />';
+					}else if(n >= 3 && n <=5) {
+						img = '<img src="img/home/chook02.png" />';
+					}else {
+						img = '<img src="img/home/chook04.png" />';
+					}
+
+					var templ = '';
+					templ += '<div class="run' + hens[i].id + '">';
+					templ += 	img;
+					templ += '</div>';
+
+					$(".main .runs").append(templ);
+					new Chicken(hens[i].id).move();
+				}else {
+					// 生成母鸡
+					var time = '-- -- --';
+					if(hens[i].since_picked.length !== 0) {
+						time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.seconds;
+					}
+					// console.log(hens[i].since_picked);
+					var templ = '';
+					templ += '<div class="run' + hens[i].id + '">';
+					templ += 	'<div class="container">';
+					templ +=        '<div class="bubble">';
+					templ +=        	'<p>成年期</p>';
+					templ +=        	'<p>' + hens[i].lifetime +'</p>';
+					templ +=        	'<p>' + hens[i].is_sick === "false" ? '生病' : '健康' +'</p>';
+					templ +=        	'<p>' + time +'</p>';
+					templ +=        '</div>';
+					templ += 		'<img src="img/home/chook03.png" />';
+					templ += 	'</div>';
+					templ += '</div>';
+
+					$(".main .runs").append(templ);
+					new Chicken(hens[i].id).move();
+				}
+			}
+
+			// 生成小鸡
+			// var aChickens = document.querySelectorAll('.runs div');
+			// for(var i = 0, len = aChickens.length; i < len; i++) {
+
+			// 	new Chicken(aChickens[i]).move();
+			// }
 
 		},
 		beforeSend: function(xhr) {
-			// console.log(sessionStorage.token);
-			// xhr.setRequestHeader("Authorization", sessionStorage.token);
 		},
 		complete: function(xhr) {
-			// sessionStorage.token = xhr.getResponseHeader("Authorization");
-			// console.log(xhr.getResponseHeader("Authorization"));
 		}
-	}
+	};
 
 	myAjax(option);
 
 }
 
+// 显示公告
+function showNotice() {
+	var noticeText = '';
+
+	var option = {
+		url: 'api/henyard/getnotices',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			var list = [];
+			list = result.data.notices;
+			for(var i = 0, j = list.length; i < j; i++) {
+				noticeText += list[i] + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			}
+			$(".notice .noticeText").append(noticeText);
+		}
+	}
+	// console.log(1);
+	myAjax(option);
+}
 
 // 收蛋
 function collectEggs() {

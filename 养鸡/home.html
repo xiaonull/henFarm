@@ -1,83 +1,87 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8" />
-		<title>农场--大厅</title>
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
-		<meta content="telephone=no" name="format-detection">		
-		<meta name="screen-orientation" content="portrait">		
-		<meta name="x5-orientation" content="portrait">	
-		<meta name="full-screen" content="yes">		
-		<meta name="x5-fullscreen" content="true">	
-		<meta name="browsermode" content="application">		
-		<meta name="x5-page-mode" content="app">		
-		<meta name="msapplication-tap-highlight" content="no">
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
-		<link rel="stylesheet" href="css/home.css" />
-		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-		<script>
-			(function() {
-				var html = document.documentElement;
-				var hWidth = html.getBoundingClientRect().width;
-				html.style.fontSize = hWidth / 15 + "px";
-			})();
-		</script>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<title>农场--大厅</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+	<meta content="telephone=no" name="format-detection">		
+	<meta name="screen-orientation" content="portrait">		
+	<meta name="x5-orientation" content="portrait">	
+	<meta name="full-screen" content="yes">		
+	<meta name="x5-fullscreen" content="true">	
+	<meta name="browsermode" content="application">		
+	<meta name="x5-page-mode" content="app">		
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" href="css/home.css" />
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script>
+		(function() {
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth / 15 + "px";
+		})();
+	</script>
+</head>
 
-	<body>
-		<header class="clearfix">
-			<div class="box-left">
-				<ul class="clearfix">
-					<li>
-						<span><img src="img/home/top-ico01.png" alt="" /></span>
-						<p></p>
-					</li>
-					<li>
-						<span><img src="img/home/top-ico02.png" alt="" /></span>
-						<p></p>
-					</li>
-					<li>
-						<span><img src="img/home/top-ico03.png" alt="" /></span>
-						<p></p>
-					</li>
-					<li>
-						<span><img src="img/home/top-ico04.png" alt="" /></span>
-						<p></p>
-					</li>
-					<li>
-						<span><img src="img/home/top-ico05.png" alt="" /></span>
-						<p></p>
-					</li>
-					<li>
-						<span><img src="img/home/top-ico06.png" alt="" /></span>
-						<p></p>
-					</li>
-				</ul>
-			</div>
-			<div class="box-right">
-				<a href="javascript:;"><img src="img/home/tutorial.png" alt="" /></a>
-			</div>
-		</header>
-		<section class="main clearfix">
-			<div class="m-left">
-				<ul>
-					<li>
-						<a href="javascript:;" class="toranking"><img src="img/home/left-ico01.png" alt="" /></a>
-					</li>
-					<li>
-						<a href="dial.html"><img src="img/home/left-ico02.png" alt="" /></a>
-					</li>
-					<li>
-						<a href="jungle.html"><img src="img/home/left-ico03.png" alt="" /></a>
-					</li>
-				</ul>
-			</div>
-			<div class="m-right">
-				<img src="img/home/house.png" />
-			</div>
-			<div class="runs">
-				<div class="run1">
+<body>
+	<header class="clearfix">
+		<div class="box-left">
+			<ul class="clearfix">
+				<li>
+					<span><img src="img/home/top-ico01.png" alt="" /></span>
+					<p></p>
+				</li>
+				<li>
+					<span><img src="img/home/top-ico02.png" alt="" /></span>
+					<p></p>
+				</li>
+				<li>
+					<span><img src="img/home/top-ico03.png" alt="" /></span>
+					<p></p>
+				</li>
+				<li>
+					<span><img src="img/home/top-ico04.png" alt="" /></span>
+					<p></p>
+				</li>
+				<li>
+					<span><img src="img/home/top-ico05.png" alt="" /></span>
+					<p></p>
+				</li>
+				<li>
+					<span><img src="img/home/top-ico06.png" alt="" /></span>
+					<p></p>
+				</li>
+			</ul>
+		</div>
+		<div class="box-right">
+			<a href="javascript:;"><img src="img/home/tutorial.png" alt="" /></a>
+		</div>
+	</header>
+	<!-- 公告 -->
+	<section class="notice">
+		<p class="noticeText"></p>
+	</section>
+	<section class="main clearfix">
+		<div class="m-left">
+			<ul>
+				<li>
+					<a href="javascript:;" class="toranking"><img src="img/home/left-ico01.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="dial.html"><img src="img/home/left-ico02.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="jungle.html"><img src="img/home/left-ico03.png" alt="" /></a>
+				</li>
+			</ul>
+		</div>
+		<div class="m-right">
+			<img src="img/home/house.png" />
+		</div>
+		<div class="runs">
+				<!-- <div class="run1">
 					<img src="img/home/chook04.png" />
 				</div>
 				<div class="run2">
@@ -136,7 +140,7 @@
 				</div>
 				<div class="run20">
 					<img src="img/home/chook04.png" />
-				</div>
+				</div> -->
 			</div>
 			<div class="popup"></div>
 		</section>
@@ -244,12 +248,13 @@
 		</section>
 		<footer class="footer">
 			<div class="egg">
-				<img src="img/home/egg.png" alt="" />
-				<p>
+				<!-- 根据蛋的数量显示图片 -->
+				<!-- <img src="img/home/egg.png" alt="" /> -->
+				<!-- <p>
 					<i></i>
-					<!-- 蛋的总数 -->
+					蛋的总数
 					<span>175</span>
-				</p>
+				</p> -->
 			</div>
 			<div class="rail-bg"></div>
 			<ul class="clearfix rail">
@@ -295,10 +300,14 @@
 					<a href="mycenter.html"><img src="img/home/my-center.png" alt="" /></a>
 				</div>
 			</div>
+			<!-- 提示喂食气泡框 -->
+			<div class="feedBubble">
+				<p class="feedBubbleText"></p>
+			</div>
 		</footer>
 	</body>
 	<script src="js/base.js"></script>
 	<script type="text/javascript" src="js/css-animations.js"></script>
 	<script type="text/javascript" src="js/home.js"></script>
 
-</html>
+	</html>

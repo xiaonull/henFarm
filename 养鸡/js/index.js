@@ -116,6 +116,7 @@ $(function(){
 					if(result.status_code === 0) {
 						// 保存token
 						sessionStorage.token = result.data.token;
+						// console.log(sessionStorage.token + 'ok');
 						// 登录成功，页面跳转
 						window.location.assign("home.html");
 					}else {

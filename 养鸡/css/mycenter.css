@@ -10,17 +10,29 @@ body {
   position: relative;
 }
 header {
-  width: 100%;
-  height: 1.84rem;
-  line-height: 1.84rem;
-  text-align: center;
-  background-color: #f3f3f3;
-  font-size: 0.6rem;
-  color: #000;
+ /* position: fixed;
+ z-index: 10;*/
+ width: 100%;
+ height: 1.84rem;
+ line-height: 1.84rem;
+ text-align: center;
+ background-color: #f3f3f3;
+ font-size: 0.6rem;
+ color: #000;
 }
+header.fixed {
+  position: fixed;
+}
+
+.container {
+  margin-top: 2.3rem;
+}
+
 .main {
   width: 100%;
   position: relative;
+  margin-bottom: 1rem;
+  /*margin-top: 1.84rem;*/
 }
 .main .banner {
   width: 100%;
@@ -56,7 +68,7 @@ header {
   font-size: 12px;
 }
 .b-right{
-  margin-top:1rem;
+  margin-top:0.6rem;
   margin-left:7rem;
 }
 .statistic{
@@ -64,7 +76,12 @@ header {
   list-style-type: none;
   text-align: left;
   color: white;
-  font-size: 20px;
+  /*font-size: 20px;*/
+  /*line-height: 24px;*/
+}
+.banner .statistic {
+  font-size: 18px;
+  font-weight: 400;
   line-height: 24px;
 }
 .arrows-right{
@@ -88,6 +105,12 @@ header {
 	margin-bottom: 10px;
   font-size: 18px;
   list-style: none;
+}
+.body-record li b {
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-block;
+  margin-left: 10px;
 }
 .record-img{
   width:24px;
@@ -187,28 +210,28 @@ div.date-record{
   font-weight: 600;
   color: #A2A2A2;
   opacity: 0.8;
-}/* WebKit browsers */
+}
 
 .modifyPassword input:-moz-placeholder{
   font-size: 16px;
   font-weight: 600;
   color: #A2A2A2;
   opacity: 0.8;
-}/* Mozilla Firefox 4 to 18 */
+}
 
 .modifyPassword input::-moz-placeholder{
   font-size: 16px;
   font-weight: 600;
   color: #A2A2A2;
   opacity: 0.8;
-}/* Mozilla Firefox 19+ */
+}
 
 .modifyPassword input:-ms-input-placeholder{
   font-size: 16px;
   font-weight: 600;
   color: #A2A2A2;
   opacity: 0.8;
-}/* Mozilla Firefox 19+ */
+}
 
 .modifyPassword .confirmSubmit input {
   width: 13rem;
@@ -222,6 +245,10 @@ div.date-record{
   font-weight: 600;
   color: #fff;
   border: none;
+}
+
+.modifyPassword input:disabled {
+  background-color: #FDFDFD;
 }
 
 .prompt {
@@ -238,4 +265,66 @@ div.date-record{
   position: absolute;
   left: 2.4rem;
   top: 7rem;
+}
+
+/* 蛋换金币 */
+.eggExchangeGold {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.eggExchangeGold > div {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.eggExchangeGold label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  margin-left: 0.5rem;
+  width: 20%;
+  margin-top: 0.2rem;
+}
+
+.eggExchangeGold input {
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 40%;
+}
+
+.eggExchangeGold .confirmSubmit {
+  float: right;
+  width: 29%;
+  /*padding-left: 0.2rem;*/
+}
+
+.eggExchangeGold .confirmSubmit input {
+  width: 3rem;
+  height: 1.4rem;
+  display: block;
+  margin-left: 0.3rem;
+  background-color: #76af20;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
+
+/* 推广二维码 */
+.recommend {
+  text-align: center;
+}
+
+.recommend .codeImg {
+  display: inline-block;
 }

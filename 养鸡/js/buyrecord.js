@@ -16,23 +16,6 @@ var option = {
 myAjax(option);
 
 
-// $.ajax({
-// 	url: 'api/henyard/proppurchaserecords',
-// 	type: 'GET',
-// 	dataType: 'jsonp',
-// 	beforeSend: function(xhr) {
-// 		xhr.setRequestHeader("Authorization", "Bearer " + JSON.stringify(token));
-// 	},
-// 	success: function(result) {
-// 		var list = [];
-// 		list = result.data.prop_purchase_records;
-// 		for(var i = 0, j = list.length; i < j; i++) {
-// 			$(".container").append((new Proppurchaserecords(list[i])).template);
-// 		}
-// 	}
-// });
-
-
 function Proppurchaserecords(data) {
 	var templ = '';
 	templ += '<div class="do-record">';
