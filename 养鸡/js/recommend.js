@@ -13,3 +13,4 @@ var option = {
 
 myAjax(option);
 
+

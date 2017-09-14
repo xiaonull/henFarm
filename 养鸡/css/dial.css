@@ -156,3 +156,94 @@ html {
   font-size: 0.7rem;
   font-weight: 600;
 }
+
+/* 转盘奖品 */
+.wheel-list {
+  position: relative;
+}
+
+.wheel-item {
+  position: absolute;
+  z-index: 9999;
+}
+
+.wheel-item-1 {
+  top: 19%;
+  left: 50%;
+  margin-top: -0.2rem;
+  margin-left: -0.6rem;
+}
+
+.wheel-item-2 {
+  top: 25%;
+  left: 23%;
+  transform:rotate(-45deg);
+  -ms-transform:rotate(-45deg); 
+  -webkit-transform:rotate(-45deg); 
+}
+
+.wheel-item-3 {
+  top: 50%;
+  left: 15%;
+  margin-top: -0.5rem;
+  margin-left: -0.2rem;
+  transform:rotate(-90deg);
+  -ms-transform:rotate(-90deg); 
+  -webkit-transform:rotate(-90deg);
+}
+
+.wheel-item-3 {
+  top: 50%;
+  left: 15%;
+  margin-top: -0.5rem;
+  transform:rotate(-90deg);
+  -ms-transform:rotate(-90deg); 
+  -webkit-transform:rotate(-90deg);
+}
+
+.wheel-item-4 {
+  top: 75%;
+  left: 23%;
+  margin-top: -0.5rem;
+  transform:rotate(-135deg);
+  -ms-transform:rotate(-135deg); 
+  -webkit-transform:rotate(-135deg);
+}
+
+.wheel-item-5 {
+  top: 80%;
+  left: 50%;
+  margin-left: -0.5rem;
+  margin-top: -0.2rem;
+  transform:rotate(-180deg);
+  -ms-transform:rotate(-180deg); 
+  -webkit-transform:rotate(-180deg);
+}
+
+.wheel-item-6 {
+  top: 75%;
+  right: 23%;
+  margin-top: -0.5rem;
+  transform:rotate(135deg);
+  -ms-transform:rotate(135deg); 
+  -webkit-transform:rotate(135deg);
+}
+
+.wheel-item-7 {
+  top: 50%;
+  right: 13%;
+  margin-top: -0.5rem;
+  transform:rotate(90deg);
+  -ms-transform:rotate(90deg); 
+  -webkit-transform:rotate(90deg);
+}
+
+.wheel-item-8 {
+  top: 26%;
+  right: 22%;
+  transform:rotate(45deg);
+  -ms-transform:rotate(45deg); 
+  -webkit-transform:rotate(45deg); 
+}
+
+

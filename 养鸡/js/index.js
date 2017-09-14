@@ -58,25 +58,6 @@ $(function(){
 
 			myAjax(option);
 
-			// $.ajax({
-			// 	url: 'api/register',
-			// 	type: 'GET',
-			// 	dataType: 'jsonp',
-			// 	data: data,
-			// 	success: function(result) {
-			// 		if(result.status_code === 0) {
-			// 			prompt.show().delay(2000).hide(300);
-			// 			prompt.html(result.message);
-   //  					sessionStorage.token = result.data.token;
-   //  					setTimeout(function() {
-   //  						window.location.assign("home.html");
-   //  					}, 2000);	
-			// 		}else {
-			// 			prompt.show().delay(2000).hide(300);
-			// 			prompt.html(result.message);
-			// 		}    	
-			// 	}
-			// });
 
 		}else if(!myreg.test(phone)){
 			prompt.show().delay(2000).hide(300);

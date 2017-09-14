@@ -328,3 +328,114 @@ div.date-record{
 .recommend .codeImg {
   display: inline-block;
 }
+
+/* 鸡蛋转赠 */
+.transferEgg {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.transferEgg > div {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.transferEgg label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  margin-left: 0.5rem;
+  width: 20%;
+  margin-top: 0.2rem;
+}
+
+.transferEgg input {
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 40%;
+}
+
+.transferEgg .phone input {
+  width: 9.6rem;
+}
+
+.transferEgg .confirmSubmit {
+  float: right;
+  width: 29%;
+  /*padding-left: 0.2rem;*/
+}
+
+.transferEgg .confirmSubmit input {
+  width: 3rem;
+  height: 1.4rem;
+  display: block;
+  margin-left: 0.3rem;
+  background-color: #76af20;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
+
+
+/* 购买动物 */
+.buyAnimal {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.buyAnimal > div {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.buyAnimal label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  margin-left: 0.5rem;
+  width: 20%;
+  margin-top: 0.2rem;
+}
+
+.buyAnimal input {
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 43%;
+}
+
+.buyAnimal .confirmSubmit {
+  float: right;
+  width: 26%;
+  /*padding-left: 0.2rem;*/
+}
+
+.buyAnimal .confirmSubmit input {
+  width: 3rem;
+  height: 1.4rem;
+  display: block;
+  margin-left: 0.3rem;
+  background-color: #76af20;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
