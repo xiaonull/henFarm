@@ -82,12 +82,12 @@ $(function() {
 
 	$('.close').on('click',function(){
 		$('.mark').css('display','none');
-		window.location.assign("home.html");
+		// window.location.assign("home.html");
 	});
 
 	$('.sure').on('click',function(){
 		$('.mark').css('display','none');
-		window.location.assign("home.html");
+		// window.location.assign("home.html");
 	});
 	
 

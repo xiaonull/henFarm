@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>农场--丛林探险</title>
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
-		<meta content="telephone=no" name="format-detection">		
-		<meta name="screen-orientation" content="portrait">		
-		<meta name="x5-orientation" content="portrait">		
-		<meta name="full-screen" content="yes">
-		<meta name="x5-fullscreen" content="true">		
-		<meta name="browsermode" content="application">		
-		<meta name="x5-page-mode" content="app">		
-		<meta name="msapplication-tap-highlight" content="no">
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
-		<link rel="stylesheet" href="css/jungle.css" />
-		<link rel="stylesheet" type="text/css" href="css/scrollbar.css"/>
-		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-		<script>
-			(function() {
-				var html = document.documentElement;
-				var hWidth = html.getBoundingClientRect().width;
-				html.style.fontSize = hWidth / 15 + "px";
-			})();
-		</script>
-	</head>
-	<body>
-		<section class="main">
-			<div class="jungle clearfix">
-				<a href="expedition.html" class="jungle-l"><img src="img/expedition/button01.png" alt="" /></a>
-				<a href="javascript:;" class="jungle-r"><img src="img/expedition/button02.png" alt="" /></a>
-			</div>
-			<div class="mark">
-				<div class="box">
-					<div class="box-bt"><img src="img/expedition/box-bt.png"/></div>
-					<div class="close"><img src="img/expedition/close.png" alt="" /></div>
-					<div id="wrapper">
-						<ul class="jungleRecords">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+	<meta content="telephone=no" name="format-detection">		
+	<meta name="screen-orientation" content="portrait">		
+	<meta name="x5-orientation" content="portrait">		
+	<meta name="full-screen" content="yes">
+	<meta name="x5-fullscreen" content="true">		
+	<meta name="browsermode" content="application">		
+	<meta name="x5-page-mode" content="app">		
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.css" />
+	<link rel="stylesheet" href="css/jungle.css" />
+	<link rel="stylesheet" type="text/css" href="css/scrollbar.css"/>
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script>
+		(function() {
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth / 15 + "px";
+		})();
+	</script>
+</head>
+<body>
+	<section class="main">
+		<div class="jungle clearfix">
+			<a href="javascript:;" class="jungle-l"><img src="img/expedition/button01.png" alt="" /></a>
+			<a href="javascript:;" class="jungle-r"><img src="img/expedition/button02.png" alt="" /></a>
+		</div>
+		<section class="animated zoomIn prompt"></section>
+		<div class="mark">
+			<div class="box">
+				<div class="box-bt"><img src="img/expedition/box-bt.png"/></div>
+				<div class="close"><img src="img/expedition/close.png" alt="" /></div>
+				<div id="wrapper">
+					<ul class="jungleRecords">
 <!-- 							<li>
-								<span class="time">2017-03-24</span>
-								<span class="success">探险成功</span>
-								<span class="gold">获得金币<i>300</i></span>								
-							</li>
-							<li>
-								<span class="time">2017-03-24</span>
-								<span class="success">探险成功</span>
-								<span class="gold">获得金币<i>300</i></span>								
-							</li>
-							<li>
-								<span class="time">2017-03-24</span>
-								<span class="success">探险成功</span>
-								<span class="gold">获得金币<i>300</i></span>								
-							</li>
-							<li>
-								<span class="time">2017-03-24</span>
-								<span class="success">探险成功</span>
-								<span class="gold">获得金币<i>300</i></span>								
-							</li>
-							<li>
 								<span class="time">2017-03-24</span>
 								<span class="success">探险成功</span>
 								<span class="gold">获得金币<i>300</i></span>								
@@ -78,4 +60,4 @@
 	<script src="js/base.js"></script>
 	<script type="text/javascript" src="js/iScroll.js"></script>
 	<script type="text/javascript" src="js/jungle.js"></script>
-</html>
+	</html>

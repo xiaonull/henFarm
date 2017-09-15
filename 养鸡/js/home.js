@@ -429,42 +429,13 @@ $(function(){
 				}
 			},
 			beforeSend: function(xhr) {
-				// console.log(sessionStorage.token);
-				// xhr.setRequestHeader("Authorization", "Bearer " + sessionStorage.token);
 			},
 			complete: function(xhr) {
-				// sessionStorage.token = xhr.getResponseHeader("Authorization");
-				// console.log(xhr.getResponseHeader("Authorization"));
 			}
 		}
 
 		myAjax(option);
 
-		// $.ajax({
-		// 	url: 'api/shop/props',
-		// 	type: 'GET',
-		// 	dataType: 'jsonp',
-		// 	data: data,
-		// 	success: function(result) {
-		// 		if(result.status_code === 0) {
-		// 			$('.s-success').css('display','block');
-		// 			setTimeout(function(){
-		// 				$('.s-success').css('display','none');
-		// 			},3000);
-		// 		}else {
-		// 			$('.s-error').css('display','block');
-		// 			setTimeout(function(){
-		// 				$('.s-error').css('display','none');
-		// 			},3000);
-		// 		}
-		// 	},
-		// 	error: function() {
-		// 		$('.s-error').css('display','block');
-		// 		setTimeout(function(){
-		// 			$('.s-error').css('display','none');
-		// 		},3000);
-		// 	}
-		// });
 
 	});
 
@@ -487,6 +458,25 @@ function RankingList(data, index) {
 	templ += '</li>';
 
 }
+
+
+$(".rail-l img").on('click', function(event) {
+	event.preventDefault();
+	$('.popup').text("该功能有待开放");
+	$('.popup').css('display','block');
+	setTimeout(function(){
+		$('.popup').css('display','none');
+	},3000);
+});
+
+$(".rail-r img").on('click', function(event) {
+	event.preventDefault();
+	$('.popup').text("该功能有待开放");
+	$('.popup').css('display','block');
+	setTimeout(function(){
+		$('.popup').css('display','none');
+	},3000);
+});
 
 
 ////获取非行间样式

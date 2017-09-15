@@ -54,11 +54,7 @@ html {
   background: #f1f1f1;
   position: relative;
   overflow-x: hidden;
-  /*position: absolute; 
-  top: 0;
-  right: 0; 
-  bottom: 0; 
-  left: 0;*/
+  overflow-y: hidden;
 }
 li,
 ul {
@@ -119,17 +115,19 @@ header {
   float: right;
   width: 1.7rem;
   height: 1.7rem;
-  margin-left: -1.4rem;
+  /*right: 1.6rem;*/
   margin-top: -0.2rem;
 }
 .box-right img {
   width: 2.4rem;
   height: 2.4rem;
+  position: relative;
+  right: 0.4rem;
 }
 /* 公告 */
 .notice {
   position: absolute;
-  width: 90%;
+  width: 75%;
   left: 5%;
   height: 1.5rem;
   margin-top: -3px;
@@ -152,6 +150,15 @@ header {
   width: 100%;
   position: relative;
 }
+
+/*.main {
+  top: -50px;
+}*/
+
+.footer, .ranking {
+  top: -3.7rem;
+}
+
 .main .m-left ul {
   position: absolute;
   top: 1rem;
@@ -166,11 +173,30 @@ header {
 }
 .main .m-right {
   float: right;
+  position: relative;
 }
 .main .m-right img {
   height: 3.48rem;
   margin-top: 1.8rem;
 }
+
+/*.main .m-right .warehouse {
+  height: 1.7rem;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 0;
+  clear: both;
+  left: 0.8rem;
+}*/
+
+.main .m-right .warehouse span {
+  position: absolute;
+  left: 1.8rem;
+  font-size: 0.5rem;
+  margin-top: -0.5rem;
+  color: #E7E7E7;
+}
+
 .main .runs {
   width: 100%;
   height: 10rem;
@@ -449,6 +475,7 @@ header {
     padding-top: 1.2rem;
     overflow: hidden;
     position: relative;
+    top: -3.7rem;
   }
   .mark .m-shop .box-bt02 {
     width: 10rem;
@@ -479,9 +506,11 @@ header {
   .mark .m-shop .s-buy .item {
     float: left;
     width: 3.34rem;
-    height: 4.8rem;
+    height: 5.8rem;
     overflow: hidden;
-    margin-top: 1rem;
+    margin-top: 0.3rem;
+    text-align: center;
+    color: #76af20;
   }
   .mark .m-shop .s-buy .item .i-con {
     width: 3.34rem;
@@ -649,8 +678,8 @@ header {
   .footer .rail .rail-r {
     float: left;
     position: absolute;
-    top: 0rem;
-    left: 5.2rem;
+    top: -0.1rem;
+    left: 5.0rem;
   }
   .footer .rail .rail-r img {
     height: 3.2rem;
@@ -695,6 +724,26 @@ header {
   .footer .nav .shop img {
     height: 1.6rem;
   }
+
+  .footer .giftPackage {
+    position: absolute;
+    top: 2.2rem;
+    right: 0.5rem;
+    z-index: 999;
+  }
+
+  .footer .giftPackage img {
+    height: 1.6rem;
+  }
+
+  .footer .giftPackage span {
+    position: relative;
+    top: -0.6rem;
+    left: 0.2rem;
+    color: #F6F6F6;
+    font-size: 0.1rem;
+  }
+
   .footer .nav .my-center {
     position: absolute;
     top: 0.4rem;

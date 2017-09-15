@@ -17,6 +17,30 @@ $(function(){
 	setTimeout(()=>{
 		$('.mark').hide().css('opacity',1);
 	},0);
+
+	$('.jungle-l img').on('click',function(){		
+		
+		var option = {
+			url: 'api/henyard/adventure',
+			beforeSend: function(xhr) {
+			},
+			complete: function(xhr) {
+			},
+			success: function(result) {
+				if(result.status_code === 25) {
+					var $prompt = $('.prompt');	
+					$prompt.show().delay(2000).hide(300);
+					$prompt.html(result.message);
+				}else {
+					window.location.assign("expedition.html");
+				}
+			}
+		}
+
+		myAjax(option);
+
+	});
+
 	$('.jungle-r img').on('click',function(){		
 		$('.mark').show();	
 		
@@ -29,6 +53,7 @@ $(function(){
 			success: function(result) {
 				var list = [];
 				list = result.data.records;
+				$(".mark .jungleRecords").html('');
 				for(var i = 0, j = list.length; i < j; i++) {
 					$(".mark .jungleRecords").append((new Jungle(list[i])).template);
 				}
@@ -38,9 +63,11 @@ $(function(){
 		myAjax(option);
 
 	});
+
 	$('.box .close').on('click',function(){
 		$('.mark').hide();
 	});
+
 	$('.box .sure').on('click',function(){
 		$('.mark').hide();
 	});
