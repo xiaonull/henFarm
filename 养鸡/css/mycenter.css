@@ -267,6 +267,101 @@ div.date-record{
   top: 7rem;
 }
 
+/* 开发农场 */
+.developfarm {
+  text-align: center;
+}
+
+.developfarm > div {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.developfarm label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  width: 30%;
+  margin-top: 0.2rem;
+}
+
+.developfarm input {
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 60%;
+}
+
+.developfarm input::-webkit-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.developfarm input:-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.developfarm input::-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.developfarm input:-ms-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.developfarm .confirmSubmit input {
+  width: 13rem;
+  height: 1.4rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  background-color: #76af20;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
+
+.developfarm input:disabled {
+  background-color: #FDFDFD;
+}
+
+.prompt {
+  display: none;
+  width: 10rem;
+  height: 2.3rem;
+  line-height: 2.3rem;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.6rem;
+  font-size: 0.56rem;
+  position: absolute;
+  left: 2.4rem;
+  top: 7rem;
+}
+
 /* 蛋换金币 */
 .eggExchangeGold {
   margin-top: 80px;

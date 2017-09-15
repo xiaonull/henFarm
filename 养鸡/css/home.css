@@ -54,6 +54,11 @@ html {
   background: #f1f1f1;
   position: relative;
   overflow-x: hidden;
+  /*position: absolute; 
+  top: 0;
+  right: 0; 
+  bottom: 0; 
+  left: 0;*/
 }
 li,
 ul {
@@ -111,10 +116,10 @@ header {
   margin-right: 0;
 }
 .box-right {
-  float: left;
+  float: right;
   width: 1.7rem;
   height: 1.7rem;
-  margin-left: -0.4rem;
+  margin-left: -1.4rem;
   margin-top: -0.2rem;
 }
 .box-right img {
@@ -699,55 +704,55 @@ header {
     height: 1.64rem;
   }
 
-/* 提示喂食气泡框 */
+  /* 提示喂食气泡框 */
 /*.nav .feedBubble {
   position: relative;
   width: 1.3rem;
   height: 100px;
   margin-top: -62px;
   z-index: 100000000;
-}*/
+  }*/
 
-/* 母鸡的气泡框 */
-.feedBubble {
-  display: none;
-  position: absolute;
-  z-index: 20;
-  width: 90px;
-  height: 40px;
-  left: 5rem;
-  bottom: 60px;
-  text-align: center;
-  font-weight: 600;
-  line-height: 18px;
-  background-color: rgba(243, 243, 243, 0.5);
-  border: 1px solid rgba(243, 243, 243, 0.8);
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 2px 2px 4px #888;
-  -moz-box-shadow: 2px 2px 4px #888;
-  box-shadow: 2px 2px 4px #888;
-}
+  /* 母鸡的气泡框 */
+  .feedBubble {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    width: 90px;
+    height: 40px;
+    left: 5rem;
+    bottom: 60px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 18px;
+    background-color: rgba(243, 243, 243, 0.5);
+    border: 1px solid rgba(243, 243, 243, 0.8);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 2px 4px #888;
+    -moz-box-shadow: 2px 2px 4px #888;
+    box-shadow: 2px 2px 4px #888;
+  }
 
-.feedBubble:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 40px;
-  top: 40px;
-  border: 6px solid;
-  border-color:  rgba(243, 243, 243, 0.3) transparent transparent  rgba(243, 243, 243, 0.3);
-}
+  .feedBubble:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 40px;
+    top: 40px;
+    border: 6px solid;
+    border-color:  rgba(243, 243, 243, 0.3) transparent transparent  rgba(243, 243, 243, 0.3);
+  }
 
-.feedBubble:after {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 41px;
-  top: 40px;
-  border: 5px solid;
-  border-color:  rgba(243, 243, 243, 0.3) transparent transparent  rgba(243, 243, 243, 0.3);
-}
+  .feedBubble:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 41px;
+    top: 40px;
+    border: 5px solid;
+    border-color:  rgba(243, 243, 243, 0.3) transparent transparent  rgba(243, 243, 243, 0.3);
+  }

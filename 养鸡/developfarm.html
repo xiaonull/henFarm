@@ -7,12 +7,13 @@
 		<meta content="telephone=no" name="format-detection">		
 		<meta name="screen-orientation" content="portrait">		
 		<meta name="x5-orientation" content="portrait">	
-		<meta name="full-screen" content="yes"		
+		<meta name="full-screen" content="yes">		
 		<meta name="x5-fullscreen" content="true">	
 		<meta name="browsermode" content="application">		
 		<meta name="x5-page-mode" content="app">		
 		<meta name="msapplication-tap-highlight" content="no">
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css" />
 		<link rel="stylesheet" href="css/mycenter.css" />
 		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 		<script>
@@ -26,9 +27,9 @@
 	<body>
         <header><a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>开发鸡场</header>
         <div class="do-record">
-            <form action="" method="post" class="modifyPassword">
+            <form action="" method="post" class="developfarm">
                 <div class="referee">
-                    <label for="referee">推荐人</label><input type="text" name="referee" placeholder="123" maxlength="11" />
+                    <label for="referee">推荐人</label><input type="text" name="referee" placeholder="" maxlength="11" disabled />
                 </div>
                 <div class="phone">
                     <label for="phone">手机号</label><input type="number" name="phone" placeholder="请输入手机号" />
@@ -36,20 +37,22 @@
                 <div class="nickname">
                     <label for="nickname">会员昵称</label><input type="text" name="nickname" placeholder="2-20位任意字符组合" />
                 </div>
-                <div class="sex">
-                    <label for="sex">会员性别</label><input type="text" name="sex" placeholder="男" />
+                <div class="password">
+                    <label for="password">密 码</label><input type="password" name="password" placeholder="请输入密码" />
                 </div>
-                <div class="weChat">
-                    <label for="weChat">微信号</label><input type="text" name="weChat" placeholder="请输入会员微信号" />
+                <div class="confirmPassword">
+                    <label for="confirmPassword">确认密码</label><input type="password" name="confirmPassword" placeholder="请再次输入密码" />
                 </div>
                 <div class="money">
-                    <label for="money">消耗金币</label><input type="number" name="money" placeholder="500" />
+                    <label for="money">消耗金币</label><input type="number" name="money" placeholder="500" disabled />
                 </div>
                 <div class="confirmSubmit">
-                    <input type="submit" id="" value="注册" />
+                    <input type="submit" class="confirmSubmit-btn" value="注册" />
                 </div>
             </form>
+            <section class="animated zoomIn prompt"></section>
         </div>
-        <script type="text/javascript" src="js/........."></script>
+        <script src="js/base.js"></script>
+        <script type="text/javascript" src="js/developfarm.js"></script>
     </body>
 </html>

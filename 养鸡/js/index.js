@@ -1,4 +1,10 @@
 $(function(){
+	// 自动填写密码
+	if(localStorage.userName && localStorage.password) {
+		$('.login .username input').val(localStorage.userName); 
+		$('.login .password input').val(localStorage.password); 
+	}
+
 	$('.forget .torevise').on('click',function(){
 		$('.login').css('display','none');
 		$('.revise').css('display','block');
@@ -31,7 +37,7 @@ $(function(){
 			// $('#register')[0].submit();
 			var data = {
 				phone: phone,
-				verification_code: 12345,
+				verification_code: code,
 				name: name,
 				password: psw,
 				password_confirmation: repsw
@@ -54,7 +60,7 @@ $(function(){
 						prompt.html(result.message);
 					}  
 				}
-			}
+			};
 
 			myAjax(option);
 
@@ -80,6 +86,9 @@ $(function(){
 //	登录功能
 	$('#login').on('submit',function(event){
 		event.preventDefault();
+
+		var rememberBox = $(".login .rememberBox").is(":checked");
+
 		var userName = $('.login .username input').val();	
 		var psw = $('.login .password input').val();		
 		if(userName != '' && mypsw.test(psw)){
@@ -98,6 +107,14 @@ $(function(){
 						// 保存token
 						sessionStorage.token = result.data.token;
 						// console.log(sessionStorage.token + 'ok');
+						if(rememberBox) {
+							localStorage.userName = userName;
+							localStorage.password = psw;
+						}else {
+							localStorage.removeItem("userName");
+							localStorage.removeItem("password");
+						}
+
 						// 登录成功，页面跳转
 						window.location.assign("home.html");
 					}else {
@@ -105,27 +122,10 @@ $(function(){
 						prompt.html(result.message);
 					}
 				}
-			}
+			};
 
 			myAjax(option);
 
-			// $.ajax({
-			// 	url: 'api/login',
-			// 	type: 'GET',
-			// 	dataType: 'jsonp',
-			// 	data: data,
-			// 	success: function(result) {
-			// 		if(result.status_code === 0) {
-			// 			// 保存token
-			// 			sessionStorage.token = result.data.token;
-			// 			// 登录成功，页面跳转
-			// 			window.location.assign("home.html");
-			// 		}else {
-			// 			prompt.show().delay(2000).hide(300);
-			// 			prompt.html(result.message);
-			// 		}
-			// 	}
-			// });
 
 		}else if(userName == ''){
 			prompt.show().delay(2000).hide(300);
@@ -169,25 +169,11 @@ $(function(){
 						prompt.html(result.message);
 					}
 				}
-			}
+			};
 
 			myAjax(option);
 
-			// $.ajax({
-			// 	url: 'api/login/resetpassword',
-			// 	type: 'GET',
-			// 	dataType: 'jsonp',
-			// 	data: data,
-			// 	success: function(result) {
-			// 		if(result.status_code === 0) {
-			// 			prompt.show().delay(2000).hide(300);
-			// 			prompt.html('修改密码成功！');
-			// 		}else {
-			// 			prompt.show().delay(2000).hide(300);
-			// 			prompt.html(result.message);
-			// 		}
-			// 	}
-			// });
+			
 		}else if(!myreg.test(phone)){
 			prompt.show().delay(2000).hide(300);
 			prompt.html('请输入正确的手机号码！');
@@ -220,19 +206,7 @@ $(function(){
 		myAjax(option); 
 
 
-		// $.ajax({
-		// 	url:"api/verificationcode/get",
-		// 	data:{
-		// 		phone:curPhone
-		// 	},
-		// 	// method:"post",
-		// 	dataType:"jsonp",
-		// 	// jsonp:'onJsonPLoad',
-		// 	success:function(result){
-		// 		prompt.show().delay(2000).hide(300);
-		// 		prompt.html(result.message);
-		// 	}
-		// });
+		
 	});
 
 
