@@ -44,10 +44,23 @@ Chicken.prototype.move = function() {
 // 	alert(1)
 // });
 
+// 显示教程
 $(".tutorialImg").on('click', function() {
 	$('.mark').css('display','block');
 	$('.mark .tutorial').css('display','block');
 });
+
+// 关闭教程
+$('.tutorial .r-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .tutorial').css('display','none');
+});
+$('.tutorial .r-sure').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .tutorial').css('display','none');
+});
+
+
 
 
 window.onload = function() {
@@ -353,6 +366,19 @@ function cure() {
 }
 
 
+function RankingList(data, index) {
+	var templ = '';
+	templ += '<li class="clearfix">';
+	templ += 	'<i>' + index +'</i>';
+	templ += 	'<span class="r-username">' + data.username + '</span>';
+	templ += 	'<span class="r-num">'+ data.sum +'</span>';
+	templ += '</li>';
+	
+	this.template = templ;
+
+}
+
+
 $(function(){
 	//显示排行榜
 	$('.toranking').on('click',function(){
@@ -367,10 +393,18 @@ $(function(){
 			complete: function(xhr) {
 			},
 			success: function(result) {
-				var list = [];
-				list = result.data.leader_board;
-				for(var i = 0, j = list.length; i < j; i++) {
-					$(".ranking-list").append((new RankingList(list[i]), i).template);
+				var henList = [],
+					eggList = [];
+				henList = result.data.hen;
+				eggList = result.data.egg;
+
+				for(var i = 0, j = henList.length; i < j; i++) {
+					$(".ranking-l .ranking-list").append((new RankingList(henList[i], i + 1)).template);
+
+				}
+
+				for(var i = 0, j = eggList.length; i < j; i++) {
+					$(".ranking-r .ranking-list").append((new RankingList(eggList[i], i + 1)).template);
 				}
 			}
 		}
@@ -379,11 +413,11 @@ $(function(){
 
 	});
 	//关闭排行榜
-	$('.r-close').on('click',function(){
+	$('.ranking .r-close').on('click',function(){
 		$('.mark').css('display','none');
 		$('.ranking').css('display','none');
 	});
-	$('.r-sure').on('click',function(){
+	$('.ranking .r-sure').on('click',function(){
 		$('.mark').css('display','none');
 		$('.ranking').css('display','none');
 	});
@@ -459,15 +493,6 @@ $(function(){
 });
 
 
-function RankingList(data, index) {
-	var templ = '';
-	templ += '<li class="clearfix">';
-	templ += 	'<i>' + index +'</i>';
-	templ += 	'<span class="r-username">' + data.username + '</span>';
-	templ += 	'<span class="r-num">'+ data.sum +'</span>';
-	templ += '</li>';
-
-}
 
 
 $(".rail-l img").on('click', function(event) {

@@ -379,6 +379,7 @@ header {
     display: none;
   }
 
+  /* 教程弹窗 */
   .mark .tutorial {
     display: none;
     width: 13.7rem;
@@ -393,14 +394,15 @@ header {
     overflow: hidden;
     position: relative;
     top: -3.7rem;
+    overflow-y: scroll;
   }
 
   .mark .tutorial .r-close {
     width: 1.2rem;
     height: 1.2rem;
-    position: absolute;
-    right: 0rem;
-    top: 0.6rem;
+    position: fixed;
+    right: 0.5rem;
+    top: 2.3rem;
   }
 
   .mark .tutorial .r-close img {
@@ -408,7 +410,30 @@ header {
     height: 100%;
   }
 
+  .tutorial-text {
+    text-align: center;
+    /*overflow-y: scroll;*/
+    padding: 0.5rem 0.8rem;
+    padding-bottom: 1.4rem;
+  }
+
+  .tutorial-text .tutorial-title {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .tutorial-text .tutorial-paragraph {
+    text-align: left;
+    font-size: 0.5rem;
+    margin-top: 0.4rem;
+  }
+
+  .tutorial-text .tutorial-paragraphTitle {
+    font-weight: 600;
+  }
+
   .mark .tutorial .r-sure {
+    position: fixed;
     width: 3.86rem;
     height: 1.28rem;
     margin: auto;
@@ -418,6 +443,7 @@ header {
     width: 100%;
     height: 100%;
   }
+
 
   .mark .ranking {
     display: none;
@@ -455,34 +481,40 @@ header {
     height: 100%;
   }
   .mark .ranking .lists {
-    width: 11.2rem;
+    /*width: 11.2rem;*/
     height: 10.4rem;
     margin: auto;
-    margin-top: 0.9rem;
+    margin-top: 0.5rem;
     font-size: 0.6rem;
-    overflow: hidden;
+    overflow-x: scroll;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
   .mark .ranking .lists li {
     line-height: 1.75;
+    /*overflow-x: scroll;*/
   }
   .mark .ranking .lists li i {
     display: inline-block;
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 0.6rem;
+    height: 0.6rem;
     text-align: center;
-    line-height: 0.68rem;
+    line-height: 0.54rem;
     border-radius: 50%;
     background-color: #000;
     color: #fff;
   }
   .mark .ranking .lists li span {
     display: inline-block;
+    font-size: 0.5rem;
   }
   .mark .ranking .lists li .r-username {
     margin-left: 0.4rem;
   }
   .mark .ranking .lists li .r-num {
     float: right;
+    position: relative;
+    top: 0.12rem;
   }
   .mark .ranking .lists li:nth-child(1) i {
     background-color: #f25a59;
@@ -503,6 +535,17 @@ header {
     width: 100%;
     height: 100%;
   }
+
+  .mark .ranking .ranking-l, .mark .ranking .ranking-r {
+    float: left;
+    width: 50%;
+  }
+  .mark .ranking .ranking-l h2, .mark .ranking .ranking-r h2 {
+    text-align: center;
+    margin-top: 1rem;
+  }
+ 
+
   .mark .m-shop {
     display: none;
     width: 13.7rem;
