@@ -173,7 +173,7 @@ function showResources() {
 					// 生成母鸡
 					var time = '-- -- --';
 					if(hens[i].since_picked.length !== 0) {
-						time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.seconds;
+						time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.seconds;						
 					}
 					// console.log(hens[i].since_picked);
 					var templ = '';
@@ -183,7 +183,7 @@ function showResources() {
 					templ +=        	'<p>成年期</p>';
 					templ +=        	'<p>' + hens[i].lifetime +'</p>';
 					templ +=        	'<p>' + hens[i].is_sick === "false" ? '生病' : '健康' +'</p>';
-					templ +=        	'<p>' + time +'</p>';
+					templ +=        	'<p class="clock">' + time +'</p>';
 					templ +=        '</div>';
 					templ += 		'<img src="img/home/chook03.png" />';
 					templ += 	'</div>';
@@ -191,6 +191,17 @@ function showResources() {
 
 					$(".main .runs").append(templ);
 					new Chicken(hens[i].id).move();
+					
+					// 倒计时
+					setInterval(function() {
+						var timeList = $(".main .runs .clock").eq(i).text().split(':');
+						var hour = timeList[0];
+						var minute = timeList[1];
+						var seconds = timeList[2];
+						if()
+						$(".main .runs .clock").eq(i).text();
+					}, 1000);
+
 				}
 			}
 
