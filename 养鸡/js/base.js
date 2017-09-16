@@ -19,6 +19,11 @@ function myAjax(option) {
 				sessionStorage.token = xhr.getResponseHeader("Authorization");
 				option.complete(xhr);
 			}
+		},
+		error: function() {
+			sessionStorage.error = true;
+			alert('error');
+			// window.location.assign("index.html");
 		}
 	});
 }

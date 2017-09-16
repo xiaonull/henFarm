@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+	<meta content="telephone=no" name="format-detection">		
+	<meta name="screen-orientation" content="portrait">		
+	<meta name="x5-orientation" content="portrait">	
+	<meta name="full-screen" content="yes">		
+	<meta name="x5-fullscreen" content="true">	
+	<meta name="browsermode" content="application">		
+	<meta name="x5-page-mode" content="app">		
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" href="css/mycenter.css" />
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script>
+		(function() {
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth / 15 + "px";
+		})();
+	</script>
+</head>
+<body>
+	<header class="fixed"><a href="home.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>仓库详情</header>
+	<div class="container">
+		<div class="do-record">
+			<font class="prop-name">鸡的数量</font>
+			<br>
+			<div class="henNum buy-successfully"></div>
+			<div class="date-record">&nbsp;</div>
+			<hr>
+		</div>
+		<div class="do-record">
+			<font class="prop-name">鸡蛋的数量</font>
+			<br>
+			<div class="eggNum buy-successfully"></div>
+			<div class="date-record">&nbsp;</div>
+			<hr>
+		</div>
+		<div class="do-record">
+			<font class="prop-name">金蛋的数量</font>
+			<br>
+			<div class="goldEggNum buy-successfully"></div>
+			<div class="date-record">&nbsp;</div>
+			<hr>
+		</div>
+		<div class="do-record">
+			<font class="prop-name">金币的数量</font>
+			<br>
+			<div class="coinsNum buy-successfully"></div>
+			<div class="date-record">&nbsp;</div>
+			<hr>
+		</div>
+		<div class="do-record">
+			<font class="prop-name">医疗包的数量</font>
+			<br>
+			<div class="medikitNum buy-successfully"></div>
+			<div class="date-record">&nbsp;</div>
+			<hr>
+		</div>
+		<div class="do-record">
+			<font class="prop-name">饲料的数量</font>
+			<br>
+			<div class="fodderNum buy-successfully"></div>
+			<div class="date-record">&nbsp;</div>
+			<hr>
+		</div>
+	</div>
+	<script src="js/base.js"></script>
+	<script type="text/javascript">
+		var option = {
+			url: 'api/henyard',
+			success: function(result, status, xhr) {
+
+				$(".henNum").html(result.data.hen_num);
+				$(".eggNum").html(result.data.egg_num);
+				$(".goldEggNum").html(result.data.golden_egg_num);
+				$(".coinsNum").html(result.data.coins);
+				$(".medikitNum").html(result.data.medikit_num);
+				$(".fodderNum").html(result.data.fodder_num);
+			},
+			beforeSend: function(xhr) {
+			},
+			complete: function(xhr) {
+			}
+		};
+
+		myAjax(option);
+
+
+</script>
+</body>
+</html>

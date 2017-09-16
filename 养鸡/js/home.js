@@ -40,6 +40,16 @@ Chicken.prototype.move = function() {
 // }
 
 
+// $(".main .warehouse").on('click', function() {
+// 	alert(1)
+// });
+
+$(".tutorialImg").on('click', function() {
+	$('.mark').css('display','block');
+	$('.mark .tutorial').css('display','block');
+});
+
+
 window.onload = function() {
 	
 	showResources();
@@ -104,12 +114,12 @@ function showResources() {
 		url: 'api/henyard',
 		success: function(result, status, xhr) {
 			// 头部资源
-			$(".box-left p").eq(0).html("&nbsp;" + result.data.hen_num);
-			$(".box-left p").eq(1).html("&nbsp;" + result.data.egg_num);
-			$(".box-left p").eq(2).html("&nbsp;" + result.data.golden_egg_num);
-			$(".box-left p").eq(3).html("&nbsp;" + result.data.coins);
-			$(".box-left p").eq(4).html("&nbsp;" + result.data.medikit_num);
-			$(".box-left p").eq(5).html("&nbsp;" + result.data.fodder_num);
+			// $(".box-left p").eq(0).html("&nbsp;" + result.data.hen_num);
+			// $(".box-left p").eq(1).html("&nbsp;" + result.data.egg_num);
+			// $(".box-left p").eq(2).html("&nbsp;" + result.data.golden_egg_num);
+			// $(".box-left p").eq(3).html("&nbsp;" + result.data.coins);
+			// $(".box-left p").eq(4).html("&nbsp;" + result.data.medikit_num);
+			// $(".box-left p").eq(5).html("&nbsp;" + result.data.fodder_num);
 
 			// 页尾资源
 			$(".rail-inf .rail-num li").eq(0).append('&nbsp;x&nbsp;<span>' + result.data.hen_num + '</span>');
@@ -384,14 +394,14 @@ $(function(){
 		$('.m-shop').css('display','block');
 	});
 	//关闭商店
-	$('.s-close').on('click',function(){
+	$('.m-shop .s-close').on('click',function(){
 		$('.mark').css('display','none');
-		$('.ranking').css('display','none');
+		$('.m-shop').css('display','none');
 		window.location.assign("home.html");
 	});
 
 	// 购买商品
-	$('.i-buy').on('click',function(){
+	$('.m-shop .i-buy').on('click',function(){
 		var data = {};
 		if(this === $('.i-buy').eq(0)[0]) {
 			data = {
@@ -440,7 +450,7 @@ $(function(){
 	});
 
 	// 商店道具购买
-	$(".s-sure").on("click", function() {
+	$(".m-shop .s-sure").on("click", function() {
 		$('.mark').css('display','none');
 		$('.ranking').css('display','none');
 		window.location.assign("home.html");
@@ -477,6 +487,66 @@ $(".rail-r img").on('click', function(event) {
 		$('.popup').css('display','none');
 	},3000);
 });
+
+
+// 显示大礼包
+$(".giftPackage-img").on('click', function() {
+	$('.mark').css('display','block');
+	$('.m-giftPackage').css('display','block');
+});
+
+// 关闭大礼包
+$('.m-giftPackage .s-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.m-giftPackage').css('display','none');
+});
+
+// 确定购买大礼包
+$('.m-giftPackage .s-sure').on('click',function(){
+	// $('.mark').css('display','none');
+	// $('.m-giftPackage').css('display','none');
+
+	var option = {
+		url: 'api/shop/giftpack',
+		data: {
+			name: 'giftpack',
+			num: 1
+		},
+		type: 'POST',
+		success: function(result) {
+			if(result.status_code === 0) {
+				// $('.s-success').text(result.message);
+				// $('.s-success').css('display','block');
+				// setTimeout(function(){
+				// 	$('.s-success').css('display','none');
+				// },3000);
+				
+				if(result.data.redirect_url) {
+					window.location.assign(result.data.redirect_url);
+				}else {
+					$prompt.show().delay(2000).hide(300);
+					$prompt.html(result.message);
+				}
+
+			}else {
+				$('.s-error').text(result.message);
+				$('.s-error').css('display','block');
+				setTimeout(function(){
+					$('.s-error').css('display','none');
+				},3000);
+			}
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		}
+	}
+
+	myAjax(option);
+
+
+});
+
 
 
 ////获取非行间样式

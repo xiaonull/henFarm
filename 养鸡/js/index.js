@@ -3,6 +3,9 @@ $(function(){
 	if(localStorage.userName && localStorage.password) {
 		$('.login .username input').val(localStorage.userName); 
 		$('.login .password input').val(localStorage.password); 
+
+		$(".login .rememberBox").attr("checked", true);
+
 	}
 
 	$('.forget .torevise').on('click',function(){
@@ -18,22 +21,31 @@ $(function(){
 	
 	
 //	手机号码正则表达式
-	var myreg = /^1[34578]\d{9}$/;
+var myreg = /^1[34578]\d{9}$/;
 	//密码正则 6~20位
 	var mypsw = /^[0-9A-Za-z]{6,20}$/;
 //	提示框
-	var prompt = $('.prompt');		
-	
-	
+var prompt = $('.prompt');	
+
+console.log(sessionStorage.error);
+if(sessionStorage.error === true) {
+	alert(1);
+	prompt.show().delay(2000).hide(300);
+	prompt.html("游戏操作出错，请重新登录");	
+	sessionStorage.error = false;
+	alert(1);
+}
+
+
 //注册功能
-	$('#register').on('submit',function(event){
-		event.preventDefault();
-		var phone = $('.register .phone input').val() * 1;
-		var name = $('.register .name input').val();
-		var code = $('.register .code-l').val() * 1;
-		var psw = $('.register .password input').val();
-		var repsw = $('.register .newpassword input').val();		
-		if(myreg.test(phone) && name != '' && code != '' && mypsw.test(psw) && psw == repsw){
+$('#register').on('submit',function(event){
+	event.preventDefault();
+	var phone = $('.register .phone input').val() * 1;
+	var name = $('.register .name input').val();
+	var code = $('.register .code-l').val() * 1;
+	var psw = $('.register .password input').val();
+	var repsw = $('.register .newpassword input').val();		
+	if(myreg.test(phone) && name != '' && code != '' && mypsw.test(psw) && psw == repsw){
 			// $('#register')[0].submit();
 			var data = {
 				phone: phone,
@@ -51,10 +63,10 @@ $(function(){
 					if(result.status_code === 0) {
 						prompt.show().delay(2000).hide(300);
 						prompt.html(result.message);
-    					sessionStorage.token = result.data.token;
-    					setTimeout(function() {
-    						window.location.assign("home.html");
-    					}, 2000);	
+						sessionStorage.token = result.data.token;
+						setTimeout(function() {
+							window.location.assign("home.html");
+						}, 2000);	
 					}else {
 						prompt.show().delay(2000).hide(300);
 						prompt.html(result.message);
@@ -82,16 +94,16 @@ $(function(){
 			prompt.html('两次输入的密码不相同！');
 		}
 	})
-	
+
 //	登录功能
-	$('#login').on('submit',function(event){
-		event.preventDefault();
+$('#login').on('submit',function(event){
+	event.preventDefault();
 
-		var rememberBox = $(".login .rememberBox").is(":checked");
+	var rememberBox = $(".login .rememberBox").is(":checked");
 
-		var userName = $('.login .username input').val();	
-		var psw = $('.login .password input').val();		
-		if(userName != '' && mypsw.test(psw)){
+	var userName = $('.login .username input').val();	
+	var psw = $('.login .password input').val();		
+	if(userName != '' && mypsw.test(psw)){
 			// $('#login')[0].submit();
 			var data = {
 				phone: userName,
@@ -137,7 +149,7 @@ $(function(){
 			return false;
 		}	
 	});	
-	
+
 	//重置密码
 	$('.r-sure').on('click',function(){
 		var phone = $('.revise .phone input').val();

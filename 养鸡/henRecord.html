@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+    <meta content="telephone=no" name="format-detection">       
+    <meta name="screen-orientation" content="portrait">     
+    <meta name="x5-orientation" content="portrait"> 
+    <meta name="full-screen" content="yes">      
+    <meta name="x5-fullscreen" content="true">  
+    <meta name="browsermode" content="application">     
+    <meta name="x5-page-mode" content="app">        
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" href="css/mycenter.css" />
+    <link rel="stylesheet" href="css/hts-tradingcenter.css" />
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script>
+        (function() {
+            var html = document.documentElement;
+            var hWidth = html.getBoundingClientRect().width;
+            html.style.fontSize = hWidth / 15 + "px";
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>
+        交易中心
+        <button class="arrows-r">出售</button>
+    </header>
+    <div class="do-record">
+        <nav class="tradingNav">
+            <ul>
+                <li class="active">
+                    我的出售
+                </li>
+                <li>
+                    我要购买
+                </li>
+                <li>
+                    交易完成
+                </li>
+            </ul>
+        </nav>
+        <div class="tradingPanel">
+            <section class="active">
+                <!-- 这是面板-我的出售 -->
+
+            </section>
+            <section>
+               <!-- 这是面板-我要购买 -->
+           </section>
+           <section>
+               <!-- 这是面板-交易完成 -->
+           </section>
+       </div>
+   </div>
+   <script src="js/base.js"></script>
+   <script type="text/javascript"">
+    var option = {
+        url: 'api/henyard/eggpicking',
+        beforeSend: function(xhr) {
+        },
+        complete: function(xhr) {
+        },
+        success: function(result) {
+            var list = [];
+            list = result.data.egg_picking_records;
+            for(var i = 0, j = list.length; i < j; i++) {
+                $(".active .container").append((new CollectEggsRecords(list[i])).template);
+            }
+        }
+    }
+
+    myAjax(option);
+
+    function CollectEggsRecords(data) {
+        var templ = '';
+        templ += '<div class="do-record">';
+        templ +=    '<font class="prop-name">收蛋</font>';
+        templ +=    '<br>';
+        templ +=    '<div class="collect-successfully">+10</div>';
+        templ +=    '<div class="date-record">' + data.time + '</div>';
+        templ +=    '<hr>';
+        templ += '</div>';
+
+        this.template = templ;
+    }
+
+
+</script>
+</body>
+</html>
