@@ -20,32 +20,28 @@ $(function(){
 	});
 	
 	
-//	手机号码正则表达式
-var myreg = /^1[34578]\d{9}$/;
+	//	手机号码正则表达式
+	var myreg = /^1[34578]\d{9}$/;
 	//密码正则 6~20位
 	var mypsw = /^[0-9A-Za-z]{6,20}$/;
-//	提示框
-var prompt = $('.prompt');	
-
-console.log(sessionStorage.error);
-if(sessionStorage.error === true) {
-	alert(1);
-	prompt.show().delay(2000).hide(300);
-	prompt.html("游戏操作出错，请重新登录");	
-	sessionStorage.error = false;
-	alert(1);
-}
+	//	提示框
+	var prompt = $('.prompt');	
+	if(sessionStorage.error === 'true') {
+		prompt.show().delay(2000).hide(300);
+		prompt.html("游戏操作出错，请重新登录");	
+		sessionStorage.error = 'false';
+	}
 
 
-//注册功能
-$('#register').on('submit',function(event){
-	event.preventDefault();
-	var phone = $('.register .phone input').val() * 1;
-	var name = $('.register .name input').val();
-	var code = $('.register .code-l').val() * 1;
-	var psw = $('.register .password input').val();
-	var repsw = $('.register .newpassword input').val();		
-	if(myreg.test(phone) && name != '' && code != '' && mypsw.test(psw) && psw == repsw){
+	//注册功能
+	$('#register').on('submit',function(event){
+		event.preventDefault();
+		var phone = $('.register .phone input').val() * 1;
+		var name = $('.register .name input').val();
+		var code = $('.register .code-l').val() * 1;
+		var psw = $('.register .password input').val();
+		var repsw = $('.register .newpassword input').val();		
+		if(myreg.test(phone) && name != '' && code != '' && mypsw.test(psw) && psw == repsw){
 			// $('#register')[0].submit();
 			var data = {
 				phone: phone,
@@ -93,17 +89,25 @@ $('#register').on('submit',function(event){
 			prompt.show().delay(2000).hide(300);
 			prompt.html('两次输入的密码不相同！');
 		}
-	})
+	});
 
-//	登录功能
-$('#login').on('submit',function(event){
-	event.preventDefault();
+	$(".r-register-login").on('click', function() {
+		window.location.assign("index.html");
+	});
 
-	var rememberBox = $(".login .rememberBox").is(":checked");
+	$(".r-sure-toLogin").on('click', function() {
+		window.location.assign("index.html");
+	});
 
-	var userName = $('.login .username input').val();	
-	var psw = $('.login .password input').val();		
-	if(userName != '' && mypsw.test(psw)){
+	//	登录功能
+	$('#login').on('submit',function(event){
+		event.preventDefault();
+
+		var rememberBox = $(".login .rememberBox").is(":checked");
+
+		var userName = $('.login .username input').val();	
+		var psw = $('.login .password input').val();		
+		if(userName != '' && mypsw.test(psw)){
 			// $('#login')[0].submit();
 			var data = {
 				phone: userName,
@@ -185,7 +189,7 @@ $('#login').on('submit',function(event){
 
 			myAjax(option);
 
-			
+
 		}else if(!myreg.test(phone)){
 			prompt.show().delay(2000).hide(300);
 			prompt.html('请输入正确的手机号码！');
@@ -218,7 +222,7 @@ $('#login').on('submit',function(event){
 		myAjax(option); 
 
 
-		
+
 	});
 
 

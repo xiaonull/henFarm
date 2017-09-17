@@ -22,6 +22,8 @@
 	<meta name="x5-page-mode" content="app">		
 	<meta name="msapplication-tap-highlight" content="no">
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/modal.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
 	<link rel="stylesheet" href="css/home.css" />
 	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 	<script>
@@ -35,50 +37,44 @@
 
 <body>
 	<header class="clearfix">
-		<!-- <div class="box-left">
+		<div class="box-left">
 			<ul class="clearfix">
 				<li>
-					<span><img src="img/home/top-ico01.png" alt="" /></span>
-					<p></p>
+					<a href="warehouse.html"><span>仓库</span></a>
+				</li>
+				<li class="exchange">
+					<span>兑换</span>
 				</li>
 				<li>
-					<span><img src="img/home/top-ico02.png" alt="" /></span>
-					<p></p>
+					<a href="javascript:;" class="shop"><img src="img/home/shop.png"></a>
 				</li>
 				<li>
-					<span><img src="img/home/top-ico03.png" alt="" /></span>
-					<p></p>
-				</li>
-				<li>
-					<span><img src="img/home/top-ico04.png" alt="" /></span>
-					<p></p>
-				</li>
-				<li>
-					<span><img src="img/home/top-ico05.png" alt="" /></span>
-					<p></p>
-				</li>
-				<li>
-					<span><img src="img/home/top-ico06.png" alt="" /></span>
-					<p></p>
+					<a href="javascript:;" class="toranking"><img src="img/home/left-ico01.png" alt="" /></a>
 				</li>
 			</ul>
-		</div> -->
-		<section class="notice">
+		</div>
+		<!-- <section class="notice">
 			<p class="noticeText"></p>
-		</section>
+		</section> -->
 		<div class="box-right">
 			<a href="javascript:;"><img src="img/home/tutorial.png" class="tutorialImg" alt="" /></a>
 		</div>
 	</header>
 	<!-- 公告 -->
-	<!-- <section class="notice">
+	<section class="notice">
 		<p class="noticeText"></p>
-	</section> -->
+	</section>
 	<section class="main clearfix">
 		<div class="m-left">
 			<ul>
-				<li>
+				<!-- <li>
 					<a href="javascript:;" class="toranking"><img src="img/home/left-ico01.png" alt="" /></a>
+				</li> -->
+				<li class="friends">
+					<a href="#"><span>好友</span></a>
+				</li>
+				<li class="tradingcenter">
+					<a href="#"><span>交易</span></a>
 				</li>
 				<li>
 					<a href="dial.html"><img src="img/home/left-ico02.png" alt="" /></a>
@@ -91,13 +87,14 @@
 		<div class="m-right">
 			<!-- <img src="img/home/warehouse.jpg" class="warehouse" /> -->
 			<div class="warehouse">
-				<a href="warehouse.html">
-					<img src="img/home/house.png" />
-					<span>仓库</span>
-				</a>
+				<!-- <a href="warehouse.html"> -->
+				<img src="img/home/house.png" />
+				<!-- <span>仓库</span> -->
+				<!-- </a> -->
 			</div>
 		</div>
 		<div class="runs">
+			
 				<!-- <div class="run1">
 					<img src="img/home/chook04.png" />
 				</div>
@@ -179,74 +176,85 @@
 						<span class="r-username">以德服人</span>
 						<span class="r-num">321910</span>
 					</li> -->
-				<!-- </ul> -->
-				<div class="ranking-l">
-					<h2>鸡的数量</h2>
-					<ul class="lists ranking-list">
-					</ul>
-				</div>
-				<div class="ranking-r">
-					<h2>蛋的数量</h2>
-					<ul class="lists ranking-list">
-					</ul>
-				</div>
-				<div class="r-sure">
-					<img src="img/expedition/affirm.png"/>
-				</div>
-			</div>
-
-			<!--商店-->
-			<div class="m-shop">
-				<div class="box-bt02"><img src="img/home/box-bt02.png" /></div>
-				<div class="s-close"><img src="img/expedition/close.png" alt="" /></div>
-				<div class="s-buy clearfix">
-					<div class="item">
-						<div class="i-con">
-							<img src="img/home/store-ico01.png"/>
-							<p class="i-num">
-								<i></i>
-								<span>175</span>
-							</p>
-						</div>
-						<span>医疗包</span>
-						<div class="i-buy"><img src="img/home/buy.png"/></div>
+					<!-- </ul> -->
+					<div class="ranking-l">
+						<h2>鸡的数量</h2>
+						<ul class="lists ranking-list">
+						</ul>
 					</div>
-					<div class="item food">
-						<div class="i-con">
-							<img src="img/home/store-ico02.png"/>
-							<p class="i-num">
-								<i></i>
-								<span>175</span>
-							</p>
-						</div>
-						<span>饲 料</span>
-						<div class="i-buy"><img src="img/home/buy.png"/></div>
+					<div class="ranking-r">
+						<h2>蛋的数量</h2>
+						<ul class="lists ranking-list">
+						</ul>
 					</div>
-					<div class="item">
-						<div class="i-con">
-							<img src="img/home/store-ico03.png"/>
-							<p class="i-num">
-								<i></i>
-								<span>175</span>
-							</p>
-						</div>
-						<span>探险装备</span>
-						<div class="i-buy"><img src="img/home/buy.png"/></div>
-					</div>					
+					<div class="r-sure">
+						<img src="img/expedition/affirm.png"/>
+					</div>
 				</div>
-				<div class="s-sure"><img src="img/expedition/affirm.png"/></div>
-				<div class="s-success"></div>
-				<div class="s-error"></div>
-			</div>
 
-			<!--大礼包-->
-			<div class="m-giftPackage">
-				<div class="box-bt02"><img src="img/home/box-bt02.png" /></div>
-				<div class="s-close"><img src="img/expedition/close.png" alt="" /></div>
-				<div class="s-buy clearfix">
-					<div class="item">
-						<div class="i-con">
-							<img src="img/home/chook02.png"/>
+				<!--商店-->
+				<div class="m-shop">
+					<div class="box-bt02"><img src="img/home/box-bt02.png" /></div>
+					<div class="s-close"><img src="img/expedition/close.png" alt="" /></div>
+					<div class="s-buy clearfix">
+						<div class="item">
+							<div class="i-con">
+								<img src="img/home/store-ico01.png"/>
+								<p class="i-num">
+									<i></i>
+									<span>175</span>
+								</p>
+							</div>
+							<span>医疗包</span>
+							<div class="i-buy"><img src="img/home/buy.png"/></div>
+						</div>
+						<div class="item food">
+							<div class="i-con">
+								<img src="img/home/store-ico02.png"/>
+								<p class="i-num">
+									<i></i>
+									<span>175</span>
+								</p>
+							</div>
+							<span>饲 料</span>
+							<div class="i-buy"><img src="img/home/buy.png"/></div>
+						</div>
+						<div class="item">
+							<div class="i-con">
+								<img src="img/home/store-ico03.png"/>
+								<p class="i-num">
+									<i></i>
+									<span>175</span>
+								</p>
+							</div>
+							<span>探险装备</span>
+							<div class="i-buy"><img src="img/home/buy.png"/></div>
+						</div>	
+						<div class="item food giftPackage-img">
+							<div class="i-con">
+								<img src="img/home/gift-icon.png"/>
+								<p class="i-num">
+									<!-- <i></i> -->
+									<!-- <span>大礼包</span> -->
+								</p>
+							</div>
+							<span>大礼包</span>
+							<!-- <div class="i-buy"><img src="img/home/buy.png"/></div> -->
+						</div>					
+					</div>
+					<div class="s-sure"><img src="img/expedition/affirm.png"/></div>
+					<div class="s-success"></div>
+					<div class="s-error"></div>
+				</div>
+
+				<!--大礼包-->
+				<div class="m-giftPackage">
+					<div class="box-bt02"><img src="img/home/box-bt02.png" /></div>
+					<div class="s-close"><img src="img/expedition/close.png" alt="" /></div>
+					<div class="s-buy clearfix">
+						<div class="item">
+							<div class="i-con">
+								<img src="img/home/chook02.png"/>
 							<!-- <p class="i-num">
 								<i></i>
 								<span>1 只小鸡</span>
@@ -275,6 +283,17 @@
 							</p> -->
 						</div>
 						<span>1 个饲料</span>
+						<!-- <div class="i-buy"><img src="img/home/buy.png"/></div> -->
+					</div>	
+					<div class="item food giveGiftPackage">
+						<div class="i-con">
+							<!-- <img src="img/home/store-ico02.png"/> -->
+							<p class="i-num">
+								<!-- <i></i> -->
+								<span>点击赠送</span>
+							</p>
+						</div>
+						<span>赠送大礼包</span>
 						<!-- <div class="i-buy"><img src="img/home/buy.png"/></div> -->
 					</div>					
 				</div>
@@ -336,7 +355,7 @@
 						<a href="javascript:cure();"><img src="img/home/nav-ico05.png" /></a>
 					</li>
 				</ul>
-				<div class="shop"><img src="img/home/shop.png" /></div>
+				<!-- <div class="shop"><img src="img/home/shop.png" /></div> -->
 				<div class="my-center" >
 					<a href="mycenter.html"><img src="img/home/my-center.png" alt="" /></a>
 				</div>
@@ -346,9 +365,36 @@
 				<p class="feedBubbleText"></p>
 			</div>
 		</footer>
-	</body>
-	<script src="js/base.js"></script>
-	<script type="text/javascript" src="js/css-animations.js"></script>
-	<script type="text/javascript" src="js/home.js"></script>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<!-- <button type="button" class="close" data-dismiss="modal" 
+						aria-hidden="true">×
+					</button> -->
+					<h4 class="modal-title" id="myModalLabel">
+						赠送一个大礼包给好友
+					</h4>
+				</div>
+				<div class="modal-body">
+					<label>手机号</label><input class="friendPhone" type="text" name="phone" placeholder="" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" 
+					data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary sendGiftToFriend">
+					赠送
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+<script src="js/base.js"></script>
+<script type="text/javascript" src="js/css-animations.js"></script>
+<script type="text/javascript" src="js/modal.min.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
 
-	</html>
+</html>

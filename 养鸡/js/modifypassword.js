@@ -2,6 +2,14 @@
 var myreg = /^1[34578]\d{9}$/;
 //密码正则 6~20位
 var mypsw = /^[0-9A-Za-z]{6,20}$/;
+
+if(sessionStorage.phone) {
+	$(".user input").attr({
+		placeholder: sessionStorage.phone 
+	});
+}
+
+
 //	提示框
 $('.prompt').css('display','none');
 var $prompt = $('.prompt');	

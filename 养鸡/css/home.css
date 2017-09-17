@@ -80,16 +80,39 @@ header {
   width: 12.32rem;
   float: left;
 }
+.box-left ul {
+  padding-left: 1rem;
+}
+
 .box-left ul li {
   float: left;
-  margin-right: 0.4rem;
+  margin-right: 1rem;
   margin-bottom: 0.44rem;
+  width: 1.8rem;
+  height: 1.2rem;
+  font-size: 0.6rem;
+  text-align: center;
+  line-height: 1rem;
+  background-color: #fff;
+  color: #000;
 }
+.box-left ul li .shop img {
+  width: 1.8rem;
+  margin-top: -0.2rem;
+  margin-left: 0rem;
+}
+
+.box-left ul li .toranking img {
+  width: 2rem;
+  margin-top: -0.4rem;
+  margin-left: -0.1rem;
+}
+
 .box-left ul li span {
-  float: left;
-  display: block;
-  width: 0.86rem;
-  height: 0.9rem;
+ /* float: left;
+  display: block;*/
+ /* width: 0.86rem;
+  height: 0.9rem;*/
 }
 .box-left ul li span img {
   width: 0.86rem;
@@ -161,9 +184,9 @@ header {
 
 .main .m-left ul {
   position: absolute;
-  top: 1rem;
+  top: 2rem;
   left: 0.4rem;
-  z-index: 10;
+  z-index: 20;
 }
 .main .m-left ul li {
   width: 2.5rem;
@@ -171,6 +194,18 @@ header {
 .main .m-left ul li img {
   width: 2.5rem;
 }
+/*临时加的*/
+.main .m-left ul li span {
+  display: block;
+  width: 2.5rem;
+  height:2.5rem;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 2rem;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
 .main .m-right {
   float: right;
   position: relative;
@@ -200,14 +235,17 @@ header {
 .main .runs {
   width: 100%;
   height: 10rem;
+  padding: 2rem 2rem 0 1rem;
   position: relative;
   float: left;
+  top: -4.1rem;
 }
 .main .runs div {
   transition: 20s all linear;
 }
 .main .runs div {
-  position: relative;
+  /*position: relative;*/
+  position: absolute;
 }
 
 .main .runs .container {
@@ -257,10 +295,10 @@ header {
   border-color:  rgba(243, 243, 243, 0.3) transparent transparent  rgba(243, 243, 243, 0.3);
 }
 
-.main .runs .container img {
+/*.main .runs .container img {
   width: 50px;
   height: auto;
-}
+}*/
 
 /*.main .runs .run1 {
   position: relative;
@@ -768,18 +806,22 @@ header {
 
   .popup {
     display: none;
-    width: 6rem;
+    /*width: 6rem;*/
+    width: 10rem;
     height: 2.44rem;
     text-align: center;
     line-height: 2.44rem;
     position: absolute;
-    left: 4.5rem;
+    /*left: 4.5rem;*/
+    left: 50%;
+    margin-left: -5rem;
     top: 8rem;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 0.4rem;
     color: #fff;
     font-size: 0.8rem;
     font-family: simhei;
+    z-index: 999;
   }
   .footer {
     width: 100%;
@@ -817,6 +859,7 @@ header {
     height: 3.28rem;
     position: relative;
     top: -2.2rem;
+    z-index: 50;
   }
   .footer .rail .rail-l {
     float: left;
@@ -951,7 +994,7 @@ header {
   .feedBubble {
     display: none;
     position: absolute;
-    z-index: 20;
+    z-index: 200;
     width: 90px;
     height: 40px;
     left: 5rem;
@@ -990,3 +1033,57 @@ header {
     border: 5px solid;
     border-color:  rgba(243, 243, 243, 0.3) transparent transparent  rgba(243, 243, 243, 0.3);
   }
+
+  .modal label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  width: 30%;
+  margin-top: 0.2rem;
+}
+
+.modal input {
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 60%;
+}
+
+.modal input::-webkit-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.modal input:-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.modal input::-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.modal input:-ms-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+.modal .modal-body {
+  height: 2.5rem;
+}

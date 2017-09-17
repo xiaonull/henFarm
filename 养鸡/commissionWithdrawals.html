@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>富乐农庄--交易大厅</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+    <meta content="telephone=no" name="format-detection">       
+    <meta name="screen-orientation" content="portrait">     
+    <meta name="x5-orientation" content="portrait"> 
+    <meta name="full-screen" content="yes">      
+    <meta name="x5-fullscreen" content="true">  
+    <meta name="browsermode" content="application">     
+    <meta name="x5-page-mode" content="app">        
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" href="css/mycenter.css" />
+    <link rel="stylesheet" href="css/hts-tradingcenter.css" />
+    
+    <style type="text/css"> 
+        .container {
+            margin-top: 0.5rem;
+        }
+        .prop-name {
+            margin-left: 0.5rem;
+        }
+        .date-record {
+            margin-left: 1rem;
+        }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script>
+        (function() {
+            var html = document.documentElement;
+            var hWidth = html.getBoundingClientRect().width;
+            html.style.fontSize = hWidth / 15 + "px";
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>
+        佣金提现
+        <!-- <button class="arrows-r">出售</button> -->
+    </header>
+    <div class="do-record">
+        <nav class="tradingNav">
+            <ul>
+                <li class="active">
+                    一级好友
+                </li>
+                <li>
+                    二级好友
+                </li>
+                <li>
+                    三级好友
+                </li>
+            </ul>
+        </nav>
+        <div class="tradingPanel">
+            <section class="active">
+                <!-- 这是面板-一级好友 -->
+                <div class="container">
+                </div>
+            </section>
+            <section>
+               <!-- 这是面板-二级好友 -->
+               <div class="container">
+               </div>
+           </section>
+           <section>
+               <!-- 这是面板-三级好友 -->
+               <div class="container">
+               </div>
+           </section>
+       </div>
+   </div>
+   <script src="js/base.js"></script>
+   <script type="text/javascript" src="js/hts-tradingcenter.js"></script>
+   <script type="text/javascript">
+    function FrientList(data) {
+        var templ = '';
+        templ += '<div class="do-record">';
+        templ +=    '<font class="prop-name">' + data.name + '</font>';
+        templ +=    '<br>';
+        templ +=    '<div class="buy-successfully">' + data.phone + '</div>';
+        templ +=    '<div class="date-record">id：' + data.id + '</div>';
+        templ +=    '<hr>';
+        templ += '</div>';
+
+        this.template = templ;
+    }
+
+    var option = {
+        url: 'api/personal/friends',
+        beforeSend: function(xhr) {
+        },
+        complete: function(xhr) {
+        },
+        success: function(result) {
+            var lv1 = [];
+            var lv2 = [];
+            var lv3= [];
+
+            lv1 = result.data.lv1;
+            lv2 = result.data.lv2;
+            lv3 = result.data.lv3;
+            
+            console.log(result);
+            for(var i = 0, j = lv1.length; i < j; i++) {
+                $(".container").eq(0).append((new FrientList(lv1[i])).template);
+            }
+            for(var i = 0, j = lv2.length; i < j; i++) {
+                $(".container").eq(1).append((new FrientList(lv2[i])).template);
+            }
+            for(var i = 0, j = lv3.length; i < j; i++) {
+                $(".container").eq(2).append((new FrientList(lv3[i])).template);
+            }
+        }
+    }
+
+    myAjax(option);
+
+
+</script>
+</body>
+</html>

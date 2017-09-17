@@ -67,6 +67,7 @@ body {
   margin-top: 0.6rem;
 }
 .register .code .code-l {
+  /*width: 5.6rem;*/
   width: 5.6rem;
   height: 1.66rem;
   background-color: #76af20;
@@ -75,6 +76,7 @@ body {
   font-size: 0.56rem;
   color: #fff;
 }
+
 .register .code .code-r {
   display: inline-block;
   width: 4rem;
@@ -86,6 +88,7 @@ body {
   margin-left: 0.6rem;
   font-size: 0.56rem;
   color: #fff;
+  float: right;
 }
 .register .psw {
   width: 11.26rem;
@@ -108,7 +111,7 @@ body {
   font-size: 0.56rem;
   border-radius: 1.2rem;
 }
-.register .r-register {
+.register .r-register, .r-register-login {
   width: 11.26rem;
   height: 1.66rem;
   line-height: 1.66rem;
@@ -121,7 +124,7 @@ body {
   color: #fff;
   font-size: 0.56rem;
 }
-.register .r-register input {
+.register .r-register input, .r-register-login input {
   display: block;
   width: 11.26rem;
   height: 1.66rem;
@@ -285,6 +288,7 @@ body {
   margin-left: 0.6rem;
   font-size: 0.56rem;
   color: #fff;
+  float: right;
 }
 .revise .newpassword {
   width: 11.26rem;
@@ -307,7 +311,7 @@ body {
   font-size: 0.56rem;
   border-radius: 1.2rem;
 }
-.revise .r-sure {
+.revise .r-sure, .revise .r-sure-toLogin {
   width: 11.26rem;
   height: 1.66rem;
   line-height: 1.66rem;

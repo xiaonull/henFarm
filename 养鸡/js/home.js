@@ -20,24 +20,36 @@ Chicken.prototype.move = function() {
 	this.timer = setInterval(function() {
 		// this.oChicken.style.top = Math.random() * 100 + '%';
 		// this.oChicken.style.left = Math.random() * 100 + '%';	
-		$(this.cla).css({
-			"top":  Math.random() * 100 + '%',
-			"left":  Math.random() * 100 + '%'
-		});
+		// $(this.cla).css({
+		// 	"top":  Math.random() * 100 + '%',
+		// 	"left":  Math.random() * 100 + '%'
+		// });
+		var position = isRandomPosition();
+		$(this.cla).css(position);
 
 	}.bind(this), 1000);
 }
 
-// function isRandomPlus() {
-// 	var n = Math.floor(Math.random() * 10 + 1);
-// 	if(n % 2 === 0) {
-// 		console.log('+');
-// 		return '+';
-// 	}else {
-// 		console.log('-');
-// 		return '-';
-// 	}
-// }
+function isRandomPosition() {
+	var n = Math.floor(Math.random() * 4 + 1);
+	if(n === 1) {
+		return {
+			"top":  Math.random() * 100 + '%'
+		};
+	}else if(n === 2) {
+		return {
+			"left":  Math.random() * 100 + '%'
+		};
+	}else if(n === 3) {
+		return {
+			"bottom":  Math.random() * 100 + '%'
+		};
+	}else if(n === 4) {
+		return {
+			"right":  Math.random() * 100 + '%'
+		};
+	}
+}
 
 
 // $(".main .warehouse").on('click', function() {
@@ -60,7 +72,32 @@ $('.tutorial .r-sure').on('click',function(){
 	$('.mark .tutorial').css('display','none');
 });
 
+$(".m-left .friends").on('click', function() {
+	event.preventDefault();
+	$('.popup').text("该功能有待开放");
+	$('.popup').css('display','block');
+	setTimeout(function(){
+		$('.popup').css('display','none');
+	},2000);
+});
 
+$(".m-left .tradingcenter").on('click', function() {
+	event.preventDefault();
+	$('.popup').text("该功能有待开放");
+	$('.popup').css('display','block');
+	setTimeout(function(){
+		$('.popup').css('display','none');
+	},2000);
+});
+
+$("header .exchange").on('click', function() {
+	event.preventDefault();
+	$('.popup').text("该功能有待开放");
+	$('.popup').css('display','block');
+	setTimeout(function(){
+		$('.popup').css('display','none');
+	},2000);
+});
 
 
 window.onload = function() {
@@ -83,43 +120,43 @@ window.onload = function() {
 	})();
 
 	// 轮询是否喂食
-	showFeedBubble();
-	setInterval(function() {
-		showFeedBubble();
-	}, 500000);
+	// showFeedBubble();
+	// setInterval(function() {
+	// 	showFeedBubble();
+	// }, 500000);
 
 	
 	
 }
 
 // 显示喂食提示气泡框
-function showFeedBubble() {
-	var option = {
-		url: 'api/henyard/getpersonalnotices',
-		beforeSend: function(xhr) {
-		},
-		complete: function(xhr) {
-		},
-		success: function(result) {
-			var list = [];
-			list = result.data.personal_notices;
-			// console.log(list);
-			if(list[0] === "") {
-				$(".feedBubble").css({
-					display: 'none'
-				});
-				return;
-			}else {
-				var feedBubbleText = list[0];
-				$(".feedBubble .feedBubbleText").append(feedBubbleText);
-				$(".feedBubble").css({
-					display: 'block'
-				});
-			}
-		}
-	}
-	myAjax(option);
-}
+// function showFeedBubble() {
+// 	var option = {
+// 		url: 'api/henyard/getpersonalnotices',
+// 		beforeSend: function(xhr) {
+// 		},
+// 		complete: function(xhr) {
+// 		},
+// 		success: function(result) {
+// 			var list = [];
+// 			list = result.data.personal_notices;
+// 			// console.log(list);
+// 			if(list[0] === "") {
+// 				$(".feedBubble").css({
+// 					display: 'none'
+// 				});
+// 				return;
+// 			}else {
+// 				var feedBubbleText = list[0];
+// 				$(".feedBubble .feedBubbleText").append(feedBubbleText);
+// 				$(".feedBubble").css({
+// 					display: 'block'
+// 				});
+// 			}
+// 		}
+// 	}
+// 	myAjax(option);
+// }
 
 // 显示主页面的资源
 function showResources() {
@@ -133,6 +170,21 @@ function showResources() {
 			// $(".box-left p").eq(3).html("&nbsp;" + result.data.coins);
 			// $(".box-left p").eq(4).html("&nbsp;" + result.data.medikit_num);
 			// $(".box-left p").eq(5).html("&nbsp;" + result.data.fodder_num);
+			
+			// 是否显示喂食提示气泡框
+			if(result.data.feedable_num > 0) {
+				$(".feedBubble .feedBubbleText").text('有 ' + result.data.feedable_num + ' 只鸡可以于今天喂食');
+				$(".feedBubble").css({
+					display: 'block'
+				});
+			}
+			// else {
+			// 	$(".feedBubble .feedBubbleText").text('没有需要喂养的鸡');
+			// 	$(".feedBubble").css({
+			// 		display: 'block'
+			// 	});
+			// }
+
 
 			// 页尾资源
 			$(".rail-inf .rail-num li").eq(0).append('&nbsp;x&nbsp;<span>' + result.data.hen_num + '</span>');
@@ -141,7 +193,7 @@ function showResources() {
 
 			// 显示蛋窝的蛋的图片
 			var img = document.createElement("img");
-			if((result.data.egg_num + result.data.golden_egg_num) > 0) {
+			if(result.data.pickable_egg_num > 0) {
 				img.src = "img/home/egg.png";
 				$(".footer .egg").append(img);
 			}
@@ -173,7 +225,8 @@ function showResources() {
 					// 生成母鸡
 					var time = '-- -- --';
 					if(hens[i].since_picked.length !== 0) {
-						time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.seconds;						
+						time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.second;	
+						// console.log(time);					
 					}
 					// console.log(hens[i].since_picked);
 					var templ = '';
@@ -192,15 +245,45 @@ function showResources() {
 					$(".main .runs").append(templ);
 					new Chicken(hens[i].id).move();
 					
-					// 倒计时
-					setInterval(function() {
-						var timeList = $(".main .runs .clock").eq(i).text().split(':');
-						var hour = timeList[0];
-						var minute = timeList[1];
-						var seconds = timeList[2];
-						if()
-						$(".main .runs .clock").eq(i).text();
-					}, 1000);
+					if(hens[i].since_picked.length !== 0) {
+						(function(index) {
+							henClock(index);
+						})(hens[i].id);
+					}
+
+					function henClock(i) {
+						// 倒计时
+						setInterval(function() {
+							var runNum = '.run' + i;
+							var timeList = $(".main .runs").find(runNum).find(".clock").text().split(':');
+							var hour = timeList[0];
+							var minute = timeList[1];
+							var second = timeList[2];
+							second = parseInt(second);
+							minute = parseInt(minute);
+							hour = parseInt(hour);
+							second ++;
+							if(second < 10) {
+								second = '0' + second.toString();
+							}else if(second >= 60) {
+								minute ++;
+								second = '00';
+							}
+							if(minute < 10) {
+								minute = '0' + minute.toString();
+							}else if(minute >= 60) {
+								hour ++;
+								minute = '00';
+							}
+							if(hour < 10) {
+								hour = '0' + hour.toString();
+							}else if(hour >= 24) {
+								hour = '00';
+							}
+							var clock = hour + ':' + minute + ':' + second;
+							$(".main .runs").find(runNum).find(".clock").text(clock);
+						}, 1000);
+					}
 
 				}
 			}
@@ -257,6 +340,7 @@ function collectEggs() {
 		success: function(result) {
 			$('.popup').text(result.message);
 			$('.popup').css('display','block');
+			$(".footer .egg").html("");
 			setTimeout(function(){
 				$('.popup').css('display','none');
 			},3000);
@@ -337,6 +421,7 @@ function feed() {
 			$('.popup').css('display','block');
 			setTimeout(function(){
 				$('.popup').css('display','none');
+				window.location.assign("home.html");
 			},3000);
 		},
 		beforeSend: function(xhr) {
@@ -405,7 +490,7 @@ $(function(){
 			},
 			success: function(result) {
 				var henList = [],
-					eggList = [];
+				eggList = [];
 				henList = result.data.hen;
 				eggList = result.data.egg;
 
@@ -527,6 +612,10 @@ $(".rail-r img").on('click', function(event) {
 
 // 显示大礼包
 $(".giftPackage-img").on('click', function() {
+
+	$('.mark').css('display','none');
+	$('.m-shop').css('display','none');
+
 	$('.mark').css('display','block');
 	$('.m-giftPackage').css('display','block');
 });
@@ -535,6 +624,10 @@ $(".giftPackage-img").on('click', function() {
 $('.m-giftPackage .s-close').on('click',function(){
 	$('.mark').css('display','none');
 	$('.m-giftPackage').css('display','none');
+	
+	$('.mark').css('display','block');
+	$('.m-shop').css('display','block');
+
 });
 
 // 确定购买大礼包
@@ -560,8 +653,8 @@ $('.m-giftPackage .s-sure').on('click',function(){
 				if(result.data.redirect_url) {
 					window.location.assign(result.data.redirect_url);
 				}else {
-					$prompt.show().delay(2000).hide(300);
-					$prompt.html(result.message);
+					$('.popup').show().delay(2000).hide(300);
+					$('.popup').html(result.message);
 				}
 
 			}else {
@@ -583,6 +676,45 @@ $('.m-giftPackage .s-sure').on('click',function(){
 
 });
 
+$(".giveGiftPackage").on('click', function() {
+	$('#myModal').modal({
+		keyboard: true
+	})
+});
+
+$(".sendGiftToFriend").on('click', function() {
+
+	var phone = $(".friendPhone").val();
+	if(phone === '' || phone === null) {
+		$('.popup').show().delay(2000).hide(300);
+		$('.popup').html('请填写手机号码！');
+		return;
+	}
+
+	var option = {
+		url: 'api/shop/giftpack/present',
+		data: {
+			name: 'giftpack',
+			num: 1,
+			phone: phone
+		},
+		type: 'POST',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			if(result.status_code === 0) {
+				window.location.assign(data.redirect_url);
+			}else {
+				$('.popup').show().delay(2000).hide(300);
+				$('.popup').html(result.message);
+			}
+		}
+	}
+
+	myAjax(option);
+});
 
 
 ////获取非行间样式

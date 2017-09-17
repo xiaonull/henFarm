@@ -13,13 +13,18 @@ var option = {
 		if(result.status_code === 0) {
 			var profile = result.data.profile;
 			$(".main .banner .username").text(profile.name);
-			sessionStorage.userName = profile.name;
+			$(".main .banner .userid").text('我的ID：' + profile.id);
+
 			$(".main .banner .b-right li").eq(0).append(profile.amount);
 			$(".main .banner .b-right li").eq(1).append(profile.egg);
 			$(".main .banner .b-right li").eq(2).append(profile.golden_egg);
 			$(".main .banner .b-right li").eq(3).append(profile.coin);
 			$(".main .banner .b-right li").eq(4).append(profile.medikit);
 			$(".main .banner .b-right li").eq(5).append(profile.fodder);
+			
+			sessionStorage.userName = profile.name;
+			sessionStorage.phone = profile.phone;
+
 		}
 	}
 }

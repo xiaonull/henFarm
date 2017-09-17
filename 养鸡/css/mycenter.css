@@ -254,6 +254,85 @@ div.date-record{
   background-color: #FDFDFD;
 }
 
+/* 个人资料 */
+.profile {
+  text-align: center;
+}
+
+.profile > div {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.profile label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  width: 30%;
+  margin-top: 0.2rem;
+}
+
+.profile input {
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 60%;
+}
+
+.profile input::-webkit-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.profile input:-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.profile input::-moz-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.profile input:-ms-input-placeholder{
+  font-size: 16px;
+  font-weight: 600;
+  color: #A2A2A2;
+  opacity: 0.8;
+}
+
+.profile .confirmSubmit input {
+  width: 13rem;
+  height: 1.4rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  background-color: #76af20;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
+
+.profile input:disabled {
+  background-color: #FDFDFD;
+}
+
 .prompt {
   display: none;
   width: 10rem;
