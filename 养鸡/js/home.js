@@ -108,11 +108,11 @@ window.onload = function() {
 	(function() {
 		var left = 10;
 		var interval1 = setInterval(function() {
-			left -= 4;
+			left -= 1;
 			$(".notice .noticeText").css({
 				left: left + 'px'
 			});
-		}, 300);
+		}, 100);
 		showNotice();
 		var interval2 = setInterval(function() {
 			showNotice();

@@ -27,6 +27,7 @@ $(function(){
 			complete: function(xhr) {
 			},
 			success: function(result) {
+				console.log(result);
 				if(result.status_code === 25) {
 					var $prompt = $('.prompt');	
 					$prompt.show().delay(2000).hide(300);
