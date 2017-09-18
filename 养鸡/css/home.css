@@ -146,68 +146,68 @@ header {
 }
 .box-left ul li:nth-of-type(4) {
   margin-right: 0;
-}*/
-.box-right {
-  float: right;
-  width: 1.7rem;
-  height: 1.7rem;
-  /*right: 1.6rem;*/
-  margin-top: -0.2rem;
-}
-.box-right img {
-  width: 2.4rem;
-  height: 2.4rem;
-  position: relative;
-  right: 0.4rem;
-}
-/* 公告 */
-.notice {
-  position: absolute;
-  width: 75%;
-  left: 5%;
-  height: 1.5rem;
-  margin-top: -3px;
-  border-radius: 10px;
-  border: 1px solid #F7F6F6;
-  background-color: rgba(251, 251, 251, 0.5);
-  font-size: 14px;
-  line-height: 16px;
-  overflow: hidden;
-}
+  }*/
+  .box-right {
+    float: right;
+    width: 1.7rem;
+    height: 1.7rem;
+    /*right: 1.6rem;*/
+    margin-top: -0.2rem;
+  }
+  .box-right img {
+    width: 2.4rem;
+    height: 2.4rem;
+    position: relative;
+    right: 0.4rem;
+  }
+  /* 公告 */
+  .notice {
+    position: absolute;
+    width: 75%;
+    left: 5%;
+    height: 1.5rem;
+    margin-top: -3px;
+    border-radius: 10px;
+    border: 1px solid #F7F6F6;
+    background-color: rgba(251, 251, 251, 0.5);
+    font-size: 14px;
+    line-height: 16px;
+    overflow: hidden;
+  }
 
-.notice .noticeText {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  white-space:nowrap; 
-}
+  .notice .noticeText {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    white-space:nowrap; 
+  }
 
-.main {
-  width: 100%;
-  position: relative;
-}
+  .main {
+    width: 100%;
+    position: relative;
+  }
 
 /*.main {
   top: -50px;
-}*/
+  }*/
 
-.footer, .ranking {
-  top: -3.7rem;
-}
+  .footer, .ranking {
+    top: -3.7rem;
+  }
 
-.main .m-left ul {
-  position: absolute;
-  top: 2rem;
-  left: 0.4rem;
-  z-index: 20;
-}
-.main .m-left ul li {
-  width: 2.5rem;
-}
-.main .m-left ul li img {
-  width: 2.5rem;
-}
-/*临时加的*/
+  .main .m-left ul {
+    position: absolute;
+    top: 2rem;
+    left: 0.4rem;
+    z-index: 20;
+  }
+  .main .m-left ul li {
+    width: 2.5rem;
+  }
+  .main .m-left ul li img {
+    width: 2.5rem;
+  }
+  /*临时加的*/
 /*.main .m-left ul li span {
   display: block;
   width: 2.5rem;
@@ -217,16 +217,16 @@ header {
   line-height: 2rem;
   background-color: #fff;
   border: 1px solid #000;
-}*/
+  }*/
 
-.main .m-right {
-  float: right;
-  position: relative;
-}
-.main .m-right img {
-  height: 3.48rem;
-  margin-top: 1.8rem;
-}
+  .main .m-right {
+    float: right;
+    position: relative;
+  }
+  .main .m-right img {
+    height: 3.48rem;
+    margin-top: 1.8rem;
+  }
 
 /*.main .m-right .warehouse {
   height: 1.7rem;
@@ -235,37 +235,37 @@ header {
   margin-top: 0;
   clear: both;
   left: 0.8rem;
-}*/
+  }*/
 
-.main .m-right .warehouse span {
-  position: absolute;
-  left: 1.8rem;
-  font-size: 0.5rem;
-  margin-top: -0.5rem;
-  color: #E7E7E7;
-}
+  .main .m-right .warehouse span {
+    position: absolute;
+    left: 1.8rem;
+    font-size: 0.5rem;
+    margin-top: -0.5rem;
+    color: #E7E7E7;
+  }
 
-.main .runs {
+  .main .runs {
+    width: 100%;
+    height: 10rem;
+    /*padding: 2rem 2rem 0 1rem;*/
+    position: relative;
+    float: left;
+    top: -4.1rem;
+  }
+  .main .runs div {
+    transition: 20s all linear;
+  }
+  .main .runs div {
+    /*position: relative;*/
+    position: absolute;
+  }
+
+  .main .runs .runsContainer {
+  /*position: absolute;
   width: 100%;
   height: 10rem;
-  /*padding: 2rem 2rem 0 1rem;*/
-  position: relative;
-  float: left;
-  top: -4.1rem;
-}
-.main .runs div {
-  transition: 20s all linear;
-}
-.main .runs div {
-  /*position: relative;*/
-  position: absolute;
-}
-
-.main .runs .runsContainer {
-  position: absolute;
-  width: 100%;
-  height: 10rem;
-  left: 5rem;
+  left: 5rem;*/
 }
 
 .main .runs .container {
@@ -320,7 +320,7 @@ header {
 /*.main .runs .container img {
   width: 50px;
   height: auto;
-}*/
+  }*/
 
 /*.main .runs .run1 {
   position: relative;
@@ -604,7 +604,265 @@ header {
     text-align: center;
     margin-top: 1rem;
   }
- 
+  
+  /*仓库*/
+  .mark .warehousePannel {
+    display: none;
+    width: 13.7rem;
+    height: 17rem;
+    margin: auto;
+    background-image: url(../img/expedition/box-bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top: 5.3rem;
+    padding-top: 1.2rem;
+    overflow: hidden;
+    position: relative;
+    top: -3.7rem;
+  }
+  .mark .warehousePannel .box-bt02 {
+    width: 10rem;
+    height: 2.6rem;
+    margin: auto;
+    margin-top: -1.2rem;
+  }
+  .mark .warehousePannel .box-bt02 img {
+    width: 100%;
+    height: 100%;
+  }
+  .mark .warehousePannel .s-close {
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    right: 0rem;
+    top: 0.6rem;
+  }
+  .mark .warehousePannel .s-close img {
+    width: 100%;
+    height: 100%;
+  }
+  .mark .warehousePannel .s-buy {
+    width: 9rem;
+    height: 10.6rem;
+    margin: auto;
+  }
+  .mark .warehousePannel .s-buy .item {
+    float: left;
+    width: 3.34rem;
+    height: 5.8rem;
+    overflow: hidden;
+    margin-top: 0.3rem;
+    text-align: center;
+    color: #76af20;
+  }
+  .mark .warehousePannel .s-buy .item .i-con {
+    width: 3.34rem;
+    height: 3.44rem;
+    background-color: #fff;
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+  .mark .warehousePannel .s-buy .item .i-con img {
+    width: auto;
+    height: 1.62rem;
+    margin: auto;
+    margin-top: 0.5rem;
+  }
+  .mark .warehousePannel .s-buy .item .i-con .i-num {
+    text-align: center;
+    line-height: 2;
+  }
+  .mark .warehousePannel .s-buy .item .i-con .i-num i {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-image: url(../img/home/gold.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .mark .warehousePannel .s-buy .item .i-con .i-num span {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #232323;
+  }
+  .mark .warehousePannel .s-buy .item .i-buy {
+    width: 3.34rem;
+    height: 1rem;
+    margin-top: 0.4rem;
+  }
+  .mark .warehousePannel .s-buy .item .i-buy img {
+    width: 95%;
+    margin: auto;
+    height: 100%;
+  }
+  .mark .warehousePannel .s-buy .food {
+    margin-left: 2.32rem;
+  }
+  .mark .warehousePannel .s-buy .item .i-con .i-num .num {
+    font-size: 0.5rem;
+    font-weight: 500;
+  }
+  /*仓库-end*/
+
+  /*兑换*/
+  .mark .exchangePannel {
+    display: none;
+    width: 13.7rem;
+    height: 17rem;
+    margin: auto;
+    background-image: url(../img/expedition/box-bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top: 5.3rem;
+    padding-top: 1.2rem;
+    overflow: hidden;
+    position: relative;
+    top: -3.7rem;
+  }
+  .mark .exchangePannel .box-bt02 {
+    width: 10rem;
+    height: 2.6rem;
+    margin: auto;
+    margin-top: -1.2rem;
+  }
+  .mark .exchangePannel .box-bt02 img {
+    width: 100%;
+    height: 100%;
+  }
+  .mark .exchangePannel .s-close {
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    right: 0rem;
+    top: 0.6rem;
+  }
+  .mark .exchangePannel .s-close img {
+    width: 100%;
+    height: 100%;
+  }
+  .mark .exchangePannel .s-sure {
+    width: 3.94rem;
+    height: 1.26rem;
+    margin: auto;
+    margin-top: 0rem;
+  }
+  .mark .exchangePannel .s-sure img {
+    width: 100%;
+    height: 100%;
+  }
+  .mark .exchangePannel .s-success, .mark .exchangePannel .s-error {
+    display: none;
+    width: 6rem;
+    height: 2.44rem;
+    text-align: center;
+    line-height: 2.44rem;
+    position: absolute;
+    left: 4rem;
+    top: 8rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.4rem;
+    color: #fff;
+    font-size: 0.8rem;
+    font-family: simhei;
+  }
+  .exchangePannel .exchangeTable {
+    width: 100%;
+    height: 11rem;
+    padding: 0.6rem 1rem;  
+  }
+  .exchangePannel .exchangeTable table {
+    width: 100%;
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #d0ad7d;
+    border-collapse: collapse;
+  }
+  .exchangePannel .exchangeTable table th {
+    text-align: center;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #d0ad7d;
+    background-color: #EFDABD;
+  }
+  .exchangePannel .exchangeTable table td {
+    height: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    border-width: 1px;
+    /*padding: 8px;*/
+    border-style: solid;
+    border-color: #d0ad7d;
+    color: #A58A67;
+    font-size: 0.7rem;
+  }
+  .exchangePannel .exchangeTable table td img {
+    width: 1.8rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .exchangePannel .exchangeTable table button {
+    background-color: #76af20;
+    width: 1.8rem;
+    height: 1rem;
+    font-size: 0.5rem;
+    color: #fff;
+    border: 1px solid #76af20;
+    border-radius: 0.2rem;
+    position: relative;
+    top: -0.1rem;
+  }
+  .exchangePannel .exchangeTable table .exchangeTable-oldPrice button {
+    margin-left: 0.5rem;
+  }
+  .exchangePannel .exchangeTable table .exchangeTable-last {
+    height: 3.5rem;
+  }
+
+  .popupOldPrice {
+    display: none;
+    position: absolute;
+    width: 10rem;
+    height: 15rem;
+    left: 50%;
+    margin-left: -5rem;
+    top: -2rem;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top: 5.3rem;
+    padding-top: 1.2rem;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 0.3rem;
+    overflow-y: scroll;
+    z-index: 120;
+    padding-bottom: 1rem;
+  }
+  .popupOldPrice ul li {
+    display: block;
+    height: 1rem;
+  }
+  .popupOldPrice .time {
+    float: left;
+    margin-left: 0.8rem;
+  }
+  .popupOldPrice .oldPrice {
+    float: right;
+    margin-right: 1.2rem;
+    color: #DA1D1D;
+  }
+
+
+
+  /*兑换--end*/
+
 
   .mark .m-shop {
     display: none;
@@ -821,198 +1079,198 @@ header {
     width: 95%;
     margin: auto;
     height: 100%;
-  }*/
-  .mark .m-giftPackage .s-buy .food {
-    margin-left: 2.32rem;
-  }
+    }*/
+    .mark .m-giftPackage .s-buy .food {
+      margin-left: 2.32rem;
+    }
 
-  .popup {
-    display: none;
-    /*width: 6rem;*/
-    width: 10rem;
-    height: 2.44rem;
-    text-align: center;
-    line-height: 2.44rem;
-    position: absolute;
-    /*left: 4.5rem;*/
-    left: 50%;
-    margin-left: -5rem;
-    top: 8rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 0.4rem;
-    color: #fff;
-    font-size: 0.8rem;
-    font-family: simhei;
-    z-index: 999;
-  }
-  .footer {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    z-index: 9;
-  }
-  .footer .egg {
-    width: 3.5rem;
-    height: 1.2rem;
-    background-image: url("../img/home/nest.png");
-    background-size: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    float: right;
-    margin-right: 0.72rem;
-  }
-  .footer .egg img {
-    width: 1.8rem;
-    height: 0.9rem;
-    position: absolute;
-    right: 1.6rem;
-    top: 0rem;
-  }
+    .popup {
+      display: none;
+      /*width: 6rem;*/
+      width: 10rem;
+      height: 2.44rem;
+      text-align: center;
+      line-height: 2.44rem;
+      position: absolute;
+      /*left: 4.5rem;*/
+      left: 50%;
+      margin-left: -5rem;
+      top: 8rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 0.4rem;
+      color: #fff;
+      font-size: 0.8rem;
+      font-family: simhei;
+      z-index: 999;
+    }
+    .footer {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 9;
+    }
+    .footer .egg {
+      width: 3.5rem;
+      height: 1.2rem;
+      background-image: url("../img/home/nest.png");
+      background-size: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      float: right;
+      margin-right: 0.72rem;
+    }
+    .footer .egg img {
+      width: 1.8rem;
+      height: 0.9rem;
+      position: absolute;
+      right: 1.6rem;
+      top: 0rem;
+    }
 
-  .railContainer {
-    position: fixed;
-    bottom: 1rem;
-    width: 100%;
-    height: auto;
-  }
+    .railContainer {
+      position: fixed;
+      bottom: 1rem;
+      width: 100%;
+      height: auto;
+    }
 
-  .footer .rail-bg {
-    width: 100%;
-    height: 3.2rem;
-    background-image: url("../img/home/rail.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-top: 0.4rem;
-  }
-  .footer .rail {
-    width: 100%;
-    height: 3.28rem;
-    position: relative;
-    top: -2.2rem;
-    z-index: 50;
-  }
-  .footer .rail .rail-l {
-    float: left;
-    width: 33.33333333%;
-    height: 3.28rem;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0rem;
-    left: 1.9rem;
-  }
-  .footer .rail .rail-l img {
-    height: 2.64rem;
-  }
-  .footer .rail .rail-c {
-    float: left;
-    width: 33.33333333%;
-    height: 3.28rem;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0rem;
-    left: 6rem;
-  }
-  .footer .rail .rail-c .rail-inf {
-    width: 3.2rem;
-    height: 3.2rem;
-    border-radius: 50%;
-    background-color: #f3ebbd;
-    border: 1px solid #3a441d;
-    box-sizing: border-box;
-  }
-  .footer .rail .rail-c .rail-inf .rail-num {
-    margin-left: 0.5rem;
-    margin-top: 0.2rem;
-    font-size: 0.54rem;
-  }
-  .footer .rail .rail-c .rail-inf .rail-num li {
-    line-height: 150%;
-  }
-  .footer .rail .rail-c .rail-inf .rail-num li img {
-    vertical-align: middle;
-    display: inline-block;
-    height: 0.7rem;
-  }
-  .footer .rail .rail-r {
-    float: left;
-    position: absolute;
-    top: -0.1rem;
-    left: 5.0rem;
-  }
-  .footer .rail .rail-r img {
-    height: 3.2rem;
-  }
-  .footer .nav {
-    width: 100%;
-    height: auto;
-    padding-top: 2rem;
-    padding-bottom: 0.6rem;
-    overflow: hidden;
-    margin-top: -1.6rem;
-    position: fixed;
-    bottom: 0.3rem;
-  }
-  .footer .nav .nav-bg {
-    margin-top: -1.2rem;
-    width: 8.8rem;
-    height: 1rem;
-    margin-left: 0.5rem;
-    background-image: url("../img/home/nav-bg.png");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  .footer .nav .nav-img {
-    margin-left: 0.4rem;
-    margin-top: -1.5rem;
-  }
-  .footer .nav .nav-img li {
-    float: left;
-    margin-left: 0.24rem;
-    margin-right: 0.24rem;
-  }
-  .footer .nav .nav-img li img {
-    width: 1.3rem;
-    height: 1.3rem;
-  }
-  .footer .nav .shop {
-    position: absolute;
-    top: 0.4rem;
-    right: 2.8rem;
-  }
-  .footer .nav .shop img {
-    height: 1.6rem;
-  }
+    .footer .rail-bg {
+      width: 100%;
+      height: 3.2rem;
+      background-image: url("../img/home/rail.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-top: 0.4rem;
+    }
+    .footer .rail {
+      width: 100%;
+      height: 3.28rem;
+      position: relative;
+      top: -2.2rem;
+      z-index: 50;
+    }
+    .footer .rail .rail-l {
+      float: left;
+      width: 33.33333333%;
+      height: 3.28rem;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0rem;
+      left: 1.9rem;
+    }
+    .footer .rail .rail-l img {
+      height: 2.64rem;
+    }
+    .footer .rail .rail-c {
+      float: left;
+      width: 33.33333333%;
+      height: 3.28rem;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0rem;
+      left: 6rem;
+    }
+    .footer .rail .rail-c .rail-inf {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 50%;
+      background-color: #f3ebbd;
+      border: 1px solid #3a441d;
+      box-sizing: border-box;
+    }
+    .footer .rail .rail-c .rail-inf .rail-num {
+      margin-left: 0.5rem;
+      margin-top: 0.2rem;
+      font-size: 0.54rem;
+    }
+    .footer .rail .rail-c .rail-inf .rail-num li {
+      line-height: 150%;
+    }
+    .footer .rail .rail-c .rail-inf .rail-num li img {
+      vertical-align: middle;
+      display: inline-block;
+      height: 0.7rem;
+    }
+    .footer .rail .rail-r {
+      float: left;
+      position: absolute;
+      top: -0.1rem;
+      left: 5.0rem;
+    }
+    .footer .rail .rail-r img {
+      height: 3.2rem;
+    }
+    .footer .nav {
+      width: 100%;
+      height: auto;
+      padding-top: 2rem;
+      padding-bottom: 0.6rem;
+      overflow: hidden;
+      margin-top: -1.6rem;
+      position: fixed;
+      bottom: 0.3rem;
+    }
+    .footer .nav .nav-bg {
+      margin-top: -1.2rem;
+      width: 8.8rem;
+      height: 1rem;
+      margin-left: 0.5rem;
+      background-image: url("../img/home/nav-bg.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .footer .nav .nav-img {
+      margin-left: 0.4rem;
+      margin-top: -1.5rem;
+    }
+    .footer .nav .nav-img li {
+      float: left;
+      margin-left: 0.24rem;
+      margin-right: 0.24rem;
+    }
+    .footer .nav .nav-img li img {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
+    .footer .nav .shop {
+      position: absolute;
+      top: 0.4rem;
+      right: 2.8rem;
+    }
+    .footer .nav .shop img {
+      height: 1.6rem;
+    }
 
-  .footer .giftPackage {
-    position: absolute;
-    top: 2.2rem;
-    right: 0.5rem;
-    z-index: 999;
-  }
+    .footer .giftPackage {
+      position: absolute;
+      top: 2.2rem;
+      right: 0.5rem;
+      z-index: 999;
+    }
 
-  .footer .giftPackage img {
-    height: 1.6rem;
-  }
+    .footer .giftPackage img {
+      height: 1.6rem;
+    }
 
-  .footer .giftPackage span {
-    position: relative;
-    top: -0.6rem;
-    left: 0.2rem;
-    color: #F6F6F6;
-    font-size: 0.1rem;
-  }
+    .footer .giftPackage span {
+      position: relative;
+      top: -0.6rem;
+      left: 0.2rem;
+      color: #F6F6F6;
+      font-size: 0.1rem;
+    }
 
-  .footer .nav .my-center {
-    position: absolute;
-    top: 0.4rem;
-    right: 0.6rem;
-  }
-  .footer .nav .my-center img {
-    height: 1.64rem;
-  }
+    .footer .nav .my-center {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.6rem;
+    }
+    .footer .nav .my-center img {
+      height: 1.64rem;
+    }
 
-  /* 提示喂食气泡框 */
+    /* 提示喂食气泡框 */
 /*.nav .feedBubble {
   position: relative;
   width: 1.3rem;
@@ -1066,55 +1324,55 @@ header {
   }
 
   .modal label {
-  font-size: 16px;
-  font-weight: 600;
-  display: block;
-  float: left;
-  width: 30%;
-  margin-top: 0.2rem;
-}
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    float: left;
+    width: 30%;
+    margin-top: 0.2rem;
+  }
 
-.modal input {
-  width: 9rem;
-  height: 1.2rem;
-  padding-left: 15px;
-  line-height: 1.2rem;
-  border-radius: 0.5rem;
-  border: 2px solid #D5D5D5;
-  position: relative;
-  overflow: hidden;
-  display: block;
-  float: left;
-  width: 60%;
-}
+  .modal input {
+    width: 9rem;
+    height: 1.2rem;
+    padding-left: 15px;
+    line-height: 1.2rem;
+    border-radius: 0.5rem;
+    border: 2px solid #D5D5D5;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    float: left;
+    width: 60%;
+  }
 
-.modal input::-webkit-input-placeholder{
-  font-size: 16px;
-  font-weight: 600;
-  color: #A2A2A2;
-  opacity: 0.8;
-}
+  .modal input::-webkit-input-placeholder{
+    font-size: 16px;
+    font-weight: 600;
+    color: #A2A2A2;
+    opacity: 0.8;
+  }
 
-.modal input:-moz-placeholder{
-  font-size: 16px;
-  font-weight: 600;
-  color: #A2A2A2;
-  opacity: 0.8;
-}
+  .modal input:-moz-placeholder{
+    font-size: 16px;
+    font-weight: 600;
+    color: #A2A2A2;
+    opacity: 0.8;
+  }
 
-.modal input::-moz-placeholder{
-  font-size: 16px;
-  font-weight: 600;
-  color: #A2A2A2;
-  opacity: 0.8;
-}
+  .modal input::-moz-placeholder{
+    font-size: 16px;
+    font-weight: 600;
+    color: #A2A2A2;
+    opacity: 0.8;
+  }
 
-.modal input:-ms-input-placeholder{
-  font-size: 16px;
-  font-weight: 600;
-  color: #A2A2A2;
-  opacity: 0.8;
-}
-.modal .modal-body {
-  height: 2.5rem;
-}
+  .modal input:-ms-input-placeholder{
+    font-size: 16px;
+    font-weight: 600;
+    color: #A2A2A2;
+    opacity: 0.8;
+  }
+  .modal .modal-body {
+    height: 2.5rem;
+  }

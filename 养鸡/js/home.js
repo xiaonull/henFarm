@@ -1,78 +1,59 @@
 function Chicken(id) {
-	// this.oChicken = obj;
 	this.cla = '.runs .run' + id;
 	this.timer = null;
-	// this.oChicken.style.top = Math.random() * 100 + '%';
-	// this.oChicken.style.left = Math.random() * 100 + '%';
 	$(this.cla).css({
 		"top": Math.random() * 80 + '%',
-		"left": Math.random() * 60 + '%'
+		"left": Math.random() * 80 + '%'
 	});
 }
 
 Chicken.prototype.move = function() {
-	// this.oChicken.style.top = Math.random() * 100 + '%';
-	// this.oChicken.style.left = Math.random() * 100 + '%';
 	$(this.cla).css({
 		"top": Math.random() * 80 + '%',
-		"left": Math.random() * 60 + '%'
+		"left": Math.random() * 80 + '%'
 	});
 	this.timer = setInterval(function() {
-		// this.oChicken.style.top = Math.random() * 100 + '%';
-		// this.oChicken.style.left = Math.random() * 100 + '%';	
-		// $(this.cla).css({
-		// 	"top":  Math.random() * 100 + '%',
-		// 	"left":  Math.random() * 100 + '%'
-		// });
 		var position = isRandomPosition();
 		
-		// var top;
-		// if(position.top) {
-		// 	top = position.top.substring(0, position.top.length - 2);
-		// }
-		// var left;
-		// if(position.left) {
-		// 	left = position.left.substring(0, position.left.length - 2);
-		// }
-		
-		// var currentTop = $(this.cla).css('top').substring(0, $(this.cla).css('top').length - 2);
-		// console.log($(this.cla).css('top'));		
 
 		$(this.cla).animate(position, {
-			speed: 200000,
+			speed: 100,
 			easing: 'swing'
 		});
 
-	}.bind(this), 2000);
+	}.bind(this), 500);
 }
+
+// function isRandomPosition() {
+// 	var n = Math.floor(Math.random() * 2 + 1);
+// 	if(n === 1) {
+// 		return {
+// 			"top":  isRandomPlus() + Math.random() * 100 + '%'
+// 		};
+// 	}else if(n === 2) {
+// 		return {
+// 			"left":  isRandomPlus() + Math.random() * 100 + '%'
+// 		};
+// 	}
+
+// }
 
 function isRandomPosition() {
 	var n = Math.floor(Math.random() * 2 + 1);
 	if(n === 1) {
 		return {
-			"top":  isRandomPlus() + Math.random() * 100 + '%'
+			"top":  isRandomPlus() + '=' + '50px'
 		};
 	}else if(n === 2) {
 		return {
-			"left":  isRandomPlus() + Math.random() * 100 + '%'
+			"left":  isRandomPlus() + '=' + '80px'
 		};
 	}
-	// else if(n === 3) {
-	// 	return {
-	// 		"bottom":  Math.random() * 100 + '%',
-	// 		"top": ''
-	// 	};
-	// }else if(n === 4) {
-	// 	return {
-	// 		"right":  Math.random() * 100 + '%',
-	// 		"left": ''
-	// 	};
-	// }
 	
 }
 
 function isRandomPlus() {
-	var n = Math.floor(Math.random() * 15 + 1);
+	var n = Math.floor(Math.random() * 2 + 1);
 	if(n > 1) {
 		return '+';
 	}else {
@@ -80,10 +61,112 @@ function isRandomPlus() {
 	}
 }
 
+// 显示仓库
+$(".warehouse").on('click', function() {
+	$('.mark').css('display','block');
+	$('.mark .warehousePannel').css('display','block');
 
-// $(".main .warehouse").on('click', function() {
-// 	alert(1)
-// });
+	var option = {
+		url: 'api/henyard/profile',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.warehousePannel .item').eq(0).find('.i-num span').eq(1).text(result.data.profile.medikit); 
+			$('.warehousePannel .item').eq(1).find('.i-num span').eq(1).text(result.data.profile.fodder); 
+			$('.warehousePannel .item').eq(2).find('.i-num span').eq(1).text(result.data.profile.egg); 
+			$('.warehousePannel .item').eq(3).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
+			
+		}
+	}
+
+	myAjax(option);
+
+});
+// 关闭仓库
+$('.warehousePannel .s-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .warehousePannel').css('display','none');
+});
+$('.warehousePannel .s-sure').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .warehousePannel').css('display','none');
+});
+
+// 显示兑换
+$(".exchange").on('click', function(e) {
+
+	$('.mark').css('display','block');
+	$('.mark .exchangePannel').css('display','block');
+
+	var option = {
+		url: 'api/henyard/eggs2coins/getrates',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			// console.log(result);
+			if(result.data.egg.current) {
+				$('.exchangePannel .exchangeTable-eggPrice').text(result.data.egg.current);
+			}
+			if(result.data.golden_egg.current) {
+				$('.exchangePannel .exchangeTable-goldEggprice').text(result.data.golden_egg.current);
+			}
+			
+		}
+	}
+
+	myAjax(option);
+
+});
+// 显示往期价格
+$('.exchangeTable-openEgg').on('click', function(e) {
+	$('.popupOldPrice').fadeIn();
+	e.stopPropagation();
+
+	var option = {
+		url: 'api/henyard/eggs2coins/getrates',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			// console.log(result);
+			if(result.data.egg.current) {
+				$('.exchangePannel .exchangeTable-eggPrice').text(result.data.egg.current);
+			}
+			if(result.data.golden_egg.current) {
+				$('.exchangePannel .exchangeTable-goldEggprice').text(result.data.golden_egg.current);
+			}
+			
+		}
+	}
+	
+	myAjax(option);
+
+});
+// 关闭弹窗
+$('.popupOldPrice').on('click', function(e) {
+	e.stopPropagation();
+});
+$('body').on('click', function(e) {
+	e.preventDefault();
+	$('.popupOldPrice').fadeOut();
+});
+
+// 关闭兑换
+$('.exchangePannel .s-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .exchangePannel').css('display','none');
+});
+$('.exchangePannel .s-sure').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .exchangePannel').css('display','none');
+});
+
+
 
 // 显示教程
 $(".tutorialImg").on('click', function() {
@@ -110,23 +193,6 @@ $(".m-left .friends").on('click', function() {
 	},2000);
 });
 
-$(".m-left .tradingcenter").on('click', function() {
-	event.preventDefault();
-	$('.popup').text("该功能有待开放");
-	$('.popup').css('display','block');
-	setTimeout(function(){
-		$('.popup').css('display','none');
-	},2000);
-});
-
-$("header .exchange").on('click', function() {
-	event.preventDefault();
-	$('.popup').text("该功能有待开放");
-	$('.popup').css('display','block');
-	setTimeout(function(){
-		$('.popup').css('display','none');
-	},2000);
-});
 
 
 window.onload = function() {
