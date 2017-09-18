@@ -919,7 +919,8 @@ header {
     padding-bottom: 0.6rem;
     overflow: hidden;
     margin-top: -1.6rem;
-    position: relative;
+    position: fixed;
+    bottom: 0.3rem;
   }
   .footer .nav .nav-bg {
     margin-top: -1.2rem;
