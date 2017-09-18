@@ -113,8 +113,7 @@ $(".exchange").on('click', function(e) {
 			}
 			if(result.data.golden_egg.current) {
 				$('.exchangePannel .exchangeTable-goldEggprice').text(result.data.golden_egg.current);
-			}
-			
+			}			
 		}
 	}
 
@@ -133,20 +132,102 @@ $('.exchangeTable-openEgg').on('click', function(e) {
 		complete: function(xhr) {
 		},
 		success: function(result) {
-			// console.log(result);
-			if(result.data.egg.current) {
-				$('.exchangePannel .exchangeTable-eggPrice').text(result.data.egg.current);
+			var eggPriceList = result.data.egg.history;
+			$('.popupOldPrice ul').html('');
+			for(var i = 0, j = eggPriceList.length; i < j; i++) {
+				var teml = '';
+				teml += '<li>';
+				teml += 	'<span class="time">' + eggPriceList[i][0].time + '</span>';
+				teml += 	'<span class="oldPrice">' + eggPriceList[i][0].rate + '</span>';
+				teml += '</li>';
+
+				$('.popupOldPrice ul').append(teml);
 			}
-			if(result.data.golden_egg.current) {
-				$('.exchangePannel .exchangeTable-goldEggprice').text(result.data.golden_egg.current);
-			}
-			
 		}
 	}
 	
 	myAjax(option);
 
 });
+
+$('.exchangeTable-openGoldEgg').on('click', function(e) {
+	$('.popupOldPrice').fadeIn();
+	e.stopPropagation();
+
+	var option = {
+		url: 'api/henyard/eggs2coins/getrates',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			var golden_eggPriceList = result.data.golden_egg.history;
+			$('.popupOldPrice ul').html('');
+			for(var i = 0, j = golden_eggPriceList.length; i < j; i++) {
+				var teml = '';
+				teml += '<li>';
+				teml += 	'<span class="time">' + golden_eggPriceList[i][0].time + '</span>';
+				teml += 	'<span class="oldPrice">' + golden_eggPriceList[i][0].rate + '</span>';
+				teml += '</li>';
+
+				$('.popupOldPrice ul').append(teml);
+			}
+		}
+	}
+	
+	myAjax(option);
+
+});
+
+// 点击兑换
+$('.exchangePannel .exchangeEgg').on('click', function() {
+	var option = {
+		url: 'api/henyard/eggs2coins',
+		type: 'POST',
+		data: {
+			identity: 'egg',
+			num: 1
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},2000);
+		}
+	}
+	
+	myAjax(option);
+});
+$('.exchangePannel .exchangeGoldEgg').on('click', function() {
+	var option = {
+		url: 'api/henyard/eggs2coins',
+		type: 'POST',
+		data: {
+			identity: 'golden_egg',
+			num: 1
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},2000);
+		}
+	}
+	
+	myAjax(option);
+});
+
+
 // 关闭弹窗
 $('.popupOldPrice').on('click', function(e) {
 	e.stopPropagation();
@@ -166,7 +247,35 @@ $('.exchangePannel .s-sure').on('click',function(){
 	$('.mark .exchangePannel').css('display','none');
 });
 
+// 打开好友
+$('.friends').on('click', function() {
+	$('.mark').css('display','block');
+	$('.mark .friendsPannel').css('display','block');
 
+	var option = {
+		url: 'api/personal/friends',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			console.log(result);
+			
+					
+		}
+	}
+
+	myAjax(option);
+});
+// 关闭好友
+$('.friendsPannel .s-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .friendsPannel').css('display','none');
+});
+$('.friendsPannel .s-sure').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .friendsPannel').css('display','none');
+});
 
 // 显示教程
 $(".tutorialImg").on('click', function() {
@@ -184,14 +293,7 @@ $('.tutorial .r-sure').on('click',function(){
 	$('.mark .tutorial').css('display','none');
 });
 
-$(".m-left .friends").on('click', function() {
-	event.preventDefault();
-	$('.popup').text("该功能有待开放");
-	$('.popup').css('display','block');
-	setTimeout(function(){
-		$('.popup').css('display','none');
-	},2000);
-});
+
 
 
 
