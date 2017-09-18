@@ -1,4 +1,6 @@
 $(function() {
+	addTurntableText();
+
 	var rotateTimeOut = function() {
 		$('#rotate').rotate({
 			angle: 0,
@@ -11,7 +13,7 @@ $(function() {
 	};
 	var bRotate = false;
 
-	var rotateFn = function(awards, angles, img_path, txt) {
+	var rotateFn = function(index, angles, img_path) {
 		bRotate = !bRotate;
 		$('#rotate').stopRotate();
 		$('#rotate').rotate({
@@ -26,7 +28,13 @@ $(function() {
 				$('.mark .gift').css({
 					display: 'none'
 				});
-				$('.award .award-top').html(txt)
+				$('.award .award-top').html(
+					$('.turntable .wheel-item').eq(index).find('.wheel-itext').text() + 
+					'&nbsp;' + 
+					$('.turntable .wheel-item').eq(index).find('.wheel-itext-num').text() +
+					'个'
+				);
+				// $('.award .award-top').html('test');
 				bRotate = !bRotate;
 			}
 		})
@@ -43,9 +51,14 @@ $(function() {
 			complete: function(xhr) {
 			},
 			success: function(result) {
-				console.log(result);
-				var item = result.data.award.id - 1;
-				pointGift(item, 'http://' + result.data.award.img_path);
+				// console.log(result);
+				if(result.status_code === 0) {
+					var item = result.data.award.id - 1;
+					pointGift(item, 'http://' + result.data.award.img_path);
+				}else {
+					alert("error");
+				}
+				
 			}
 		}
 
@@ -54,27 +67,27 @@ $(function() {
 		function pointGift(item, img_path) {
 			switch(item) {
 				case 0:
-				rotateFn(0, 360, img_path, '1元');
+				rotateFn(0, 360, img_path);
 				break;
 				case 1:
-				rotateFn(1, -45, img_path, '2元');
+				rotateFn(1, -45, img_path);
 				case 2:
-				rotateFn(2, -90, img_path, '3元');
+				rotateFn(2, -90, img_path);
 				break;
 				case 3:
-				rotateFn(3, -135, img_path, '4元');
+				rotateFn(3, -135, img_path);
 				break;
 				case 4:
-				rotateFn(4, -180, img_path, '5元');
+				rotateFn(4, -180, img_path);
 				break;
 				case 5:
-				rotateFn(5, -225, img_path, '6元');
+				rotateFn(5, -225, img_path);
 				break;
 				case 6:
-				rotateFn(6, -270, img_path, '7元');
+				rotateFn(6, -270, img_path);
 				break;
 				case 7:
-				rotateFn(7, -315, img_path, '8元');
+				rotateFn(7, -315, img_path);
 				break;
 			}
 		}
@@ -97,3 +110,25 @@ $(function() {
 // function rnd(n, m) {
 // 	return Math.floor(Math.random() * (m - n + 1) + n)
 // }
+
+
+function addTurntableText() {
+	var option = {
+		url: 'api/henyard/getluckywheel',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			// console.log(result);
+			var all_awards = result.data.all_awards;
+			for(var i = 0, j = all_awards.length; i < j; i++) {
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext').text(all_awards[i].name);
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext-num').text(all_awards[i].number);
+			}
+		}
+	}
+
+	myAjax(option);
+
+}

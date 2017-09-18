@@ -6,7 +6,7 @@ function Chicken(id) {
 	// this.oChicken.style.left = Math.random() * 100 + '%';
 	$(this.cla).css({
 		"top": Math.random() * 80 + '%',
-		"left": Math.random() * 80 + '%'
+		"left": Math.random() * 60 + '%'
 	});
 }
 
@@ -15,7 +15,7 @@ Chicken.prototype.move = function() {
 	// this.oChicken.style.left = Math.random() * 100 + '%';
 	$(this.cla).css({
 		"top": Math.random() * 80 + '%',
-		"left": Math.random() * 80 + '%'
+		"left": Math.random() * 60 + '%'
 	});
 	this.timer = setInterval(function() {
 		// this.oChicken.style.top = Math.random() * 100 + '%';
@@ -25,31 +25,59 @@ Chicken.prototype.move = function() {
 		// 	"left":  Math.random() * 100 + '%'
 		// });
 		var position = isRandomPosition();
-		$(this.cla).css(position);
+		
+		// var top;
+		// if(position.top) {
+		// 	top = position.top.substring(0, position.top.length - 2);
+		// }
+		// var left;
+		// if(position.left) {
+		// 	left = position.left.substring(0, position.left.length - 2);
+		// }
+		
+		// var currentTop = $(this.cla).css('top').substring(0, $(this.cla).css('top').length - 2);
+		// console.log($(this.cla).css('top'));		
 
-	}.bind(this), 1000);
+		$(this.cla).animate(position, {
+			speed: 200000,
+			easing: 'swing'
+		});
+
+	}.bind(this), 2000);
 }
 
 function isRandomPosition() {
 	var n = Math.floor(Math.random() * 2 + 1);
 	if(n === 1) {
 		return {
-			"top":  Math.random() * 100 + '%'
+			"top":  isRandomPlus() + Math.random() * 100 + '%'
 		};
 	}else if(n === 2) {
 		return {
-			"left":  Math.random() * 100 + '%'
+			"left":  isRandomPlus() + Math.random() * 100 + '%'
 		};
 	}
 	// else if(n === 3) {
 	// 	return {
-	// 		"bottom":  Math.random() * 100 + '%'
+	// 		"bottom":  Math.random() * 100 + '%',
+	// 		"top": ''
 	// 	};
 	// }else if(n === 4) {
 	// 	return {
-	// 		"right":  Math.random() * 100 + '%'
+	// 		"right":  Math.random() * 100 + '%',
+	// 		"left": ''
 	// 	};
 	// }
+	
+}
+
+function isRandomPlus() {
+	var n = Math.floor(Math.random() * 15 + 1);
+	if(n > 1) {
+		return '+';
+	}else {
+		return '-';
+	}
 }
 
 
@@ -225,10 +253,16 @@ function showResources() {
 				}else {
 					// 生成母鸡
 					var time = '-- -- --';
-					if(hens[i].since_picked.length !== 0) {
-						time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.second;	
-						// console.log(time);					
+					// if(hens[i].since_picked.length !== 0) {
+					// 	time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.second;	
+					// 	// console.log(time);					
+					// }
+
+					if(hens[i].time_to_pick.length !== 0) {
+						time = hens[i].time_to_pick.hour + ':' + hens[i].time_to_pick.minute + ':' + hens[i].time_to_pick.second;	
+						console.log(time);					
 					}
+
 					// console.log(hens[i].since_picked);
 					var templ = '';
 					templ += '<div class="run' + hens[i].id + '">';
@@ -263,28 +297,67 @@ function showResources() {
 							second = parseInt(second);
 							minute = parseInt(minute);
 							hour = parseInt(hour);
-							second ++;
-							if(second < 10) {
+							second --;
+							if(second === 0){
+								minute --;
+								second = '59';
+							}else if(second < 10) {
 								second = '0' + second.toString();
-							}else if(second >= 60) {
-								minute ++;
-								second = '00';
 							}
-							if(minute < 10) {
+							
+							if(minute === 0) {
+								hour --;
+								minute = '59';
+							}else if(minute < 10) {
 								minute = '0' + minute.toString();
-							}else if(minute >= 60) {
-								hour ++;
-								minute = '00';
 							}
-							if(hour < 10) {
-								hour = '0' + hour.toString();
-							}else if(hour >= 24) {
+							
+							if(hour === 0) {
 								hour = '00';
+								minute = '00';
+								second = '00';
+							}else if(hour < 10) {
+								hour = '0' + hour.toString();
 							}
+							
 							var clock = hour + ':' + minute + ':' + second;
 							$(".main .runs").find(runNum).find(".clock").text(clock);
 						}, 1000);
 					}
+
+					// function henClock(i) {
+					// 	// 倒计时
+					// 	setInterval(function() {
+					// 		var runNum = '.run' + i;
+					// 		var timeList = $(".main .runs").find(runNum).find(".clock").text().split(':');
+					// 		var hour = timeList[0];
+					// 		var minute = timeList[1];
+					// 		var second = timeList[2];
+					// 		second = parseInt(second);
+					// 		minute = parseInt(minute);
+					// 		hour = parseInt(hour);
+					// 		second ++;
+					// 		if(second < 10) {
+					// 			second = '0' + second.toString();
+					// 		}else if(second >= 60) {
+					// 			minute ++;
+					// 			second = '00';
+					// 		}
+					// 		if(minute < 10) {
+					// 			minute = '0' + minute.toString();
+					// 		}else if(minute >= 60) {
+					// 			hour ++;
+					// 			minute = '00';
+					// 		}
+					// 		if(hour < 10) {
+					// 			hour = '0' + hour.toString();
+					// 		}else if(hour >= 24) {
+					// 			hour = '00';
+					// 		}
+					// 		var clock = hour + ':' + minute + ':' + second;
+					// 		$(".main .runs").find(runNum).find(".clock").text(clock);
+					// 	}, 1000);
+					// }
 
 				}
 			}
