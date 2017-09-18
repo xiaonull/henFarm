@@ -90,29 +90,42 @@ header {
   margin-bottom: 0.44rem;
   width: 1.8rem;
   height: 1.2rem;
-  font-size: 0.6rem;
+  /*font-size: 0.6rem;
   text-align: center;
   line-height: 1rem;
   background-color: #fff;
-  color: #000;
+  color: #000;*/
 }
+
+.box-left ul li .warehouse img {
+  width: 2.3rem;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.box-left ul li .exchange img {
+  width: 2.3rem;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
 .box-left ul li .shop img {
-  width: 1.8rem;
-  margin-top: -0.2rem;
-  margin-left: 0rem;
+  width: 2.3rem;
+  margin-top: -0.5rem;
+  margin-left: -0.2rem;
 }
 
 .box-left ul li .toranking img {
-  width: 2rem;
-  margin-top: -0.4rem;
+  width: 2.3rem;
+  margin-top: -0.5rem;
   margin-left: -0.1rem;
 }
-
+/*
 .box-left ul li span {
- /* float: left;
-  display: block;*/
- /* width: 0.86rem;
-  height: 0.9rem;*/
+  float: left;
+  display: block;
+  width: 0.86rem;
+  height: 0.9rem;
 }
 .box-left ul li span img {
   width: 0.86rem;
@@ -133,7 +146,7 @@ header {
 }
 .box-left ul li:nth-of-type(4) {
   margin-right: 0;
-}
+}*/
 .box-right {
   float: right;
   width: 1.7rem;
@@ -195,7 +208,7 @@ header {
   width: 2.5rem;
 }
 /*临时加的*/
-.main .m-left ul li span {
+/*.main .m-left ul li span {
   display: block;
   width: 2.5rem;
   height:2.5rem;
@@ -204,7 +217,7 @@ header {
   line-height: 2rem;
   background-color: #fff;
   border: 1px solid #000;
-}
+}*/
 
 .main .m-right {
   float: right;
@@ -248,6 +261,13 @@ header {
   position: absolute;
 }
 
+.main .runs .runsContainer {
+  position: absolute;
+  width: 100%;
+  height: 10rem;
+  left: 5rem;
+}
+
 .main .runs .container {
   position: relative;
   z-index: 10;
@@ -261,8 +281,10 @@ header {
   height: 60px;
   left: -25px;
   text-align: center;
+  font-size: 0.1rem;
   font-weight: 600;
   line-height: 14px;
+  color: #3D3A3A;
   background-color: rgba(243, 243, 243, 0.5);
   border: 1px solid rgba(243, 243, 243, 0.8);
   -webkit-border-radius: 10px;

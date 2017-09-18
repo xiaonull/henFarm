@@ -21,19 +21,19 @@ $(function(){
 	$('.jungle-l img').on('click',function(){		
 		
 		var option = {
-			url: 'api/henyard/adventure',
+			url: 'api/henyard/profile',
 			beforeSend: function(xhr) {
 			},
 			complete: function(xhr) {
 			},
 			success: function(result) {
-				console.log(result);
-				if(result.status_code === 25) {
+				// console.log(result);
+				if(result.data.profile.adventure_kit > 0) {
+					window.location.assign("expedition.html");
+				}else {
 					var $prompt = $('.prompt');	
 					$prompt.show().delay(2000).hide(300);
-					$prompt.html(result.message);
-				}else {
-					window.location.assign("expedition.html");
+					$prompt.html('探险装备不足');
 				}
 			}
 		}

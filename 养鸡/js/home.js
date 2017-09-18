@@ -260,7 +260,7 @@ function showResources() {
 
 					if(hens[i].time_to_pick.length !== 0) {
 						time = hens[i].time_to_pick.hour + ':' + hens[i].time_to_pick.minute + ':' + hens[i].time_to_pick.second;	
-						console.log(time);					
+						// console.log(time);					
 					}
 
 					// console.log(hens[i].since_picked);
@@ -316,6 +316,7 @@ function showResources() {
 								hour = '00';
 								minute = '00';
 								second = '00';
+								return;
 							}else if(hour < 10) {
 								hour = '0' + hour.toString();
 							}
