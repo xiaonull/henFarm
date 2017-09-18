@@ -235,7 +235,7 @@ header {
 .main .runs {
   width: 100%;
   height: 10rem;
-  padding: 2rem 2rem 0 1rem;
+  /*padding: 2rem 2rem 0 1rem;*/
   position: relative;
   float: left;
   top: -4.1rem;
@@ -846,6 +846,14 @@ header {
     right: 1.6rem;
     top: 0rem;
   }
+
+  .railContainer {
+    position: fixed;
+    bottom: 1rem;
+    width: 100%;
+    height: auto;
+  }
+
   .footer .rail-bg {
     width: 100%;
     height: 3.2rem;
