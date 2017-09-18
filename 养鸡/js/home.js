@@ -5,8 +5,8 @@ function Chicken(id) {
 	// this.oChicken.style.top = Math.random() * 100 + '%';
 	// this.oChicken.style.left = Math.random() * 100 + '%';
 	$(this.cla).css({
-		"top": Math.random() * 100 + '%',
-		"left": Math.random() * 100 + '%'
+		"top": Math.random() * 80 + '%',
+		"left": Math.random() * 80 + '%'
 	});
 }
 
@@ -14,8 +14,8 @@ Chicken.prototype.move = function() {
 	// this.oChicken.style.top = Math.random() * 100 + '%';
 	// this.oChicken.style.left = Math.random() * 100 + '%';
 	$(this.cla).css({
-		"top": Math.random() * 100 + '%',
-		"left": Math.random() * 100 + '%'
+		"top": Math.random() * 80 + '%',
+		"left": Math.random() * 80 + '%'
 	});
 	this.timer = setInterval(function() {
 		// this.oChicken.style.top = Math.random() * 100 + '%';
@@ -31,7 +31,7 @@ Chicken.prototype.move = function() {
 }
 
 function isRandomPosition() {
-	var n = Math.floor(Math.random() * 4 + 1);
+	var n = Math.floor(Math.random() * 2 + 1);
 	if(n === 1) {
 		return {
 			"top":  Math.random() * 100 + '%'
@@ -40,15 +40,16 @@ function isRandomPosition() {
 		return {
 			"left":  Math.random() * 100 + '%'
 		};
-	}else if(n === 3) {
-		return {
-			"bottom":  Math.random() * 100 + '%'
-		};
-	}else if(n === 4) {
-		return {
-			"right":  Math.random() * 100 + '%'
-		};
 	}
+	// else if(n === 3) {
+	// 	return {
+	// 		"bottom":  Math.random() * 100 + '%'
+	// 	};
+	// }else if(n === 4) {
+	// 	return {
+	// 		"right":  Math.random() * 100 + '%'
+	// 	};
+	// }
 }
 
 
@@ -343,6 +344,7 @@ function collectEggs() {
 			$(".footer .egg").html("");
 			setTimeout(function(){
 				$('.popup').css('display','none');
+				window.location.assign("home.html");
 			},3000);
 		},
 		beforeSend: function(xhr) {

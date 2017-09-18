@@ -101,12 +101,18 @@
             var lv1 = [];
             var lv2 = [];
             var lv3= [];
-
-            lv1 = result.data.lv1;
-            lv2 = result.data.lv2;
-            lv3 = result.data.lv3;
             
-            console.log(result);
+            if(result.data.lv1) {
+                lv1 = result.data.lv1;
+            }
+            if(result.data.lv2) {
+                lv2 = result.data.lv2;
+            }
+            if(result.data.lv3) {
+                lv3 = result.data.lv3;
+            }
+                                  
+            // console.log(result);
             for(var i = 0, j = lv1.length; i < j; i++) {
                 $(".container").eq(0).append((new FrientList(lv1[i])).template);
             }

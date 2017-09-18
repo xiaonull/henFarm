@@ -43,6 +43,7 @@ $(function() {
 			complete: function(xhr) {
 			},
 			success: function(result) {
+				console.log(result);
 				var item = result.data.award.id - 1;
 				pointGift(item, 'http://' + result.data.award.img_path);
 			}
