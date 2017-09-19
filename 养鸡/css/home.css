@@ -252,6 +252,9 @@ header {
     position: relative;
     float: left;
     top: -2rem;
+    /*background-image: url('../img/home/waste.png');*/
+    background-size: contain;
+    background-position: center;
   }
   .main .runs div {
     transition: 20s all linear;

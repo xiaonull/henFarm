@@ -2,15 +2,15 @@ function Chicken(id) {
 	this.cla = '.runs .run' + id;
 	this.timer = null;
 	$(this.cla).css({
-		"bottom": Math.random() * 80 + '%',
-		"left": Math.random() * 80 + '%'
+		"bottom": Math.random() * 100 + '%',
+		"left": Math.random() * 90 + '%'
 	});
 }
 
 Chicken.prototype.move = function() {
 	$(this.cla).css({
-		"bottom": Math.random() * 80 + '%',
-		"left": Math.random() * 80 + '%'
+		"bottom": Math.random() * 100 + '%',
+		"left": Math.random() * 90 + '%'
 	});
 	this.timer = setInterval(function() {
 		var position = isRandomPosition();
@@ -42,11 +42,11 @@ function isRandomPosition() {
 	var n = Math.floor(Math.random() * 2 + 1);
 	if(n === 1) {
 		return {
-			"bottom":  isRandomPlus() + '=' + '50px'
+			"bottom":  isRandomPlus() + '=' + '40px'
 		};
 	}else if(n === 2) {
 		return {
-			"left":  isRandomPlus() + '=' + '80px'
+			"left":  isRandomPlus() + '=' + '40px'
 		};
 	}
 	
@@ -77,21 +77,21 @@ function loadtransactionsList() {
 		complete: function(xhr) {
 		},
 		success: function(result) {
-			// console.log(result);
+			console.log(result);
 			$('.transactionTab .saleList-pannel').html('');
 			var list = result.data;
 			for(var i = 0, j = list.length; i < j; i++) {
 				var templ = '';
 				templ += '<div class="saleList-item clearfix">';
 				templ += 	'<div class="item-l">';
-				templ += 		'<p><span class="name">' + list[i].goods[0].name[0] + '：</span><span class="num">' + list[i].goods[0].num + '</span>';
+				templ += 		'<p><span class="name">' + list[i].goods[0].name + '：</span><span class="num">' + list[i].goods[0].num + '</span>';
 				templ += 			'<span class="priceContainer">';
 				templ += 				'<span class="priceText">单价：</span>';
-				templ += 				'<span class="price">' + list[i].coin + '</span>';
+				templ += 				'<span class="price">' + list[i].goods[0].coin + '</span>';
 				templ += 			'</span>';
 				templ += 		'</p>';
 				templ += 		'<p>委托人：<span class="personName">' + list[i].seller + '</span></p>';
-				templ += 		'<p>联系方式：<span class="phone">' + list[i].phone + '</span></p>';
+				templ += 		'<p>联系方式：<span class="phone">' + list[i].goods[0].phone + '</span></p>';
 				templ += 		'<p>委托时间：<span class="time">' + list[i].time + '</span></p>';
 				templ += 	'</div>';
 				templ += 	'<div class="item-r">';
@@ -110,6 +110,38 @@ function loadtransactionsList() {
 
 $('.transactionPannel .saleList').on('click', function() {
 	loadtransactionsList();
+});
+
+$('.transactionPannel .agencyTransaction-pannel .eggRadio').on('click', function() {
+	var option = {
+		url: 'api/henyard/profile',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.agencyTransaction-pannel .eggNum input').val(result.data.profile.egg);
+			$('.agencyTransaction-pannel .saleEggNum input').val(result.data.profile.egg);
+		}
+	}
+
+	myAjax(option);
+});
+
+$('.transactionPannel .agencyTransaction-pannel .goldEggRadio').on('click', function() {
+	var option = {
+		url: 'api/henyard/profile',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.agencyTransaction-pannel .eggNum input').val(result.data.profile.golden_egg);
+			$('.agencyTransaction-pannel .saleEggNum input').val(result.data.profile.golden_egg);
+		}
+	}
+
+	myAjax(option);
 });
 
 $('.transactionPannel .saleList-pannel').on('click', function(e) {
@@ -148,6 +180,73 @@ $('.transactionPannel .saleList-pannel').on('click', function(e) {
 	}
 
 	myAjax(option);
+
+});
+
+// 鸡蛋转赠
+$('.transactionPannel .giveEgg-pannel .sure').on('click', function(event) {
+	event.preventDefault();
+	var userId = $('.giveEgg-pannel .userId').val();
+	var henEgg = $('.giveEgg-pannel .eggRadio input:radio[name="henEgg"]:checked').val();
+	var eggNum = $('.giveEgg-pannel .eggNum').val();
+	var transactionPsw = $('.giveEgg-pannel .transactionPsw').val();
+	if(userId === '' || userId === null) {
+		$('.popup').text('请输入玩家ID！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	if(henEgg !== 'egg' && henEgg !== 'golden_egg') {
+		$('.popup').text('请选择哪种鸡蛋！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	if(eggNum === '' || eggNum === null) {
+		$('.popup').text('请输入鸡蛋数量！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	if(transactionPsw === '' || eggNum === null) {
+		$('.popup').text('请输入交易密码！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+
+	var option = {
+		url: 'api/transactions/eggs',
+		type: 'POST',
+		data: {
+			identity: henEgg,
+			num: eggNum,
+			pin: transactionPsw,
+			target: userId
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},3000);
+		}
+	}
+
+	myAjax(option);
+
 
 });
 
@@ -194,9 +293,12 @@ $(".warehouse").on('click', function() {
 		success: function(result) {
 			$('.warehousePannel .item').eq(0).find('.i-num span').eq(1).text(result.data.profile.medikit); 
 			$('.warehousePannel .item').eq(1).find('.i-num span').eq(1).text(result.data.profile.fodder); 
-			$('.warehousePannel .item').eq(2).find('.i-num span').eq(1).text(result.data.profile.egg); 
-			$('.warehousePannel .item').eq(3).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
-			
+			$('.warehousePannel .item').eq(2).find('.i-num span').eq(1).text(result.data.profile.adventure_kit); 
+			$('.warehousePannel .item').eq(3).find('.i-num span').eq(1).text(result.data.profile.egg); 
+			$('.warehousePannel .item').eq(4).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
+			$('.warehousePannel .item').eq(5).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
+			$('.warehousePannel .item').eq(6).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
+			console.log(result);
 		}
 	}
 
@@ -544,6 +646,16 @@ function showResources() {
 			// }
 
 			console.log(result);
+
+			if(result.data.sweep_chance_num > 0) {
+				$('.main .runs').css({
+					backgroundImage: 'url("./img/home/waste.png")'
+				});
+			}else {
+				$('.main .runs').css({
+					backgroundImage: 'url("")'
+				});
+			}
 
 
 			// 页尾资源

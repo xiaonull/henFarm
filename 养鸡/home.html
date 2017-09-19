@@ -366,26 +366,26 @@
 							</div> -->
 						</section>
 						<section class="pannel giveEgg-pannel">
-							<input type="number" name="userId" placeholder="&nbsp;&nbsp;&nbsp;请输入玩家ID">
+							<input class="userId" type="number" name="userId" placeholder="&nbsp;&nbsp;&nbsp;请输入玩家ID">
 							<br>
 							<p class="eggRadio">
 								<input type="radio" name="henEgg" value="egg">普通鸡蛋
-								<input type="radio" name="henEgg" value="goldEgg">金鸡蛋
+								<input type="radio" name="henEgg" value="golden_egg">金鸡蛋
 							</p>
-							<input type="number" name="eggNum" placeholder="&nbsp;&nbsp;&nbsp;请输入鸡蛋数量">
-							<input type="password" name="transactionPsw" placeholder="&nbsp;&nbsp;&nbsp;请输入交易密码">
+							<input class="eggNum" type="number" name="eggNum" placeholder="&nbsp;&nbsp;&nbsp;请输入鸡蛋数量">
+							<input class="transactionPsw" type="password" name="transactionPsw" placeholder="&nbsp;&nbsp;&nbsp;请输入交易密码">
 							<button class="sure">确 认</button>
 						</section>
 						<section class="pannel agencyTransaction-pannel">
 							<p class="eggRadio">
-								<input type="radio" name="henEgg" value="egg">普通鸡蛋
-								<input type="radio" name="henEgg" value="goldEgg">金鸡蛋
+								<input type="radio" class="eggRadio" name="henEgg" value="egg">普通鸡蛋
+								<input type="radio" class="goldEggRadio" name="henEgg" value="goldEgg">金鸡蛋
 							</p>
-							<div>
+							<div class="eggNum">
 								<label>仓库鸡蛋</label>
-								<input type="number" name="eggNum" placeholder="">
+								<input type="number" name="eggNum" placeholder="" disabled>
 							</div>
-							<div>
+							<div class="saleEggNum">
 								<label>可售鸡蛋</label>
 								<input type="number" name="saleEggNum" placeholder="">
 							</div>
