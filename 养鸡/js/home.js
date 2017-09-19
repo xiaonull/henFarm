@@ -787,12 +787,13 @@ $(function(){
 				eggList = [];
 				henList = result.data.hen;
 				eggList = result.data.egg;
-
+				
+				$(".ranking-l .ranking-list").html('');
 				for(var i = 0, j = henList.length; i < j; i++) {
 					$(".ranking-l .ranking-list").append((new RankingList(henList[i], i + 1)).template);
 
 				}
-
+				$(".ranking-r .ranking-list").html('');
 				for(var i = 0, j = eggList.length; i < j; i++) {
 					$(".ranking-r .ranking-list").append((new RankingList(eggList[i], i + 1)).template);
 				}
