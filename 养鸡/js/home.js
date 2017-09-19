@@ -233,7 +233,7 @@ $('.popupOldPrice').on('click', function(e) {
 	e.stopPropagation();
 });
 $('body').on('click', function(e) {
-	e.preventDefault();
+	// e.preventDefault();
 	$('.popupOldPrice').fadeOut();
 });
 
@@ -259,9 +259,30 @@ $('.friends').on('click', function() {
 		complete: function(xhr) {
 		},
 		success: function(result) {
-			console.log(result);
-			
-					
+			// console.log(result);
+			var lv1List = [];
+			var lv2List = [];
+			var lv3List = [];
+			if(result.data.lv1) {
+				lv1List = result.data.lv1;
+			}
+			if(result.data.lv2) {
+				lv2List = result.data.lv2;
+			}
+			if(result.data.lv3) {
+				lv3List = result.data.lv3;
+			}
+			var friendsList = lv1List.concat(lv2List, lv3List);
+			$('.friendsPannel table').html('');
+			$('.friendsPannel table').html('<tr><th>好友</th><th><button disabled>一键打扫</button></th></tr>');
+			for(var i = 0, j = friendsList.length; i < j; i++) {
+				var templ = '';
+				templ += '<tr>';
+				templ += 	'<td class="friengName">' + friendsList[i].name + '</td>';
+				templ += 	'<td><button class="sweepForFriend" disabled>打扫</button></td>';
+				templ += '</tr>';
+				$('.friendsPannel table').append(templ);
+			}					
 		}
 	}
 
@@ -779,18 +800,21 @@ $(function(){
 		var data = {};
 		if(this === $('.i-buy').eq(0)[0]) {
 			data = {
-				medikit: 1
-			}
+				identity: 'medikit',
+				num: 1
+			};
 		}
 		if(this === $('.i-buy').eq(1)[0]) {
 			data = {
-				fodder: 1
-			}
+				identity: 'fodder',
+				num: 1
+			};
 		}
 		if(this === $('.i-buy').eq(2)[0]) {
 			data = {
-				adventure_kit: 1
-			}
+				identity: 'adventure_kit',
+				num: 1
+			};
 		}
 
 		var option = {
@@ -920,11 +944,17 @@ $('.m-giftPackage .s-sure').on('click',function(){
 
 });
 
-$(".giveGiftPackage").on('click', function() {
+$('.m-giftPackage .s-giveGiftPackage').on('click', function() {
 	$('#myModal').modal({
 		keyboard: true
-	})
+	});
 });
+
+// $(".giveGiftPackage").on('click', function() {
+// 	$('#myModal').modal({
+// 		keyboard: true
+// 	});
+// });
 
 $(".sendGiftToFriend").on('click', function() {
 

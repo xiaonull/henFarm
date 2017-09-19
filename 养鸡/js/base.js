@@ -28,7 +28,7 @@ function myAjax(option) {
 		error: function() {
 			sessionStorage.error = 'true';
 			// alert('error');
-			// window.location.assign("index.html");
+			window.location.assign("index.html");
 		}
 	});
 }

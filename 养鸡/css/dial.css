@@ -246,4 +246,19 @@ html {
   display: none;
 }
 
-
+.prompt {
+  display: none;
+  width: 10rem;
+  height: 2.3rem;
+  line-height: 2.3rem;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.6rem;
+  font-size: 0.56rem;
+  position: absolute;
+  left: 2.4rem;
+  top: 7rem;
+  z-index: 30;
+}

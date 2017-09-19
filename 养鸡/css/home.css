@@ -926,6 +926,7 @@ header {
     width: 100%;
     height: 11rem;
     padding: 0.6rem 1rem;  
+    overflow-y: scroll;
   }
   .friendsPannel .friendsTable table {
     width: 100%;
@@ -972,219 +973,224 @@ header {
   }
   .friendsPannel .friendsTable table .sweepForFriend {
     width: 2rem;
-  }*/
-  
-
-  /*好友--end*/
+    }*/
 
 
+    /*好友--end*/
 
-  .mark .m-shop {
-    display: none;
-    width: 13.7rem;
-    height: 17rem;
-    margin: auto;
-    background-image: url(../img/expedition/box-bg.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin-top: 5.3rem;
-    padding-top: 1.2rem;
-    overflow: hidden;
-    position: relative;
-    top: -3.7rem;
-  }
-  .mark .m-shop .box-bt02 {
-    width: 10rem;
-    height: 2.6rem;
-    margin: auto;
-    margin-top: -1.2rem;
-  }
-  .mark .m-shop .box-bt02 img {
-    width: 100%;
-    height: 100%;
-  }
-  .mark .m-shop .s-close {
-    width: 1.2rem;
-    height: 1.2rem;
-    position: absolute;
-    right: 0rem;
-    top: 0.6rem;
-  }
-  .mark .m-shop .s-close img {
-    width: 100%;
-    height: 100%;
-  }
-  .mark .m-shop .s-buy {
-    width: 9rem;
-    height: 10.6rem;
-    margin: auto;
-  }
-  .mark .m-shop .s-buy .item {
-    float: left;
-    width: 3.34rem;
-    height: 5.8rem;
-    overflow: hidden;
-    margin-top: 0.3rem;
-    text-align: center;
-    color: #76af20;
-  }
-  .mark .m-shop .s-buy .item .i-con {
-    width: 3.34rem;
-    height: 3.44rem;
-    background-color: #fff;
-    border-radius: 0.8rem;
-    overflow: hidden;
-  }
-  .mark .m-shop .s-buy .item .i-con img {
-    width: 1.62rem;
-    height: 1.62rem;
-    margin: auto;
-    margin-top: 0.5rem;
-  }
-  .mark .m-shop .s-buy .item .i-con .i-num {
-    text-align: center;
-    line-height: 2;
-  }
-  .mark .m-shop .s-buy .item .i-con .i-num i {
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
-    background-image: url(../img/home/gold.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  .mark .m-shop .s-buy .item .i-con .i-num span {
-    display: inline-block;
-    font-size: 0.64rem;
-    font-weight: 600;
-  }
-  .mark .m-shop .s-buy .item .i-buy {
-    width: 3.34rem;
-    height: 1rem;
-    margin-top: 0.4rem;
-  }
-  .mark .m-shop .s-buy .item .i-buy img {
-    width: 95%;
-    margin: auto;
-    height: 100%;
-  }
-  .mark .m-shop .s-buy .food {
-    margin-left: 2.32rem;
-  }
-  .mark .s-sure {
-    width: 3.94rem;
-    height: 1.26rem;
-    margin: auto;
-    margin-top: 1.8rem;
-  }
-  .mark .s-sure img {
-    width: 100%;
-    height: 100%;
-  }
-  .mark .s-success, .mark .s-error {
-    display: none;
-    width: 6rem;
-    height: 2.44rem;
-    text-align: center;
-    line-height: 2.44rem;
-    position: absolute;
-    left: 4rem;
-    top: 8rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 0.4rem;
-    color: #fff;
-    font-size: 0.8rem;
-    font-family: simhei;
-  }
-  
-  .mark .m-giftPackage {
-    display: none;
-    width: 13.7rem;
-    height: 17rem;
-    margin: auto;
-    background-image: url(../img/expedition/box-bg.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin-top: 5.3rem;
-    padding-top: 1.2rem;
-    overflow: hidden;
-    position: relative;
-    top: -3.7rem;
-  }
 
-  .mark .m-giftPackage .box-bt02 {
-    width: 10rem;
-    height: 2.6rem;
-    margin: auto;
-    margin-top: -1.2rem;
-  }
-  .mark .m-giftPackage .box-bt02 img {
-    width: 100%;
-    height: 100%;
-  }
-  .mark .m-giftPackage .s-close {
-    width: 1.2rem;
-    height: 1.2rem;
-    position: absolute;
-    right: 0rem;
-    top: 0.6rem;
-  }
-  .mark .m-giftPackage .s-close img {
-    width: 100%;
-    height: 100%;
-  }
-  .mark .m-giftPackage .s-buy {
-    width: 9rem;
-    height: 10.6rem;
-    margin: auto;
-  }
-  .mark .m-giftPackage .s-buy .item {
-    float: left;
-    width: 3.34rem;
-    height: 5.8rem;
-    overflow: hidden;
-    margin-top: 0.3rem;
-    text-align: center;
-    color: #76af20;
-  }
-  .mark .m-giftPackage .s-buy .item .i-con {
-    width: 3.34rem;
-    height: 3.34rem;
-    background-color: #fff;
-    border-radius: 0.8rem;
-    overflow: hidden;
-  }
-  .mark .m-giftPackage .s-buy .item .i-con img {
-    width: 1.62rem;
-    height: 1.62rem;
-    margin: auto;
-    margin-top: 0.8rem;
-  }
-  .mark .m-giftPackage .s-buy .item .i-con .i-num {
-    text-align: center;
-    line-height: 2;
-  }
-  .mark .m-giftPackage .s-buy .item .i-con .i-num i {
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
-    background-image: url(../img/home/gold.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  .mark .m-giftPackage .s-buy .item .i-con .i-num span {
-    display: inline-block;
-    font-size: 0.64rem;
-    font-weight: 600;
-  }
-  .mark .m-giftPackage .s-buy .item span {
-    display: inline-block;
-    margin-top: 5px;
-  }
+
+    .mark .m-shop {
+      display: none;
+      width: 13.7rem;
+      height: 17rem;
+      margin: auto;
+      background-image: url(../img/expedition/box-bg.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-top: 5.3rem;
+      padding-top: 1.2rem;
+      overflow: hidden;
+      position: relative;
+      top: -3.7rem;
+    }
+    .mark .m-shop .box-bt02 {
+      width: 10rem;
+      height: 2.6rem;
+      margin: auto;
+      margin-top: -1.2rem;
+    }
+    .mark .m-shop .box-bt02 img {
+      width: 100%;
+      height: 100%;
+    }
+    .mark .m-shop .s-close {
+      width: 1.2rem;
+      height: 1.2rem;
+      position: absolute;
+      right: 0rem;
+      top: 0.6rem;
+    }
+    .mark .m-shop .s-close img {
+      width: 100%;
+      height: 100%;
+    }
+    .mark .m-shop .s-buy {
+      width: 9rem;
+      height: 10.6rem;
+      margin: auto;
+    }
+    .mark .m-shop .s-buy .item {
+      float: left;
+      width: 3.34rem;
+      height: 5.8rem;
+      overflow: hidden;
+      margin-top: 0.3rem;
+      text-align: center;
+      color: #76af20;
+    }
+    .mark .m-shop .s-buy .item .i-con {
+      width: 3.34rem;
+      height: 3.44rem;
+      background-color: #fff;
+      border-radius: 0.8rem;
+      overflow: hidden;
+    }
+    .mark .m-shop .s-buy .item .i-con img {
+      width: 1.62rem;
+      height: 1.62rem;
+      margin: auto;
+      margin-top: 0.5rem;
+    }
+    .mark .m-shop .s-buy .giftPackage-img .i-con img {
+      width: 2rem;
+      height: 2rem;
+      margin-top: 0.7rem;
+    }
+    .mark .m-shop .s-buy .item .i-con .i-num {
+      text-align: center;
+      line-height: 2;
+    }
+    .mark .m-shop .s-buy .item .i-con .i-num i {
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-image: url(../img/home/gold.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .mark .m-shop .s-buy .item .i-con .i-num span {
+      display: inline-block;
+      font-size: 0.64rem;
+      font-weight: 600;
+    }
+    .mark .m-shop .s-buy .item .i-buy {
+      width: 3.34rem;
+      height: 1rem;
+      margin-top: 0.4rem;
+    }
+    .mark .m-shop .s-buy .item .i-buy img {
+      width: 95%;
+      margin: auto;
+      height: 100%;
+    }
+    .mark .m-shop .s-buy .food {
+      margin-left: 2.32rem;
+    }
+    .mark .s-sure {
+      width: 3.94rem;
+      height: 1.26rem;
+      margin: auto;
+      margin-top: 1.8rem;
+    }
+    .mark .s-sure img {
+      width: 100%;
+      height: 100%;
+    }
+    .mark .s-success, .mark .s-error {
+      display: none;
+      width: 6rem;
+      height: 2.44rem;
+      text-align: center;
+      line-height: 2.44rem;
+      position: absolute;
+      left: 4rem;
+      top: 8rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 0.4rem;
+      color: #fff;
+      font-size: 0.8rem;
+      font-family: simhei;
+    }
+
+    .mark .m-giftPackage {
+      display: none;
+      width: 13.7rem;
+      height: 17rem;
+      margin: auto;
+      background-image: url(../img/expedition/box-bg.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-top: 5.3rem;
+      padding-top: 1.2rem;
+      overflow: hidden;
+      position: relative;
+      top: -3.7rem;
+    }
+
+    .mark .m-giftPackage .box-bt02 {
+      width: 10rem;
+      height: 2.6rem;
+      margin: auto;
+      margin-top: -1.2rem;
+    }
+    .mark .m-giftPackage .box-bt02 img {
+      width: 100%;
+      height: 100%;
+    }
+    .mark .m-giftPackage .s-close {
+      width: 1.2rem;
+      height: 1.2rem;
+      position: absolute;
+      right: 0rem;
+      top: 0.6rem;
+    }
+    .mark .m-giftPackage .s-close img {
+      width: 100%;
+      height: 100%;
+    }
+    .mark .m-giftPackage .s-buy {
+      width: 9rem;
+      height: 10.6rem;
+      margin: auto;
+    }
+    .mark .m-giftPackage .s-buy .item {
+      float: left;
+      width: 3.34rem;
+      /*height: 5.8rem;*/
+      overflow: hidden;
+      margin-top: 0.3rem;
+      text-align: center;
+      color: #76af20;
+    }
+    .mark .m-giftPackage .s-buy .item .i-con {
+      width: 3.34rem;
+      height: 3.34rem;
+      background-color: #fff;
+      border-radius: 0.8rem;
+      overflow: hidden;
+    }
+    .mark .m-giftPackage .s-buy .item .i-con img {
+      width: 1.62rem;
+      height: 1.62rem;
+      margin: auto;
+      margin-top: 0.8rem;
+    }
+    .mark .m-giftPackage .s-buy .item .i-con .i-num {
+      text-align: center;
+      line-height: 2;
+    }
+    .mark .m-giftPackage .s-buy .item .i-con .i-num i {
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-image: url(../img/home/gold.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .mark .m-giftPackage .s-buy .item .i-con .i-num span {
+      display: inline-block;
+      font-size: 0.64rem;
+      font-weight: 600;
+    }
+    .mark .m-giftPackage .s-buy .item span {
+      display: inline-block;
+      margin-top: 5px;
+    }
   /*.mark .m-giftPackage .s-buy .item .i-buy {
     width: 3.34rem;
     height: 1rem;
@@ -1197,6 +1203,32 @@ header {
     }*/
     .mark .m-giftPackage .s-buy .food {
       margin-left: 2.32rem;
+    }
+
+    .mark .m-giftPackage  .container {
+      text-align: center;
+    }
+    .mark .m-giftPackage .s-sure {
+      width: 3.94rem;
+      height: 1.26rem;
+      margin: 0;
+      /*margin-top: 1.8rem;*/
+     display: inline-block;
+    }
+    .mark .m-giftPackage .s-sure img {
+      width: 100%;
+      height: 100%;
+    }
+    .mark .m-giftPackage .s-giveGiftPackage {
+      width: 3.94rem;
+      height: 1.26rem;
+      margin: 0;
+      /*margin-top: 1.8rem;*/
+      display: inline-block;
+    }
+    .mark .m-giftPackage .s-giveGiftPackage img {
+      width: 100%;
+      height: 100%;
     }
 
     .popup {
@@ -1247,6 +1279,7 @@ header {
       bottom: 1rem;
       width: 100%;
       height: auto;
+      z-index: 999;
     }
 
     .footer .rail-bg {

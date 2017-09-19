@@ -1,6 +1,10 @@
 $(function() {
 	addTurntableText();
 
+	//	提示框
+	$('.prompt').css('display','none');
+	var $prompt = $('.prompt');
+
 	var rotateTimeOut = function() {
 		$('#rotate').rotate({
 			angle: 0,
@@ -33,7 +37,7 @@ $(function() {
 					'&nbsp;' + 
 					$('.turntable .wheel-item').eq(index).find('.wheel-itext-num').text() +
 					'个'
-				);
+					);
 				// $('.award .award-top').html('test');
 				bRotate = !bRotate;
 			}
@@ -56,7 +60,8 @@ $(function() {
 					var item = result.data.award.id - 1;
 					pointGift(item, 'http://' + result.data.award.img_path);
 				}else {
-					alert("error");
+					$prompt.show().delay(2000).hide(300);
+					$prompt.html(result.message);
 				}
 				
 			}
