@@ -251,7 +251,7 @@ header {
     /*padding: 2rem 2rem 0 1rem;*/
     position: relative;
     float: left;
-    top: -4.1rem;
+    top: -2rem;
   }
   .main .runs div {
     transition: 20s all linear;
@@ -643,14 +643,14 @@ header {
     height: 100%;
   }
   .mark .warehousePannel .s-buy {
-    width: 9rem;
+    width: 12rem;
     height: 10.6rem;
     margin: auto;
   }
   .mark .warehousePannel .s-buy .item {
     float: left;
     width: 3.34rem;
-    height: 5.8rem;
+    height: 3.6rem;
     overflow: hidden;
     margin-top: 0.3rem;
     text-align: center;
@@ -699,7 +699,10 @@ header {
     height: 100%;
   }
   .mark .warehousePannel .s-buy .food {
-    margin-left: 2.32rem;
+    margin-left: 0.8rem;
+  }
+  .mark .warehousePannel .s-buy .food2 {
+    margin-left: 0.8rem;
   }
   .mark .warehousePannel .s-buy .item .i-con .i-num .num {
     font-size: 0.5rem;
@@ -803,30 +806,34 @@ header {
     font-size: 0.5rem;
   }
   .exchangePannel .exchangeTable table td button {
-     font-size: 0.5rem;
-  }
-  .exchangePannel .exchangeTable table td img {
-    width: 1.8rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .exchangePannel .exchangeTable table button {
-    background-color: #76af20;
-    width: 2.1rem;
-    height: 1rem;
-    font-size: 0.5rem;
-    color: #fff;
-    border: 1px solid #76af20;
-    border-radius: 0.2rem;
-    position: relative;
-    top: -0.1rem;
-  }
-  .exchangePannel .exchangeTable table .exchangeTable-oldPrice button {
-    margin-left: 0.5rem;
-  }
-  .exchangePannel .exchangeTable table .exchangeTable-last {
-    height: 3.5rem;
-  }
+   font-size: 0.5rem;
+ }
+ .exchangePannel .exchangeTable table td img {
+  width: 1.8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.exchangePannel .exchangeTable table button {
+  background-color: #76af20;
+  width: 2.1rem;
+  height: 1rem;
+  font-size: 0.5rem;
+  color: #fff;
+  border: 1px solid #76af20;
+  border-radius: 0.2rem;
+  position: relative;
+  top: -0.1rem;
+}
+/*.exchangePannel .exchangeTable table .exchangeTable-oldPrice button {
+  margin-left: 0.5rem;
+}
+.exchangePannel .exchangeTable table .exchangeTable-last {
+  height: 3.5rem;
+  }*/
+/*.exchangePannel .exchangeTable table .exchangeTable-img {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  }*/
 
   .popupOldPrice {
     display: none;
@@ -977,9 +984,47 @@ header {
   .friendsPannel .friendsTable table .sweepForFriend {
     width: 2rem;
     }*/
-
-
     /*好友--end*/
+
+    /*交易*/
+    .mark .transactionPannel {
+      display: none;
+      width: 13.7rem;
+      height: 17rem;
+      margin: auto;
+      background-image: url(../img/expedition/box-bg.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-top: 5.3rem;
+      padding: 1rem 0.7rem 0.5rem 0.7rem;
+      overflow: hidden;
+      position: relative;
+      top: -3.7rem;
+    }
+    .mark .transactionPannel .box-bt02 {
+      width: 10rem;
+      height: 2.6rem;
+      margin: auto;
+      margin-top: -1.2rem;
+    }
+    .mark .transactionPannel .box-bt02 img {
+      width: 100%;
+      height: 100%;
+    }
+    .mark .transactionPannel .s-close {
+      width: 1.2rem;
+      height: 1.2rem;
+      position: absolute;
+      right: 0rem;
+      top: 0.6rem;
+    }
+    .mark .transactionPannel .s-close img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /*交易--end*/
 
 
 
@@ -1020,7 +1065,7 @@ header {
       height: 100%;
     }
     .mark .m-shop .s-buy {
-      width: 9rem;
+      width: 12rem;
       height: 10.6rem;
       margin: auto;
     }
@@ -1080,7 +1125,10 @@ header {
       height: 100%;
     }
     .mark .m-shop .s-buy .food {
-      margin-left: 2.32rem;
+       margin-left: 0.8rem;
+    }
+    .mark .m-shop .s-buy .food2 {
+       margin-left: 0.8rem;
     }
     .mark .s-sure {
       width: 3.94rem;
@@ -1216,7 +1264,7 @@ header {
       height: 1.26rem;
       margin: 0;
       /*margin-top: 1.8rem;*/
-     display: inline-block;
+      display: inline-block;
     }
     .mark .m-giftPackage .s-sure img {
       width: 100%;
@@ -1528,4 +1576,144 @@ header {
   }
   .modal .modal-body {
     height: 2.5rem;
+  }
+  
+  /*交易面板*/
+  .transactionTab nav ul {
+    display: -webkit-flex;
+    display: flex;
+    text-align: center;
+    background-color: #FFFFFF;
+  }
+  .transactionTab nav ul li {
+    display: block;
+    padding: 0.2rem ;
+    flex: 1;  
+    font-size: 0.5rem;
+    background-color: #d0ad7d;  
+    color: #fff;  
+  }
+  .transactionTab nav ul li.saleList {
+    border: 1px solid #A66F23;
+  }
+  .transactionTab nav ul li.giveEgg {
+    border: 1px solid #A66F23;
+    border-left-width: 0;
+  }
+  .transactionTab nav ul li.agencyTransaction {
+    border: 1px solid #A66F23;
+    border-left-width: 0;
+  }
+  .transactionTab nav ul li.active {
+    border-bottom-width: 0;
+    background-color: #fff;
+    color: #000;
+  }
+  .transactionTab section.pannel {
+    display: none;
+    height: 12rem;
+    padding: 0.4rem;
+    border: 1px solid #A66F23;
+    background-color: #fff;
+    border-top-width: 0;
+  }
+  .transactionTab section.active {
+    display: block;
+  }
+  .transactionTab .saleList-pannel{
+    overflow-y: scroll;
+  }
+  .transactionTab .pannel .saleList-item {
+    border: 1px solid #A66F23;
+    min-height: 3.5rem;
+  }
+  .transactionTab .pannel .clearfix {
+    overflow: hidden;
+  }
+  .transactionTab .pannel .item-l {
+    padding: 0.5rem;
+    width: 70%;
+    font-size: 0.3rem;
+    line-height: 0.7rem;
+    float: left;
+  } 
+  .transactionTab .pannel .item-l .priceContainer {
+    float: right;
+  }
+  .transactionTab .pannel .item-r {
+    float: right;
+    padding: 0.5rem;
+  }
+  .transactionTab .pannel .item-r .transactionId {
+    display: none;
+  }
+  .transactionTab .pannel .item-r button {
+    padding: 0.6rem 0.4rem;
+    background-color: #76af20;
+    border: none;
+    color: #fff;
+    font-size: 0.5rem;
+  }
+  .transactionTab .pannel input[type="number"], .transactionTab .pannel input[type="password"] {
+    border: 1px solid #C3C3C3;
+    /*width: 100%;*/
+    height: 1.2rem;
+    margin-top: 0.3rem;
+  }
+  .transactionTab .giveEgg-pannel input[type="number"], .transactionTab .giveEgg-pannel input[type="password"] {
+    width: 100%;
+  }
+  .transactionTab .pannel input[type="radio"] {
+    -webkit-appearance: radio; 
+  } 
+  .transactionTab .pannel input::-webkit-input-placeholder{
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #000000;
+    opacity: 0.8;
+  }
+
+  .transactionTab .pannel input:-moz-placeholder{
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #000000;
+    opacity: 0.8;
+  }
+
+  .transactionTab .pannel input::-moz-placeholder{
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #000000;
+    opacity: 0.8;
+  }
+
+  .transactionTab .pannel input:-ms-input-placeholder{
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #000000;
+    opacity: 0.8;
+  }
+  .transactionTab .giveEgg-pannel button, .transactionTab .agencyTransaction-pannel button {
+    border: 2px solid #76af20;
+    width: 100%;
+    height: 1.4rem; 
+    font-size: 0.6rem;
+    background-color: #76af20;
+    margin-top: 0.5rem;
+  }
+  .transactionTab .giveEgg-pannel .eggRadio, .transactionTab .agencyTransaction-pannel .eggRadio {
+    margin-top: 0.3rem;
+    font-size: 0.6rem;
+  } 
+  .transactionTab .agencyTransaction-pannel div {
+    text-align: center;
+  }
+  .transactionTab .agencyTransaction-pannel label {
+    width: 20%;
+    font-size: 0.5rem;
+    font-weight: 600;
+  }
+  .transactionTab .agencyTransaction-pannel div input {
+    width: 65%;
+    margin-left: 5%;
   }

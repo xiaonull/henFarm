@@ -500,6 +500,9 @@ div.date-record{
 /* 推广二维码 */
 .recommend {
   text-align: center;
+  position: relative;
+  top: 50%;
+  margin-top: -125px;
 }
 
 .recommend .codeImg {

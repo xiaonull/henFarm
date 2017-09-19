@@ -2,14 +2,14 @@ function Chicken(id) {
 	this.cla = '.runs .run' + id;
 	this.timer = null;
 	$(this.cla).css({
-		"top": Math.random() * 80 + '%',
+		"bottom": Math.random() * 80 + '%',
 		"left": Math.random() * 80 + '%'
 	});
 }
 
 Chicken.prototype.move = function() {
 	$(this.cla).css({
-		"top": Math.random() * 80 + '%',
+		"bottom": Math.random() * 80 + '%',
 		"left": Math.random() * 80 + '%'
 	});
 	this.timer = setInterval(function() {
@@ -42,7 +42,7 @@ function isRandomPosition() {
 	var n = Math.floor(Math.random() * 2 + 1);
 	if(n === 1) {
 		return {
-			"top":  isRandomPlus() + '=' + '50px'
+			"bottom":  isRandomPlus() + '=' + '50px'
 		};
 	}else if(n === 2) {
 		return {
@@ -60,6 +60,125 @@ function isRandomPlus() {
 		return '-';
 	}
 }
+
+// 显示交易
+$(".tradingcenter").on('click', function() {
+	$('.mark').css('display','block');
+	$('.mark .transactionPannel').css('display','block');
+	
+	loadtransactionsList();
+});
+
+function loadtransactionsList() {
+	var option = {
+		url: 'api/transactions/get',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			// console.log(result);
+			$('.transactionTab .saleList-pannel').html('');
+			var list = result.data;
+			for(var i = 0, j = list.length; i < j; i++) {
+				var templ = '';
+				templ += '<div class="saleList-item clearfix">';
+				templ += 	'<div class="item-l">';
+				templ += 		'<p><span class="name">' + list[i].goods[0].name[0] + '：</span><span class="num">' + list[i].goods[0].num + '</span>';
+				templ += 			'<span class="priceContainer">';
+				templ += 				'<span class="priceText">单价：</span>';
+				templ += 				'<span class="price">' + list[i].coin + '</span>';
+				templ += 			'</span>';
+				templ += 		'</p>';
+				templ += 		'<p>委托人：<span class="personName">' + list[i].seller + '</span></p>';
+				templ += 		'<p>联系方式：<span class="phone">' + list[i].phone + '</span></p>';
+				templ += 		'<p>委托时间：<span class="time">' + list[i].time + '</span></p>';
+				templ += 	'</div>';
+				templ += 	'<div class="item-r">';
+				templ += 		'<span class="transactionId">' + list[i].id + '</span>';
+				templ += 		'<button class="saleList-pannel-buy">购买</button>';
+				templ += 	'</div>';
+				templ += '</div>';
+
+				$('.transactionTab .saleList-pannel').append(templ);
+			}				
+		}
+	}
+
+	myAjax(option);
+}
+
+$('.transactionPannel .saleList').on('click', function() {
+	loadtransactionsList();
+});
+
+$('.transactionPannel .saleList-pannel').on('click', function(e) {
+	// console.log($(e.target)[0].className);
+	if($(e.target)[0].className !== 'saleList-pannel-buy') {
+		return;
+	}
+
+	var transactionId = -1;
+
+	var list = $('.transactionTab .saleList-pannel .saleList-item');
+	for(var i = 0, j = list.length; i < j; i++) {
+		if($(e.target)[0] === $('.transactionTab .saleList-pannel .saleList-item .saleList-pannel-buy').eq(i)[0]) {
+			transactionId = $('.transactionTab .saleList-pannel .saleList-item .saleList-pannel-buy').eq(i).parent().find('.transactionId').text() * 1;
+			break;
+		}
+	}
+
+	var option = {
+		url: 'api/transactions/buy',
+		type: 'POST',
+		data: {
+			id: transactionId
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},3000);	
+		}
+	}
+
+	myAjax(option);
+
+});
+
+$(".transactionTab ul li").on("click", function() {
+	$(".transactionTab ul li").removeClass("active");
+	$(this).addClass("active");
+	var index = -1;
+	for(var i = 0, j = $(".transactionTab ul li").length; i < j; i++) {
+		if(this === $(".transactionTab ul li").eq(i)[0]) {
+			index = i;
+			break;
+		}
+	}
+
+	switchPanel(index);
+
+});
+
+function switchPanel(index) {
+	$(".transactionTab section.active").removeClass("active");
+	$(".transactionTab section.pannel").eq(index).addClass("active");
+} 
+
+
+
+// 关闭交易
+$('.transactionPannel .s-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .transactionPannel').css('display','none');
+});
+
 
 // 显示仓库
 $(".warehouse").on('click', function() {
@@ -142,14 +261,6 @@ $('.exchangeTable-openEgg').on('click', function(e) {
 			}
 
 			var eggPriceList = result.data.egg.history;
-			if(eggPriceList.length === 0) {
-				$('.popup').text('没有往期价格');
-				$('.popup').css('display','block');
-				setTimeout(function(){
-					$('.popup').css('display','none');
-				},3000);
-				return;
-			}
 			$('.popupOldPrice').fadeIn();
 			$('.popupOldPrice ul').html('');
 			for(var i = 0, j = eggPriceList.length; i < j; i++) {
@@ -431,6 +542,8 @@ function showResources() {
 			// 		display: 'block'
 			// 	});
 			// }
+
+			console.log(result);
 
 
 			// 页尾资源
@@ -846,7 +959,7 @@ $(function(){
 				num: 1
 			};
 		}
-		if(this === $('.i-buy').eq(3)[0]) {
+		if(this === $('.i-buy').eq(5)[0]) {
 			return;
 		}
 

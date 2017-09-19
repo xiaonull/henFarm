@@ -137,24 +137,6 @@
 						<span class="tutorial-paragraphTitle">奖项：</span>
 						每个会员拥有自己的推广二维码，将二维码推广出去，新玩家扫码注册，推荐人自动填写上级ID，自动绑定关系。
 					</p>
-					<p class="tutorial-paragraph">
-						<span class="tutorial-paragraphTitle">门槛：</span>
-						线上支付300元赠送1只鸡，1个医疗包，1个饲料。每个人起步最多购买20只鸡。
-					</p>
-					<p class="tutorial-paragraph">
-						<span class="tutorial-paragraphTitle">种类：</span>
-						母鸡：300元/只，10天成长期，11天开始计算，1天产1个蛋，总共3个月；
-						（10只鸡，1周内可能随机会产出1个金蛋）。
-					</p>
-					<p class="tutorial-paragraph">
-						<span class="tutorial-paragraphTitle">过程：</span>
-						成长期期间，每天照顾，2天没照顾则生病，需要医疗包治疗；超过3天则死亡。
-						成年期期间，7天喂养1次，1只需消耗1个饲料；超过时间不喂则不产蛋。
-					</p>
-					<p class="tutorial-paragraph">
-						<span class="tutorial-paragraphTitle">奖项：</span>
-						每个会员拥有自己的推广二维码，将二维码推广出去，新玩家扫码注册，推荐人自动填写上级ID，自动绑定关系。
-					</p>
 				</div>
 				<!-- <div class="r-sure">
 					<img src="img/expedition/affirm.png"/>
@@ -220,6 +202,15 @@
 								</p>
 							</div>
 						</div>
+						<div class="item food2">
+							<div class="i-con">
+								<img src="img/home/store-ico03.png"/>
+								<p class="i-num">
+									<span class="num">数量：</span>
+									<span></span>
+								</p>
+							</div>
+						</div>
 						<div class="item">
 							<div class="i-con">
 								<img src="img/home/egg01.png"/>
@@ -237,8 +228,24 @@
 									<span></span>
 								</p>
 							</div>
-							<!-- <span>大礼包</span> -->
-							<!-- <div class="i-buy"><img src="img/home/buy.png"/></div> -->
+						</div>	
+						<div class="item food2 giftPackage-img">
+							<div class="i-con">
+								<img src="img/home/store-ico05.png"/>
+								<p class="i-num">
+									<span class="num">数量：</span>
+									<span></span>
+								</p>
+							</div>
+						</div>	
+						<div class="item">
+							<div class="i-con">
+								<img src="img/home/store-ico06.png"/>
+								<p class="i-num">
+									<span class="num">数量：</span>
+									<span></span>
+								</p>
+							</div>
 						</div>					
 					</div>
 					<div class="s-sure"><img src="img/expedition/affirm.png"/></div>
@@ -275,10 +282,24 @@
 								<td><button class="exchangeGoldEgg">兑换</button></td>
 							</tr>
 							<tr>
-								<td class="exchangeTable-img"></td>
-								<td class="exchangeTable-price"></td>
-								<td class="exchangeTable-oldPrice"></td>
-								<td class="exchangeTable-last"></td>
+								<td class="exchangeTable-img">
+									<img src="img/home/store-ico05.png">
+								</td>
+								<td class="exchangeTable-gooseEggPrice"></td>
+								<td class="exchangeTable-oldGooseEggPrice">
+									<button class="exchangeTable-openGooseEgg">展开</button>
+								</td>
+								<td><button class="exchangeGooseEgg">兑换</button></td>
+							</tr>
+							<tr>
+								<td class="exchangeTable-img">
+									<img src="img/home/store-ico06.png">
+								</td>
+								<td class="exchangeTable-peacockEggPrice"></td>
+								<td class="exchangeTable-oldPeacockEggPrice">
+									<button class="exchangeTable-openPeacockEgg">展开</button>
+								</td>
+								<td><button class="exchangePeacockEgg">兑换</button></td>
 							</tr>
 						</table>
 					</div>
@@ -312,7 +333,76 @@
 					<div class="s-error"></div>
 				</div>
 
-				
+				<!--交易-->
+				<div class="transactionPannel">
+					<div class="box-bt02"><img src="img/home/box-bt03.png" /></div>
+					<div class="s-close"><img src="img/expedition/close.png" alt="" /></div>
+					
+					<div class="transactionTab">
+						<nav>
+							<ul>
+								<li class="saleList active">出售列表</li>
+								<li class="giveEgg">鸡蛋转赠</li>
+								<li class="agencyTransaction">委托交易</li>
+							</ul>
+						</nav>
+						<section class="pannel saleList-pannel active">
+							<!-- <div class="saleList-item clearfix">
+								<div class="item-l">
+									<p><span class="name">普通鸡蛋：</span><span class="num">200</span>
+										<span class="priceContainer">
+											<span class="priceText">单价：</span>
+											<span class="price">10</span>
+										</span>
+									</p>
+									<p>委托人：<span class="personName">yssys</span></p>
+									<p>联系方式：<span class="phone">188192919298</span></p>
+									<p>委托时间：<span class="time">.........</span></p>
+								</div>
+								<div class="item-r">
+								<span class="transactionId">1</span>
+									<button class="saleList-pannel-buy">购买</button>
+								</div>
+							</div> -->
+						</section>
+						<section class="pannel giveEgg-pannel">
+							<input type="number" name="userId" placeholder="&nbsp;&nbsp;&nbsp;请输入玩家ID">
+							<br>
+							<p class="eggRadio">
+								<input type="radio" name="henEgg" value="egg">普通鸡蛋
+								<input type="radio" name="henEgg" value="goldEgg">金鸡蛋
+							</p>
+							<input type="number" name="eggNum" placeholder="&nbsp;&nbsp;&nbsp;请输入鸡蛋数量">
+							<input type="password" name="transactionPsw" placeholder="&nbsp;&nbsp;&nbsp;请输入交易密码">
+							<button class="sure">确 认</button>
+						</section>
+						<section class="pannel agencyTransaction-pannel">
+							<p class="eggRadio">
+								<input type="radio" name="henEgg" value="egg">普通鸡蛋
+								<input type="radio" name="henEgg" value="goldEgg">金鸡蛋
+							</p>
+							<div>
+								<label>仓库鸡蛋</label>
+								<input type="number" name="eggNum" placeholder="">
+							</div>
+							<div>
+								<label>可售鸡蛋</label>
+								<input type="number" name="saleEggNum" placeholder="">
+							</div>
+							<div>
+								<label>单个价格</label>
+								<input type="number" name="price" placeholder="">
+							</div>
+							<div>
+								<label>联系方式</label>
+								<input type="number" name="phone" placeholder="&nbsp;&nbsp;&nbsp;请填写手机号码">
+							</div>
+							<button class="sure">确认出售</button>
+						</section>
+					</div>
+					
+				</div>
+
 
 				<!--商店-->
 				<div class="m-shop">
@@ -341,7 +431,7 @@
 							<span>饲 料</span>
 							<div class="i-buy"><img src="img/home/buy.png"/></div>
 						</div>
-						<div class="item">
+						<div class="item food2">
 							<div class="i-con">
 								<img src="img/home/store-ico03.png"/>
 								<p class="i-num">
@@ -352,7 +442,29 @@
 							<span>探险装备</span>
 							<div class="i-buy"><img src="img/home/buy.png"/></div>
 						</div>	
-						<div class="item food giftPackage-img">
+						<div class="item">
+							<div class="i-con">
+								<img src="img/home/store-ico07.png"/>
+								<p class="i-num">
+									<i></i>
+									<span>175</span>
+								</p>
+							</div>
+							<span>孔 雀</span>
+							<div class="i-buy"><img src="img/home/buy.png"/></div>
+						</div>
+						<div class="item food">
+							<div class="i-con">
+								<img src="img/home/store-ico08.png"/>
+								<p class="i-num">
+									<i></i>
+									<span>175</span>
+								</p>
+							</div>
+							<span>大 雁</span>
+							<div class="i-buy"><img src="img/home/buy.png"/></div>
+						</div>
+						<div class="item food2 giftPackage-img">
 							<div class="i-con">
 								<img src="img/home/store-ico04.png"/>
 								<p class="i-num">
