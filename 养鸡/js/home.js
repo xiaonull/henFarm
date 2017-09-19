@@ -122,7 +122,7 @@ $(".exchange").on('click', function(e) {
 });
 // 显示往期价格
 $('.exchangeTable-openEgg').on('click', function(e) {
-	$('.popupOldPrice').fadeIn();
+	// $('.popupOldPrice').fadeIn();
 	e.stopPropagation();
 
 	var option = {
@@ -132,7 +132,25 @@ $('.exchangeTable-openEgg').on('click', function(e) {
 		complete: function(xhr) {
 		},
 		success: function(result) {
+			if(result.data.egg.length === 0) {
+				$('.popup').text('没有往期价格');
+				$('.popup').css('display','block');
+				setTimeout(function(){
+					$('.popup').css('display','none');
+				},3000);
+				return;
+			}
+
 			var eggPriceList = result.data.egg.history;
+			if(eggPriceList.length === 0) {
+				$('.popup').text('没有往期价格');
+				$('.popup').css('display','block');
+				setTimeout(function(){
+					$('.popup').css('display','none');
+				},3000);
+				return;
+			}
+			$('.popupOldPrice').fadeIn();
 			$('.popupOldPrice ul').html('');
 			for(var i = 0, j = eggPriceList.length; i < j; i++) {
 				var teml = '';
@@ -151,7 +169,7 @@ $('.exchangeTable-openEgg').on('click', function(e) {
 });
 
 $('.exchangeTable-openGoldEgg').on('click', function(e) {
-	$('.popupOldPrice').fadeIn();
+	// $('.popupOldPrice').fadeIn();
 	e.stopPropagation();
 
 	var option = {
@@ -161,7 +179,18 @@ $('.exchangeTable-openGoldEgg').on('click', function(e) {
 		complete: function(xhr) {
 		},
 		success: function(result) {
+			// console.log(result.data);
+			if(result.data.golden_egg.length === 0) {
+				$('.popup').text('没有往期价格');
+				$('.popup').css('display','block');
+				setTimeout(function(){
+					$('.popup').css('display','none');
+				},3000);
+				return;
+			}
+
 			var golden_eggPriceList = result.data.golden_egg.history;
+			$('.popupOldPrice').fadeIn();
 			$('.popupOldPrice ul').html('');
 			for(var i = 0, j = golden_eggPriceList.length; i < j; i++) {
 				var teml = '';
@@ -815,6 +844,9 @@ $(function(){
 				identity: 'adventure_kit',
 				num: 1
 			};
+		}
+		if(this === $('.i-buy').eq(3)[0]) {
+			return;
 		}
 
 		var option = {
