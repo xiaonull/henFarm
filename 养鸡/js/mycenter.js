@@ -6,7 +6,7 @@ var option = {
 	},
 	success: function(result) {
 		console.log(result);
-		if(result.data.profile.avatar) {
+		if(result.data.profile.avatar !== '') {
 			$('.main .banner .b-left .photo label').css('backgroundImage', 'url(' + result.data.profile.avatar + ')');
 		}
 	}

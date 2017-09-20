@@ -133,21 +133,17 @@ function addTurntableText() {
 					src: result.data.background,
 				});
 			}
-			else {
-				$('.turntableBgImg').attr({
-					src: 'img/dial/draw-bg0.png',
-				});
+
+			// else {
+			// 	$('.turntableBgImg').attr({
+			// 		src: 'img/dial/draw-bg0.png',
+			// 	});
+			// }
+			
+			for(var i = 0, j = 8; i < j; i++) {
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext').css('display', 'none');
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext-num').css('display', 'none');
 			}
-			// var report = (function() {
-			// 	var imgs = [];
-			// 	return function(src) {
-			// 		imgs.push($('.turntableBgImg'));
-			// 		$('.turntableBgImg').attr({
-			// 			src: 'src',
-			// 		});
-			// 	}
-			// })();
-			// report('img/dial/draw-bg.png');
 
 			for(var i = 0, j = all_awards.length; i < j; i++) {
 				$('.turntable .wheel-item').eq(i).find('.wheel-itext').text(all_awards[i].name);
