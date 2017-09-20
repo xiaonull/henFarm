@@ -54,6 +54,7 @@ header.fixed {
   background-image: url("../img/home/chook02.png");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* 以下非less编译 */

@@ -36,6 +36,8 @@
 </head>
 
 <body>
+	<embed class="mainBgMusic" src="./music/mainMusic.ogg" autostart="true" loop="true" hidden="true"></embed>
+	<div class="mainBgMusicCtrl"></div>
 	<header class="clearfix">
 		<div class="box-left">
 			<ul class="clearfix">
@@ -121,11 +123,11 @@
 					<h2 class="tutorial-title">教 程</h2>
 					<p class="tutorial-paragraph">
 						<span class="tutorial-paragraphTitle">门槛：</span>
-						线上支付300元赠送1只鸡，1个医疗包，1个饲料。每个人起步最多购买20只鸡。
+						线上支付298元赠送1只鸡，1个医疗包，1个饲料。每个人起步最多购买20只鸡。
 					</p>
 					<p class="tutorial-paragraph">
 						<span class="tutorial-paragraphTitle">种类：</span>
-						母鸡：300元/只，10天成长期，11天开始计算，1天产1个蛋，总共3个月；
+						母鸡：298元/只，10天成长期，11天开始计算，1天产1个蛋，总共3个月；
 						（10只鸡，1周内可能随机会产出1个金蛋）。
 					</p>
 					<p class="tutorial-paragraph">
@@ -379,7 +381,7 @@
 						<section class="pannel agencyTransaction-pannel">
 							<p class="eggRadio">
 								<input type="radio" class="eggRadio" name="henEgg" value="egg">普通鸡蛋
-								<input type="radio" class="goldEggRadio" name="henEgg" value="goldEgg">金鸡蛋
+								<input type="radio" class="goldEggRadio" name="henEgg" value="golden_egg">金鸡蛋
 							</p>
 							<div class="eggNum">
 								<label>仓库鸡蛋</label>
@@ -389,13 +391,17 @@
 								<label>可售鸡蛋</label>
 								<input type="number" name="saleEggNum" placeholder="">
 							</div>
-							<div>
+							<div class="price">
 								<label>单个价格</label>
 								<input type="number" name="price" placeholder="">
 							</div>
-							<div>
+							<div class="phone">
 								<label>联系方式</label>
 								<input type="number" name="phone" placeholder="&nbsp;&nbsp;&nbsp;请填写手机号码">
+							</div>
+							<div class="transactionPass">
+								<label>交易密码</label>
+								<input type="password" name="transactionPass" placeholder="&nbsp;&nbsp;&nbsp;请填写交易密码">
 							</div>
 							<button class="sure">确认出售</button>
 						</section>

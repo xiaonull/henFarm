@@ -1,3 +1,26 @@
+// 控制背景音乐
+(function() {
+	var musicFlag = true;
+	$('.mainBgMusicCtrl').on('click', function() {
+		if(musicFlag) {
+			// 关闭音乐
+			$('.mainBgMusic').attr({
+				volume: '0'
+			});
+			musicFlag = false;
+			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music-close.png")');
+		}else {
+			// 开启音乐
+			$('.mainBgMusic').attr({
+				volume: '70'
+			});
+			musicFlag = true;
+			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music.png")');
+		}
+	});
+})();
+
+
 function Chicken(id) {
 	this.cla = '.runs .run' + id;
 	this.timer = null;
@@ -144,6 +167,91 @@ $('.transactionPannel .agencyTransaction-pannel .goldEggRadio').on('click', func
 	myAjax(option);
 });
 
+$('.transactionPannel .agencyTransaction-pannel .sure').on('click', function() {
+	var henEgg = $('.transactionPannel .agencyTransaction-pannel input:radio[name="henEgg"]:checked').val();
+	var saleEgg = $('.transactionPannel .agencyTransaction-pannel .saleEggNum input').val();
+	var price = $('.transactionPannel .agencyTransaction-pannel .price input').val();
+	var phone = $('.transactionPannel .agencyTransaction-pannel .phone input').val();
+	var pas = $('.transactionPannel .agencyTransaction-pannel .transactionPass input').val();
+	if(henEgg !== 'egg' && henEgg !== 'golden_egg') {
+		$('.popup').text('请选择哪种鸡蛋！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	if(saleEgg <= 0 || saleEgg === null || saleEgg === '') {
+		$('.popup').text('请正确填写可售鸡蛋！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	if(price === null || price === '') {
+		$('.popup').text('请输入单个价格！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	if(phone === null || phone === '') {
+		$('.popup').text('请输入手机号码！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	if(pas === null || pas === '') {
+		$('.popup').text('请输入交易密码！');
+		$('.popup').css('display','block');
+		setTimeout(function(){
+			$('.popup').css('display','none');
+		},3000);
+		return;
+	}
+	var goods = {};
+	if(henEgg === 'egg') {
+		goods = {
+			egg: saleEgg
+		};
+	}
+	if(henEgg === 'golden_egg') {
+		goods = {
+			golden_egg: saleEgg
+		};
+	}
+
+	var option = {
+		url: 'api/transactions/create',
+		type: 'POST',
+		data: {
+			coin: price,
+			phone: phone,
+			goods: goods,
+			pin: pas
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			$('.popup').text(result.message);
+			$('.popup').css('display','block');
+			setTimeout(function(){
+				$('.popup').css('display','none');
+			},3000);	
+		}
+	}
+
+	myAjax(option);
+
+});
+
+
 $('.transactionPannel .saleList-pannel').on('click', function(e) {
 	// console.log($(e.target)[0].className);
 	if($(e.target)[0].className !== 'saleList-pannel-buy') {
@@ -159,7 +267,7 @@ $('.transactionPannel .saleList-pannel').on('click', function(e) {
 			break;
 		}
 	}
-
+	alert(transactionId);
 	var option = {
 		url: 'api/transactions/buy',
 		type: 'POST',
@@ -171,6 +279,7 @@ $('.transactionPannel .saleList-pannel').on('click', function(e) {
 		complete: function(xhr) {
 		},
 		success: function(result) {
+			console.log(result);
 			$('.popup').text(result.message);
 			$('.popup').css('display','block');
 			setTimeout(function(){
@@ -296,9 +405,9 @@ $(".warehouse").on('click', function() {
 			$('.warehousePannel .item').eq(2).find('.i-num span').eq(1).text(result.data.profile.adventure_kit); 
 			$('.warehousePannel .item').eq(3).find('.i-num span').eq(1).text(result.data.profile.egg); 
 			$('.warehousePannel .item').eq(4).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
-			$('.warehousePannel .item').eq(5).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
-			$('.warehousePannel .item').eq(6).find('.i-num span').eq(1).text(result.data.profile.golden_egg); 
-			console.log(result);
+			$('.warehousePannel .item').eq(5).find('.i-num span').eq(1).text(result.data.profile.wild_goose_egg); 
+			$('.warehousePannel .item').eq(6).find('.i-num span').eq(1).text(result.data.profile.peacock_egg); 
+			// console.log(result);
 		}
 	}
 
@@ -334,6 +443,12 @@ $(".exchange").on('click', function(e) {
 			}
 			if(result.data.golden_egg.current) {
 				$('.exchangePannel .exchangeTable-goldEggprice').text(result.data.golden_egg.current);
+			}	
+			if(result.data.wild_goose_egg.current) {
+				$('.exchangePannel .exchangeTable-gooseEggPrice').text(result.data.egg.current);
+			}
+			if(result.data.peacock_egg.current) {
+				$('.exchangePannel .exchangeTable-peacockEggPrice').text(result.data.golden_egg.current);
 			}			
 		}
 	}
@@ -346,45 +461,32 @@ $('.exchangeTable-openEgg').on('click', function(e) {
 	// $('.popupOldPrice').fadeIn();
 	e.stopPropagation();
 
-	var option = {
-		url: 'api/henyard/eggs2coins/getrates',
-		beforeSend: function(xhr) {
-		},
-		complete: function(xhr) {
-		},
-		success: function(result) {
-			if(result.data.egg.length === 0) {
-				$('.popup').text('没有往期价格');
-				$('.popup').css('display','block');
-				setTimeout(function(){
-					$('.popup').css('display','none');
-				},3000);
-				return;
-			}
-
-			var eggPriceList = result.data.egg.history;
-			$('.popupOldPrice').fadeIn();
-			$('.popupOldPrice ul').html('');
-			for(var i = 0, j = eggPriceList.length; i < j; i++) {
-				var teml = '';
-				teml += '<li>';
-				teml += 	'<span class="time">' + eggPriceList[i][0].time + '</span>';
-				teml += 	'<span class="oldPrice">' + eggPriceList[i][0].rate + '</span>';
-				teml += '</li>';
-
-				$('.popupOldPrice ul').append(teml);
-			}
-		}
-	}
-	
-	myAjax(option);
+	showOldPrice('egg');
 
 });
-
 $('.exchangeTable-openGoldEgg').on('click', function(e) {
 	// $('.popupOldPrice').fadeIn();
 	e.stopPropagation();
 
+	showOldPrice('golden_egg');
+
+});
+$('.exchangeTable-openGooseEgg').on('click', function(e) {
+	// $('.popupOldPrice').fadeIn();
+	e.stopPropagation();
+
+	showOldPrice('wild_goose_egg');
+
+});
+$('.exchangeTable-openPeacockEgg').on('click', function(e) {
+	// $('.popupOldPrice').fadeIn();
+	e.stopPropagation();
+
+	showOldPrice('peacock_egg');
+
+});
+
+function showOldPrice(type) {
 	var option = {
 		url: 'api/henyard/eggs2coins/getrates',
 		beforeSend: function(xhr) {
@@ -393,7 +495,7 @@ $('.exchangeTable-openGoldEgg').on('click', function(e) {
 		},
 		success: function(result) {
 			// console.log(result.data);
-			if(result.data.golden_egg.length === 0) {
+			if(result.data[type].length === 0) {
 				$('.popup').text('没有往期价格');
 				$('.popup').css('display','block');
 				setTimeout(function(){
@@ -402,14 +504,14 @@ $('.exchangeTable-openGoldEgg').on('click', function(e) {
 				return;
 			}
 
-			var golden_eggPriceList = result.data.golden_egg.history;
+			var list = result.data[type].history;
 			$('.popupOldPrice').fadeIn();
 			$('.popupOldPrice ul').html('');
-			for(var i = 0, j = golden_eggPriceList.length; i < j; i++) {
+			for(var i = 0, j = list.length; i < j; i++) {
 				var teml = '';
 				teml += '<li>';
-				teml += 	'<span class="time">' + golden_eggPriceList[i][0].time + '</span>';
-				teml += 	'<span class="oldPrice">' + golden_eggPriceList[i][0].rate + '</span>';
+				teml += 	'<span class="time">' + list[i][0].time + '</span>';
+				teml += 	'<span class="oldPrice">' + list[i][0].rate + '</span>';
 				teml += '</li>';
 
 				$('.popupOldPrice ul').append(teml);
@@ -418,39 +520,28 @@ $('.exchangeTable-openGoldEgg').on('click', function(e) {
 	}
 	
 	myAjax(option);
-
-});
+}
 
 // 点击兑换
 $('.exchangePannel .exchangeEgg').on('click', function() {
-	var option = {
-		url: 'api/henyard/eggs2coins',
-		type: 'POST',
-		data: {
-			identity: 'egg',
-			num: 1
-		},
-		beforeSend: function(xhr) {
-		},
-		complete: function(xhr) {
-		},
-		success: function(result) {
-			$('.popup').text(result.message);
-			$('.popup').css('display','block');
-			setTimeout(function(){
-				$('.popup').css('display','none');
-			},2000);
-		}
-	}
-	
-	myAjax(option);
+	exchangeButton('egg');
 });
 $('.exchangePannel .exchangeGoldEgg').on('click', function() {
+	exchangeButton('golden_egg');
+});
+$('.exchangePannel .exchangeGooseEgg').on('click', function() {
+	exchangeButton('wild_goose_egg');
+});
+$('.exchangePannel .exchangePeacockEgg').on('click', function() {
+	exchangeButton('peacock_egg');
+});
+
+function exchangeButton(identity) {
 	var option = {
 		url: 'api/henyard/eggs2coins',
 		type: 'POST',
 		data: {
-			identity: 'golden_egg',
+			identity: identity,
 			num: 1
 		},
 		beforeSend: function(xhr) {
@@ -467,7 +558,7 @@ $('.exchangePannel .exchangeGoldEgg').on('click', function() {
 	}
 	
 	myAjax(option);
-});
+}
 
 
 // 关闭弹窗
@@ -645,7 +736,7 @@ function showResources() {
 			// 	});
 			// }
 
-			console.log(result);
+			// console.log(result);
 
 			if(result.data.sweep_chance_num > 0) {
 				$('.main .runs').css({
@@ -888,6 +979,7 @@ function sweep() {
 			$('.popup').css('display','block');
 			setTimeout(function(){
 				$('.popup').css('display','none');
+				window.location.assign("home.html");
 			},3000);
 		},
 		beforeSend: function(xhr) {
@@ -913,6 +1005,7 @@ function consideration() {
 			$('.popup').css('display','block');
 			setTimeout(function(){
 				$('.popup').css('display','none');
+				window.location.assign("home.html");
 			},3000);
 		},
 		beforeSend: function(xhr) {
@@ -968,6 +1061,7 @@ function cure() {
 			$('.popup').css('display','block');
 			setTimeout(function(){
 				$('.popup').css('display','none');
+				window.location.assign("home.html");
 			},3000);
 		},
 		beforeSend: function(xhr) {
@@ -1053,25 +1147,37 @@ $(function(){
 	// 购买商品
 	$('.m-shop .i-buy').on('click',function(){
 		var data = {};
-		if(this === $('.i-buy').eq(0)[0]) {
+		if(this === $('.m-shop .i-buy').eq(0)[0]) {
 			data = {
 				identity: 'medikit',
 				num: 1
 			};
 		}
-		if(this === $('.i-buy').eq(1)[0]) {
+		if(this === $('.m-shop .i-buy').eq(1)[0]) {
 			data = {
 				identity: 'fodder',
 				num: 1
 			};
 		}
-		if(this === $('.i-buy').eq(2)[0]) {
+		if(this === $('.m-shop .i-buy').eq(2)[0]) {
 			data = {
 				identity: 'adventure_kit',
 				num: 1
 			};
 		}
-		if(this === $('.i-buy').eq(5)[0]) {
+		if(this === $('.m-shop .i-buy').eq(3)[0]) {
+			data = {
+				identity: 'peacock',
+				num: 1
+			};
+		}
+		if(this === $('.m-shop .i-buy').eq(4)[0]) {
+			data = {
+				identity: 'wild_goose',
+				num: 1
+			};
+		}
+		if(this === $('.m-shop .i-buy').eq(5)[0]) {
 			return;
 		}
 
@@ -1080,6 +1186,7 @@ $(function(){
 			data: data,
 			type: 'POST',
 			success: function(result) {
+				// console.log(result);
 				if(result.status_code === 0) {
 					$('.s-success').text(result.message);
 					$('.s-success').css('display','block');

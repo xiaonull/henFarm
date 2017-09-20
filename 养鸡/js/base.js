@@ -5,6 +5,10 @@ function myAjax(option) {
 		url: domainName + option.url,
 		type: option.type || 'GET',
 		data: option.data,
+		dataType: option.dataType,
+		contentType: option.contentType,
+		processData: option.processData,
+		cache: option.cache,
 		success: function(result, status, xhr) {
 			if(result.status_code === 401) {
 				// alert("error");

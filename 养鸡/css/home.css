@@ -841,7 +841,7 @@ header {
   .popupOldPrice {
     display: none;
     position: absolute;
-    width: 10rem;
+    min-width: 10.5rem;
     height: 13rem;
     left: 50%;
     margin-left: -5rem;
@@ -857,6 +857,7 @@ header {
     overflow-y: scroll;
     z-index: 120;
     padding-bottom: 1rem;
+    font-size: 0.3rem;
   }
   .popupOldPrice ul li {
     display: block;
@@ -1635,7 +1636,7 @@ header {
   }
   .transactionTab .pannel .item-l {
     padding: 0.5rem;
-    width: 70%;
+    width: 75%;
     font-size: 0.3rem;
     line-height: 0.7rem;
     float: left;
@@ -1651,7 +1652,7 @@ header {
     display: none;
   }
   .transactionTab .pannel .item-r button {
-    padding: 0.6rem 0.4rem;
+    padding: 0.4rem 0.3rem;
     background-color: #76af20;
     border: none;
     color: #fff;
@@ -1719,4 +1720,17 @@ header {
   .transactionTab .agencyTransaction-pannel div input {
     width: 65%;
     margin-left: 5%;
+  }
+
+  .mainBgMusicCtrl {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-image: url('../img/home/music.png');
+    background-color: #29A770;
+    background-size: cover;
+    position: absolute;
+    top: 2.7rem;
+    right: 0.3rem;
+    z-index: 99;
   }
