@@ -130,7 +130,7 @@ function addTurntableText() {
 			if(all_awards.length > 0) {
 				$('.turntable .wheel-item').find('.wheel-itext').html('');
 				$('.turntableBgImg').attr({
-					src: 'img/dial/draw-bg.png',
+					src: result.data.background,
 				});
 			}
 			else {
@@ -149,10 +149,12 @@ function addTurntableText() {
 			// })();
 			// report('img/dial/draw-bg.png');
 
-			// for(var i = 0, j = all_awards.length; i < j; i++) {
-			// 	$('.turntable .wheel-item').eq(i).find('.wheel-itext').text(all_awards[i].name);
-			// 	$('.turntable .wheel-item').eq(i).find('.wheel-itext-num').text(all_awards[i].number);
-			// }
+			for(var i = 0, j = all_awards.length; i < j; i++) {
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext').text(all_awards[i].name);
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext').css('display', 'none');
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext-num').text(all_awards[i].number);
+				$('.turntable .wheel-item').eq(i).find('.wheel-itext-num').css('display', 'none');
+			}
 		}
 	}
 
