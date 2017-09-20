@@ -271,7 +271,7 @@ $('.transactionPannel .saleList-pannel').on('click', function(e) {
 			break;
 		}
 	}
-	alert(transactionId);
+	// alert(transactionId);
 	var option = {
 		url: 'api/transactions/buy',
 		type: 'POST',
