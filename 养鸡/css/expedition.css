@@ -126,3 +126,16 @@ body {
   width: 3.92rem;
   height: 1.28rem;
 }
+
+.mainBgMusicCtrl {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-image: url('../img/home/music.png');
+  background-color: #29A770;
+  background-size: cover;
+  position: absolute;
+  top: 2.7rem;
+  right: 0.3rem;
+  z-index: 99;
+}

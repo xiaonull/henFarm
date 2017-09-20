@@ -2,18 +2,22 @@
 (function() {
 	var musicFlag = true;
 	$('.mainBgMusicCtrl').on('click', function() {
+		var mainBgMusic = document.getElementById('mainBgMusic');
+		// console.log(mainBgMusic);
 		if(musicFlag) {
 			// 关闭音乐
-			$('.mainBgMusic').attr({
-				volume: '0'
-			});
+			// $('.mainBgMusic').attr({
+			// 	volume: '0'
+			// });
+			mainBgMusic.pause();
 			musicFlag = false;
 			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music-close.png")');
 		}else {
 			// 开启音乐
-			$('.mainBgMusic').attr({
-				volume: '70'
-			});
+			// $('.mainBgMusic').attr({
+			// 	volume: '70'
+			// });
+			mainBgMusic.play();
 			musicFlag = true;
 			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music.png")');
 		}

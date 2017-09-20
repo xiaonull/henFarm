@@ -36,7 +36,9 @@
 </head>
 
 <body>
-	<embed class="mainBgMusic" src="./music/mainMusic.ogg" autostart="true" loop="true" hidden="true"></embed>
+	<audio id="mainBgMusic" loop autoplay>
+		<source src="./music/mainMusic.ogg" type="audio/ogg">
+	</audio>
 	<div class="mainBgMusicCtrl"></div>
 	<header class="clearfix">
 		<div class="box-left">
@@ -92,7 +94,7 @@
 		</div>
 		<div class="m-right">
 			<!-- <img src="img/home/warehouse.jpg" class="warehouse" /> -->
-			<div class="warehouse">
+			<div>
 				<!-- <a href="warehouse.html"> -->
 				<img src="img/home/house.png" />
 				<!-- <span>仓库</span> -->
