@@ -253,8 +253,9 @@ header {
     float: left;
     top: -2rem;
     /*background-image: url('../img/home/waste.png');*/
-    background-size: contain;
-    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: bottom;
   }
   .main .runs div {
     transition: 20s all linear;
@@ -1095,11 +1096,14 @@ header {
       margin: auto;
       margin-top: 0.5rem;
     }
-    .mark .m-shop .s-buy .giftPackage-img .i-con img {
+    /*.mark .m-shop .s-buy .giftPackage-img .i-con img {
       width: 2rem;
       height: 2rem;
-      margin-top: 0.7rem;
-    }
+      margin-top: 0.5rem;
+    }*/
+    /*.mark .m-shop .s-buy .giftPackage-img .price {
+      margin-top: -0.8rem;
+    }*/
     .mark .m-shop .s-buy .item .i-con .i-num {
       text-align: center;
       line-height: 2;
@@ -1487,14 +1491,16 @@ header {
   /* 母鸡的气泡框 */
   .feedBubble {
     display: none;
-    position: absolute;
-    z-index: 200;
-    width: 90px;
+    /*position: absolute;*/
+    position: fixed;
+    z-index: 1000;
+    width: 80px;
     height: 40px;
     left: 5rem;
-    bottom: 60px;
+    bottom: 2.5rem;
     text-align: center;
-    font-weight: 600;
+    font-size: 0.4rem;
+    font-weight: 650;
     line-height: 18px;
     background-color: rgba(243, 243, 243, 0.5);
     border: 1px solid rgba(243, 243, 243, 0.8);

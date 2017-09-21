@@ -1,28 +1,33 @@
 // 控制背景音乐
+if(!localStorage.musicFlag) {
+	localStorage.musicFlag = 'open';
+}
+
 (function() {
-	var musicFlag = true;
+	var mainBgMusic = document.getElementById('mainBgMusic');
+	if(localStorage.musicFlag === 'close') {
+		// 关闭音乐
+		mainBgMusic.pause();
+		$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music-close.png")');
+	}
+
 	$('.mainBgMusicCtrl').on('click', function() {
 		var mainBgMusic = document.getElementById('mainBgMusic');
-		// console.log(mainBgMusic);
-		if(musicFlag) {
+		if(localStorage.musicFlag === 'open') {
 			// 关闭音乐
-			// $('.mainBgMusic').attr({
-			// 	volume: '0'
-			// });
 			mainBgMusic.pause();
-			musicFlag = false;
+			localStorage.musicFlag = 'close';
 			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music-close.png")');
 		}else {
 			// 开启音乐
-			// $('.mainBgMusic').attr({
-			// 	volume: '70'
-			// });
 			mainBgMusic.play();
-			musicFlag = true;
+			localStorage.musicFlag = 'open';
 			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music.png")');
 		}
 	});
 })();
+
+
 
 
 function Chicken(id) {
@@ -41,7 +46,7 @@ Chicken.prototype.move = function() {
 	});
 	this.timer = setInterval(function() {
 		var position = isRandomPosition();
-		
+
 
 		$(this.cla).animate(position, {
 			speed: 100,
@@ -441,7 +446,7 @@ $(".exchange").on('click', function(e) {
 		complete: function(xhr) {
 		},
 		success: function(result) {
-			// console.log(result);
+			console.log(result);
 			if(result.data.egg.current) {
 				$('.exchangePannel .exchangeTable-eggPrice').text(result.data.egg.current);
 			}
@@ -578,10 +583,12 @@ $('body').on('click', function(e) {
 $('.exchangePannel .s-close').on('click',function(){
 	$('.mark').css('display','none');
 	$('.mark .exchangePannel').css('display','none');
+	window.location.assign("home.html");
 });
 $('.exchangePannel .s-sure').on('click',function(){
 	$('.mark').css('display','none');
 	$('.mark .exchangePannel').css('display','none');
+	window.location.assign("home.html");
 });
 
 // 打开好友

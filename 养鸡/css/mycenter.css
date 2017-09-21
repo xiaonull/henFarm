@@ -519,6 +519,10 @@ div.date-record{
 
 .recommend .codeImg {
   display: inline-block;
+  width: 50%;
+  height: auto;
+  /*-webkit-user-select: all;
+  pointer-events: */
 }
 
 /* 鸡蛋转赠 */

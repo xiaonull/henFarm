@@ -1,4 +1,5 @@
 $(function(){
+
 	// 自动填写密码
 	if(localStorage.userName && localStorage.password) {
 		$('.login .username input').val(localStorage.userName); 
@@ -18,6 +19,23 @@ $(function(){
 		$('.register').css('display','block');
 		$('.prompt').css('display','none');
 	});
+
+	// 识别二维码跳转信息
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r !== null) {
+			return  unescape(r[2]);
+		} 
+		return null;
+	}
+	
+	var registerUrl = 'api/register';
+	var referrerPhone = GetQueryString('referrer');
+	if(referrerPhone !== null) {
+		registerUrl = 'api/register/referrer=' + referrerPhone;
+		$('.forget .toregister').click();
+	}
 	
 	
 	//	手机号码正则表达式
@@ -52,7 +70,7 @@ $(function(){
 			};
 
 			var option = {
-				url: 'api/register',
+				url: registerUrl,
 				data: data,
 				type: 'POST',
 				success: function(result) {
