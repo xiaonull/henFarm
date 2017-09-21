@@ -776,145 +776,104 @@ function showResources() {
 			var hens = result.data.hen_details;
 			// console.log(hens);
 			for(var i = 0, j = hens.length; i < j; i++) {
+				var img = '';
+				var state = '';
 				if(hens[i].is_grown === "false") {
 					// 生成小鸡
-					var n = Math.floor(Math.random() * 10 + 1);
-					var img = '';
-					if(n >= 0 && n <=2) {
-						img = '<img src="img/home/chook01.png" />';
-					}else if(n >= 3 && n <=5) {
-						img = '<img src="img/home/chook02.png" />';
+					state = '幼年期';
+					var n = Math.floor(Math.random() * 2 + 1);
+					if(n === 1) {
+						img = '<img class="hen' + i + '" src="img/home/chook01/chooktu01.png" />';
 					}else {
-						img = '<img src="img/home/chook04.png" />';
+						img = '<img class="hen' + i + '" src="img/home/chook02/chooktu01.png" />';
 					}
-
-					var templ = '';
-					templ += '<div class="run' + hens[i].id + '">';
-					templ += 	img;
-					templ += '</div>';
-
-					$(".main .runs").append(templ);
-					new Chicken(hens[i].id).move();
 				}else {
-					// 生成母鸡
-					var time = '-- -- --';
-					// if(hens[i].since_picked.length !== 0) {
-					// 	time = hens[i].since_picked.hour + ':' + hens[i].since_picked.minute + ':' + hens[i].since_picked.second;	
-					// 	// console.log(time);					
-					// }
+					state = '成年期';
+					img = '<img class="hen' + i + '" src="img/home/chook03/chooktu01.png" />';
+				}
 
-					if(hens[i].time_to_pick.length !== 0) {
-						time = hens[i].time_to_pick.hour + ':' + hens[i].time_to_pick.minute + ':' + hens[i].time_to_pick.second;	
-						// console.log(time);					
-					}
+				var time = '-- -- --';
 
-					// console.log(hens[i].since_picked);
-					var templ = '';
-					templ += '<div class="run' + hens[i].id + '">';
-					templ += 	'<div class="container">';
-					templ +=        '<div class="bubble">';
-					templ +=        	'<p>成年期</p>';
-					templ +=        	'<p>' + hens[i].lifetime +'</p>';
-					templ +=        	'<p>' + hens[i].is_sick === "false" ? '生病' : '健康' +'</p>';
-					templ +=        	'<p class="clock">' + time +'</p>';
-					templ +=        '</div>';
-					templ += 		'<img src="img/home/chook03.png" />';
-					templ += 	'</div>';
-					templ += '</div>';
+				if(hens[i].time_to_pick.length !== 0) {
+					time = hens[i].time_to_pick.hour + ':' + hens[i].time_to_pick.minute + ':' + hens[i].time_to_pick.second;	
+				}
 
-					$(".main .runs").append(templ);
-					new Chicken(hens[i].id).move();
-					
-					if(hens[i].since_picked.length !== 0) {
-						(function(index) {
-							henClock(index);
-						})(hens[i].id);
-					}
+				var templ = '';
+				templ += '<div class="run run' + hens[i].id + '">';
+				templ += 	'<div class="container">';
+				templ +=        '<div class="bubble">';
+				templ +=        	'<p>' + state + '</p>';
+				templ +=        	'<p>' + hens[i].lifetime +'</p>';
+				templ +=        	'<p>' + hens[i].is_sick === "false" ? '生病' : '健康' +'</p>';
+				templ +=        	'<p class="clock">' + time +'</p>';
+				templ +=        '</div>';
+				templ += 		img;
+				templ += 	'</div>';
+				templ += '</div>';
 
-					function henClock(i) {
-						// 倒计时
-						setInterval(function() {
-							var runNum = '.run' + i;
-							var timeList = $(".main .runs").find(runNum).find(".clock").text().split(':');
-							var hour = timeList[0];
-							var minute = timeList[1];
-							var second = timeList[2];
-							second = parseInt(second);
-							minute = parseInt(minute);
-							hour = parseInt(hour);
-							second --;
-							if(second === 0){
-								minute --;
-								second = '59';
-							}else if(second < 10) {
-								second = '0' + second.toString();
-							}
-							
-							if(minute === 0) {
-								hour --;
-								minute = '59';
-							}else if(minute < 10) {
-								minute = '0' + minute.toString();
-							}
-							
-							if(hour === 0) {
-								hour = '00';
-								minute = '00';
-								second = '00';
-								return;
-							}else if(hour < 10) {
-								hour = '0' + hour.toString();
-							}
-							
-							var clock = hour + ':' + minute + ':' + second;
-							$(".main .runs").find(runNum).find(".clock").text(clock);
-						}, 1000);
-					}
+				$(".main .runs").append(templ);
+				new Chicken(hens[i].id).move();
 
-					// function henClock(i) {
-					// 	// 倒计时
-					// 	setInterval(function() {
-					// 		var runNum = '.run' + i;
-					// 		var timeList = $(".main .runs").find(runNum).find(".clock").text().split(':');
-					// 		var hour = timeList[0];
-					// 		var minute = timeList[1];
-					// 		var second = timeList[2];
-					// 		second = parseInt(second);
-					// 		minute = parseInt(minute);
-					// 		hour = parseInt(hour);
-					// 		second ++;
-					// 		if(second < 10) {
-					// 			second = '0' + second.toString();
-					// 		}else if(second >= 60) {
-					// 			minute ++;
-					// 			second = '00';
-					// 		}
-					// 		if(minute < 10) {
-					// 			minute = '0' + minute.toString();
-					// 		}else if(minute >= 60) {
-					// 			hour ++;
-					// 			minute = '00';
-					// 		}
-					// 		if(hour < 10) {
-					// 			hour = '0' + hour.toString();
-					// 		}else if(hour >= 24) {
-					// 			hour = '00';
-					// 		}
-					// 		var clock = hour + ':' + minute + ':' + second;
-					// 		$(".main .runs").find(runNum).find(".clock").text(clock);
-					// 	}, 1000);
-					// }
+				if(hens[i].since_picked.length !== 0) {
+					(function(index) {
+						henClock(index);
+					})(hens[i].id);
+				}
 
+				function henClock(i) {
+					// 倒计时
+					setInterval(function() {
+						var runNum = '.run' + i;
+						var timeList = $(".main .runs").find(runNum).find(".clock").text().split(':');
+						var hour = timeList[0];
+						var minute = timeList[1];
+						var second = timeList[2];
+						second = parseInt(second);
+						minute = parseInt(minute);
+						hour = parseInt(hour);
+						second --;
+						if(second === 0){
+							minute --;
+							second = '59';
+						}else if(second < 10) {
+							second = '0' + second.toString();
+						}
+
+						if(minute === 0) {
+							hour --;
+							minute = '59';
+						}else if(minute < 10) {
+							minute = '0' + minute.toString();
+						}
+
+						if(hour === 0) {
+							hour = '00';
+							minute = '00';
+							second = '00';
+							return;
+						}else if(hour < 10) {
+							hour = '0' + hour.toString();
+						}
+
+						var clock = hour + ':' + minute + ':' + second;
+						$(".main .runs").find(runNum).find(".clock").text(clock);
+					}, 1000);
 				}
 			}
 
-			// 生成小鸡
-			// var aChickens = document.querySelectorAll('.runs div');
-			// for(var i = 0, len = aChickens.length; i < len; i++) {
-
-			// 	new Chicken(aChickens[i]).move();
-			// }
-
+			$('.runs .run img').on('click', function(e) {
+				var runsList = $('.runs .run img');
+				// console.log($(e.target)[0]);
+				for(var i = 0, j = runsList.length; i < j; i++) {
+					if($(e.target)[0] === $('.runs .run img').eq(i)[0]) {
+						$('.runs .run img').eq(i).parent().find('.bubble').css('display', 'block');
+						setTimeout(function() {
+							$('.runs .run img').eq(i).parent().find('.bubble').css('display', 'none');
+						}, 3000);
+						return;
+					}
+				}
+			});			
 		},
 		beforeSend: function(xhr) {
 		},
@@ -923,8 +882,38 @@ function showResources() {
 	};
 
 	myAjax(option);
-
 }
+
+// 小鸡切换动画
+setInterval(function() {
+	var runsList = $('.runs .run img');
+	for(var i = 0, j = runsList.length; i < j; i++) {
+		if($(runsList[i]).attr('src') === 'img/home/chook01/chooktu01.png') {
+			$(runsList[i]).attr('src', 'img/home/chook01/chooktu02.png');
+		}else if($(runsList[i]).attr('src') === 'img/home/chook01/chooktu02.png') {
+			$(runsList[i]).attr('src', 'img/home/chook01/chooktu03.png');
+		}else if($(runsList[i]).attr('src') === 'img/home/chook01/chooktu03.png') {
+			$(runsList[i]).attr('src', 'img/home/chook01/chooktu01.png');
+		}
+
+		if($(runsList[i]).attr('src') === 'img/home/chook02/chooktu01.png') {
+			$(runsList[i]).attr('src', 'img/home/chook02/chooktu02.png');
+		}else if($(runsList[i]).attr('src') === 'img/home/chook02/chooktu02.png') {
+			$(runsList[i]).attr('src', 'img/home/chook02/chooktu03.png');
+		}else if($(runsList[i]).attr('src') === 'img/home/chook02/chooktu03.png') {
+			$(runsList[i]).attr('src', 'img/home/chook02/chooktu01.png');
+		}
+		
+		if($(runsList[i]).attr('src') === 'img/home/chook03/chooktu01.png') {
+			$(runsList[i]).attr('src', 'img/home/chook03/chooktu02.png');
+		}else if($(runsList[i]).attr('src') === 'img/home/chook03/chooktu02.png') {
+			$(runsList[i]).attr('src', 'img/home/chook03/chooktu03.png');
+		}else if($(runsList[i]).attr('src') === 'img/home/chook03/chooktu03.png') {
+			$(runsList[i]).attr('src', 'img/home/chook03/chooktu01.png');
+		}	
+	}
+}, 500);
+
 
 // 显示公告
 function showNotice() {

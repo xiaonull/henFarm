@@ -1,143 +1,155 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8" />
-		<title>富乐农庄--大转盘</title>
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
-		<meta content="telephone=no" name="format-detection">
-		<!-- uc强制竖屏 -->
-		<meta name="screen-orientation" content="portrait">
-		<!-- QQ强制竖屏 -->
-		<meta name="x5-orientation" content="portrait">
-		<!-- UC强制全屏 -->
-		<meta name="full-screen" content="yes">
-		<!-- QQ强制全屏 -->
-		<meta name="x5-fullscreen" content="true">
-		<!-- UC应用模式 -->
-		<meta name="browsermode" content="application">
-		<!-- QQ应用模式 -->
-		<meta name="x5-page-mode" content="app">
-		<!-- windows phone 点击无高光 -->
-		<meta name="msapplication-tap-highlight" content="no">
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate.css" />
-		<link rel="stylesheet" href="css/dial.css" />
-		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-		<script type="text/javascript" src="js/awardRotate.js"></script>		
-		<script>
-			(function() {
-				var html = document.documentElement;
-				var hWidth = html.getBoundingClientRect().width;
-				html.style.fontSize = hWidth / 15 + "px";
-			})();
-		</script>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<title>富乐山庄--大转盘</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+	<meta content="telephone=no" name="format-detection">
+	<!-- uc强制竖屏 -->
+	<meta name="screen-orientation" content="portrait">
+	<!-- QQ强制竖屏 -->
+	<meta name="x5-orientation" content="portrait">
+	<!-- UC强制全屏 -->
+	<meta name="full-screen" content="yes">
+	<!-- QQ强制全屏 -->
+	<meta name="x5-fullscreen" content="true">
+	<!-- UC应用模式 -->
+	<meta name="browsermode" content="application">
+	<!-- QQ应用模式 -->
+	<meta name="x5-page-mode" content="app">
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.css" />
+	<link rel="stylesheet" href="css/dial.css" />
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="js/awardRotate.js"></script>		
+	<script>
+		(function() {
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth / 15 + "px";
+		})();
+	</script>
+</head>
 
-	<body>
-		<header class="header"><img src="img/dial/draw-logo.png" alt="" /></header>
-		<section class="main">
-			<div class="turntable">	<!--转盘-->				
-				<div class="rotate wheel-list" id="rotate">
-					<!-- <img id="rotate" src="img/dial/draw-bg.png"> -->
-					<div class="wheel-item wheel-item-1">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
+<body>
+	<div class="openDialRecord">中奖纪录</div>
+	<div class="dialRecordPannel">
+		<div class="box-bt01"><img src="img/dial/box-bt08.png" /></div>
+		<div class="r-close"><img src="img/expedition/close.png" alt="" /></div>
+		<div class="recordsContainer">
+			<ul>
+				<!-- <li class="clearfix">
+					<span class="name">大礼包 * 1</span><span class="time">2017-09-21 14:13:15</span>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+	<header class="header"><img src="img/dial/draw-logo.png" alt="" /></header>
+	<section class="main">
+		<div class="turntable">	<!--转盘-->				
+			<div class="rotate wheel-list" id="rotate">
+				<!-- <img id="rotate" src="img/dial/draw-bg.png"> -->
+				<div class="wheel-item wheel-item-1">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
 					</div>
-					<div class="wheel-item wheel-item-2">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
-					</div>
-					<div class="wheel-item wheel-item-3">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
-					</div>
-					<div class="wheel-item wheel-item-4">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
-					</div>
-					<div class="wheel-item wheel-item-5">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
-					</div>
-					<div class="wheel-item wheel-item-6">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
-					</div>
-					<div class="wheel-item wheel-item-7">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
-					</div>
-					<div class="wheel-item wheel-item-8">
-						<div class="wheel-icontent">
-							<p class="wheel-iicon">
-								<i class="icono-headphone"></i>
-							</p>
-							<p class="wheel-itext">空</p>
-							<p class="wheel-itext-num"></p>
-						</div>
-					</div>
-					<img class="turntableBgImg" src="./img/dial/draw-bg.png">
 				</div>
-				<div class="pointer"><img src="img/dial/draw.png" alt="pointer"></div>				
-			</div>
-			<div class="turntable-bottom"><img src="img/dial/column.png" alt="" /></div>
-			<div class="rules">
-				<div class="ruleimg"><img src="img/dial/rules.png"/></div>
-			</div>
-			<div class="rulestext">如有实物中奖，请到个人中心-个人资料完善收货地址</div>
-		</section>
-		<!--弹窗-->
-		<section class="mark">
-			<div class="box">
-				<div class="close"><img src="img/dial/close.png"/></div>
-				<div class="award">
-					<p class="award-top"></p>
-					<p class="award-bottom">恭喜获得</p>
-					<img class="gift" src="" alt="">
+				<div class="wheel-item wheel-item-2">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
+					</div>
 				</div>
-				<div class="sure">我知道了</div>
+				<div class="wheel-item wheel-item-3">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
+					</div>
+				</div>
+				<div class="wheel-item wheel-item-4">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
+					</div>
+				</div>
+				<div class="wheel-item wheel-item-5">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
+					</div>
+				</div>
+				<div class="wheel-item wheel-item-6">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
+					</div>
+				</div>
+				<div class="wheel-item wheel-item-7">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
+					</div>
+				</div>
+				<div class="wheel-item wheel-item-8">
+					<div class="wheel-icontent">
+						<p class="wheel-iicon">
+							<i class="icono-headphone"></i>
+						</p>
+						<p class="wheel-itext">空</p>
+						<p class="wheel-itext-num"></p>
+					</div>
+				</div>
+				<img class="turntableBgImg" src="./img/dial/draw-bg.png">
 			</div>
-		</section>
-		
-		<section class="animated zoomIn prompt"></section>
+			<div class="pointer"><img src="img/dial/draw.png" alt="pointer"></div>				
+		</div>
+		<div class="turntable-bottom"><img src="img/dial/column.png" alt="" /></div>
+		<div class="rules">
+			<div class="ruleimg"><img src="img/dial/rules.png"/></div>
+		</div>
+		<div class="rulestext">如有实物中奖，请到个人中心-个人资料完善收货地址</div>
+	</section>
+	<!--弹窗-->
+	<section class="mark">
+		<div class="box">
+			<div class="close"><img src="img/dial/close.png"/></div>
+			<div class="award">
+				<p class="award-top"></p>
+				<p class="award-bottom">恭喜获得</p>
+				<img class="gift" src="" alt="">
+			</div>
+			<div class="sure">我知道了</div>
+		</div>
+	</section>
 
-	</body>
-	<script src="js/base.js"></script>
-	<script type="text/javascript" src="js/dial.js"></script>
+	<section class="animated zoomIn prompt"></section>
+
+</body>
+<script src="js/base.js"></script>
+<script type="text/javascript" src="js/dial.js"></script>
 </html>

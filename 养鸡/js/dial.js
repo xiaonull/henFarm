@@ -108,6 +108,34 @@ $(function() {
 		$('.mark').css('display','none');
 		// window.location.assign("home.html");
 	});
+
+	$('.openDialRecord').on('click', function(){
+		$('.dialRecordPannel').css('display', 'block');
+		$('.dialRecordPannel .recordsContainer ul').html('');
+
+		var option = {
+			url: 'api/henyard/luckywheel/records',
+			beforeSend: function(xhr) {
+			},
+			complete: function(xhr) {
+			},
+			success: function(result) {
+				// console.log(result);
+				var list = [];
+				list = result.data;
+				for(var i = 0, j = list.length; i < j; i++) {
+					$('.dialRecordPannel .recordsContainer ul').append((new giftItem(list[i])).template);
+				}
+			}
+		}
+
+		myAjax(option);
+
+	});
+
+	$('.dialRecordPannel .r-close').on('click', function() {
+		$('.dialRecordPannel').css('display', 'none');
+	});
 	
 
 });
@@ -115,6 +143,15 @@ $(function() {
 // function rnd(n, m) {
 // 	return Math.floor(Math.random() * (m - n + 1) + n)
 // }
+
+function giftItem(data) {
+	var templ = '';
+	templ += '<li class="clearfix">';
+	templ += 	'<span class="name">' + data.name + '</span><span class="time">' + data.time + '</span>';
+	templ += '</li>';
+
+	this.template = templ;
+}
 
 
 function addTurntableText() {

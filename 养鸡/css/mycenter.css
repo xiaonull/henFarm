@@ -96,7 +96,7 @@ header.fixed {
   border: none;
   border-radius: 1rem 0 0 1rem;
   padding-left: 0.5rem;
-  margin-top: 0.2rem;
+  /*margin-top: 0.2rem;*/
 }
 
 .arrows-right{
@@ -299,6 +299,24 @@ div.date-record{
   width: 60%;
 }
 
+.profile select {
+  /*width: 9rem;*/
+  height: 1.5rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  /*width: 60%;*/
+}
+
+.profile select option {
+ width: 10rem;
+}
+
 .profile input::-webkit-input-placeholder{
   font-size: 16px;
   font-weight: 600;
@@ -359,6 +377,9 @@ div.date-record{
   position: absolute;
   left: 2.4rem;
   top: 7rem;
+}
+input[type="file"] {
+ display: none; 
 }
 
 /* 开发农场 */
@@ -634,4 +655,33 @@ div.date-record{
   font-weight: 600;
   color: #fff;
   border: none;
+}
+
+.modal label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  float: left;
+  width: 30%;
+  margin-top: 0.2rem;
+}
+.modal input {
+  width: 9rem;
+  height: 1.2rem;
+  padding-left: 15px;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #D5D5D5;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 60%;
+}
+.modal .modal-body {
+  height: 2.5rem;
+}
+
+.prompt {
+  top: 9rem;
 }

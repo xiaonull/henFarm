@@ -85,6 +85,42 @@ function uploadHeader() {
 	myAjax(option);
 }
 
+$('.withdrawalsBtn').on('click', function(event) {
+	event.preventDefault();
+	$('#myModal').modal({
+		keyboard: true
+	});
+});
+
+var prompt = $('.prompt');  
+$('.withdrawalsCoinBtn').on('click', function(event) {
+	event.preventDefault();
+	var num = $('.num').val();
+	if(num === '' || num === null || num === '0') {
+		prompt.show().delay(2000).hide(300);
+		prompt.html("请输入提取数额！");    
+		return;
+	}
+
+	var option = {
+		url: 'api/personal/coin2cash',
+		type: 'POST',
+		data: {
+			number: num
+		},
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {
+		},
+		success: function(result) {
+			prompt.show().delay(2000).hide(300);
+			prompt.html(result.message);  
+		}
+	}
+
+	myAjax(option);
+	
+});
 
 
 // // 初始化Web Uploader

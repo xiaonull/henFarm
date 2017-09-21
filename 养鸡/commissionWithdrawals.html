@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>富乐农庄--交易大厅</title>
+    <title>富乐山庄--交易大厅</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
     <meta content="telephone=no" name="format-detection">       
     <meta name="screen-orientation" content="portrait">     
@@ -13,6 +13,9 @@
     <meta name="x5-page-mode" content="app">        
     <meta name="msapplication-tap-highlight" content="no">
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/modal.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
     <link rel="stylesheet" href="css/mycenter.css" />
     <link rel="stylesheet" href="css/hts-tradingcenter.css" />
     
@@ -26,24 +29,77 @@
         .date-record {
             margin-left: 0.5rem;
         }
-    </style>
+        .coinNum {
+            text-align: center;
+            font-size: 0.6rem;
+            border-bottom: 1px solid #E6E6E6;
+            padding-bottom: 0.3rem;
+        }
+        .coinNum span {
+            color: #76af20;
+        }
+        .withdrawals {
+            font-size: 0.6rem;
+            line-height: 0.6rem;
+        }
+        .modal label {
+            font-size: 16px;
+            font-weight: 600;
+            display: block;
+            float: left;
+            width: 30%;
+            margin-top: 0.2rem;
+        }
+        .modal input {
+            width: 9rem;
+            height: 1.2rem;
+            padding-left: 15px;
+            line-height: 1.2rem;
+            border-radius: 0.5rem;
+            border: 2px solid #D5D5D5;
+            position: relative;
+            overflow: hidden;
+            display: block;
+            float: left;
+            width: 60%;
+        }
+        .modal .modal-body {
+            height: 2.5rem;
+        }
+        .prompt {
+          display: none;
+          width: 10rem;
+          height: 2.3rem;
+          line-height: 2.3rem;
+          margin: auto;
+          text-align: center;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.5);
+          border-radius: 0.6rem;
+          font-size: 0.56rem;
+          position: absolute;
+          left: 2.4rem;
+          top: 9rem;
+      }
+  </style>
 
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script>
-        (function() {
-            var html = document.documentElement;
-            var hWidth = html.getBoundingClientRect().width;
-            html.style.fontSize = hWidth / 15 + "px";
-        })();
-    </script>
+  <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+  <script>
+    (function() {
+        var html = document.documentElement;
+        var hWidth = html.getBoundingClientRect().width;
+        html.style.fontSize = hWidth / 15 + "px";
+    })();
+</script>
 </head>
 <body>
     <header>
         <a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>
         佣金提现
-        <!-- <button class="arrows-r">出售</button> -->
+        <button class="arrows-r withdrawals">提现</button>
     </header>
     <div class="do-record">
+        <div class="coinNum">您有佣金：<span></span> 待提现</div>
         <nav class="tradingNav">
             <ul>
                 <li class="active">
@@ -75,9 +131,37 @@
            </section>
        </div>
    </div>
-   <script src="js/base.js"></script>
-   <script type="text/javascript" src="js/hts-tradingcenter.js"></script>
-   <script type="text/javascript">
+   <!-- 模态框（Modal） -->
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal" 
+                        aria-hidden="true">×
+                    </button> -->
+                    <h4 class="modal-title" id="myModalLabel">
+                        提取佣金
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <label>数量：</label><input class="num" type="number" name="num" placeholder="" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" 
+                    data-dismiss="modal">关 闭
+                </button>
+                <button type="button" class="btn btn-primary withdrawalsBtn">
+                    提 现
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<section class="animated zoomIn prompt"></section>
+<script src="js/base.js"></script>
+<script type="text/javascript" src="js/modal.min.js"></script>
+<script type="text/javascript" src="js/hts-tradingcenter.js"></script>
+<script type="text/javascript">
     function FrientList(data) {
         var templ = '';
         templ += '<div class="do-record">';
@@ -111,7 +195,7 @@
             if(result.data.lv3) {
                 lv3 = result.data.lv3;
             }
-                                  
+
             // console.log(result);
             for(var i = 0, j = lv1.length; i < j; i++) {
                 $(".container").eq(0).append((new FrientList(lv1[i])).template);
@@ -126,6 +210,59 @@
     }
 
     myAjax(option);
+    
+    var option = {
+        url: 'api/personal/profile',
+        beforeSend: function(xhr) {
+        },
+        complete: function(xhr) {
+        },
+        success: function(result) {
+            $('.coinNum span').html(result.data.profile.rebate);
+        }
+    }
+
+    myAjax(option);
+
+
+    $('.withdrawals').on('click', function(event) {
+        event.preventDefault();
+        $('#myModal').modal({
+            keyboard: true
+        });
+    });
+
+    var prompt = $('.prompt');  
+
+    $('.withdrawalsBtn').on('click', function(event) {
+        event.preventDefault();
+        var num = $('.num').val();
+        if(num === '' || num === null || num === '0') {
+            prompt.show().delay(2000).hide(300);
+            prompt.html("请输入提取数额！");    
+            return;
+        }
+
+        var option = {
+            url: 'api/personal/rebate2coin',
+            type: 'POST',
+            data: {
+                number: num
+            },
+            beforeSend: function(xhr) {
+            },
+            complete: function(xhr) {
+            },
+            success: function(result) {
+                prompt.show().delay(2000).hide(300);
+                prompt.html(result.message);  
+            }
+        }
+
+        myAjax(option);
+
+
+    });
 
 
 </script>

@@ -52,6 +52,7 @@ $(function(){
 			complete: function(xhr) {
 			},
 			success: function(result) {
+				console.log(result);
 				var list = [];
 				list = result.data.records;
 				$(".mark .jungleRecords").html('');
@@ -83,7 +84,7 @@ function Jungle(data) {
 	templ += 	'<span class="time">' + time + '</span> ';
 	templ += 	'<span class="success">探险成功</span> ';
 	if(data.item !== '') {
-		templ += 	'<span class="gold">获得' + data.item + '<i>' + data.num + '</i></span>';
+		templ += 	'<span class="gold">获得' + data.item + '<i> x ' + data.num + '</i></span>';
 	}
 	templ += '</li>';
 

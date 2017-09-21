@@ -6,6 +6,76 @@ html {
   background-color: #ffffcd;
   overflow-x: hidden;
 }
+
+.openDialRecord {
+  position: absolute;
+  top: 4.5rem;
+  z-index: 100;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #54CC35;
+  padding: 0.6rem 1rem 0.6rem 0.5rem;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.dialRecordPannel {
+  display: none;
+  width: 13.7rem;
+  height: 17rem;
+  margin: auto;
+  background-image: url(../img/expedition/box-bg.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  overflow: hidden;
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  margin-left: -6.85rem;
+}
+.recordsContainer {
+  height: 13rem;
+  padding: 0.7rem;
+  overflow-y: scroll;
+}
+.recordsContainer .clearfix {
+  overflow: hidden;
+}
+.recordsContainer li {
+  font-size: 0.6rem;
+}
+.recordsContainer li .name {
+  float: left;
+}
+.recordsContainer li .time {
+  float: right;
+}
+
+
+.dialRecordPannel .box-bt01 {
+  width: 10rem;
+  height: 2.6rem;
+  margin: auto;
+  margin-top: -1.2rem;
+}
+.dialRecordPannel .box-bt01 img {
+  width: 100%;
+  height: 100%;
+}
+.dialRecordPannel .r-close {
+  width: 1.2rem;
+  height: 1.2rem;
+  position: absolute;
+  right: 0rem;
+  top: 0.6rem;
+}
+.dialRecordPannel .r-close img {
+  width: 100%;
+  height: 100%;
+}
+
 .header {
   width: 100%;
   height: 16.36rem;

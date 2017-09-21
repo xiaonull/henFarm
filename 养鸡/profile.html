@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>富乐农庄--个人中心</title>
+	<title>富乐山庄--个人中心</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
 	<meta content="telephone=no" name="format-detection">		
 	<meta name="screen-orientation" content="portrait">		
@@ -14,43 +14,79 @@
 	<meta name="msapplication-tap-highlight" content="no">
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" href="css/mycenter.css" />
-	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-	<script>
-		(function() {
-			var html = document.documentElement;
-			var hWidth = html.getBoundingClientRect().width;
-			html.style.fontSize = hWidth / 15 + "px";
-		})();
-	</script>
-</head>
-<body>
-	<header class="fixed"><a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>个人资料</header>
-	<div class="container profileContainer">
-		<div class="do-record">
-			<form action="" method="post" class="profile">
-				<div class="user">
-					<label for="user">登录账户</label><input type="text" name="user" placeholder="系统推荐" maxlength="11" disabled />
-				</div>
-				<div class="name">
-					<label for="name">昵 称</label><input type="text" name="name" placeholder="" disabled />
-				</div>
-				<div class="trueName">
-					<label for="trueName">姓名</label><input type="text" name="trueName" placeholder="" />
-				</div>
-				<div class="phone">
-					<label for="phone">手机号</label><input type="number" name="phone" placeholder="" />
-				</div>
-				<div class="address">
-					<label for="address">地 址</label><input type="text" name="address" placeholder="" />
-				</div>
-				<div class="confirmSubmit">
-					<input type="submit" class="confirmSubmit-btn" value="确认修改" />
-				</div>
-			</form>
-			<section class="animated zoomIn prompt"></section>
+	<style type="text/css">
+		.sendCode {
+			min-width: 3.5rem;
+			height: 1.3rem;
+			background-color: #fff;
+			border-color: #A8A8A8;
+			border-radius: 1.2rem;
+			/*padding-left: 0.5rem;*/
+			text-align: center;
+			font-size: 0.56rem;
+			color: #000;
+			float: left;
+			margin-left: 0.3rem;
+			margin-top: -0.15rem;
+		}</style>
+		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+		<script>
+			(function() {
+				var html = document.documentElement;
+				var hWidth = html.getBoundingClientRect().width;
+				html.style.fontSize = hWidth / 15 + "px";
+			})();
+		</script>
+	</head>
+	<body>
+		<header class="fixed"><a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>个人资料</header>
+		<div class="container profileContainer">
+			<div class="do-record">
+				<form action="" method="post" class="profile">
+					<div class="user">
+						<label for="user">登录账户</label><input type="text" name="user" placeholder="系统推荐" maxlength="11" disabled />
+					</div>
+					<div class="name">
+						<label for="name">昵 称</label><input type="text" name="name" placeholder="" disabled />
+					</div>
+					<div class="trueName">
+						<label for="trueName">姓名</label><input type="text" name="trueName" placeholder="" />
+					</div>
+					<div class="phone">
+						<label for="phone">手机号</label><input type="number" name="phone" placeholder="" />
+					</div>
+					<div class="address">
+						<label for="address">地 址</label><input type="text" name="address" placeholder="" />
+					</div>
+					<div class="bankId">
+						<label for="bankId">银 行</label>
+						<select name="bankId">
+							<!-- <option value="volvo">Volvo</option> -->
+						</select>
+					</div>
+					<div class="bankNum">
+						<label for="bankNum">银行卡号</label><input type="text" name="bankNum" placeholder="" />
+					</div>
+					<div class="bankName">
+						<label for="bankName">支行名称</label><input type="text" name="bankName" placeholder="" />
+					</div>
+					<div class="province">
+						<label for="province">开户所在省</label><input type="text" name="province" placeholder="广东、内蒙古、北京...." />
+					</div>
+					<div class="city">
+						<label for="city">开户所在市</label><input type="text" name="city" placeholder="广州、南宁、北京...." />
+					</div>
+					<div class="code">
+						<label><button class="sendCode">发送验证码</button></label><input class="codeInput" type="text" name="password" placeholder="请输入验证码" />
+					</div>
+					<div class="confirmSubmit">
+						<input type="submit" class="confirmSubmit-btn" value="确认修改" />
+					</div>
+				</form>
+				<section class="animated zoomIn prompt"></section>
+			</div>
 		</div>
-	</div>
-	<script src="js/base.js"></script>
-	<script type="text/javascript" src="js/profile.js"></script>
-</body>
-</html>
+		<script src="js/base.js"></script>
+		<script type="text/javascript" src="js/profile.js"></script>
+	</body>
+	</html>

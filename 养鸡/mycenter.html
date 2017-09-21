@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>富乐农庄--个人中心</title>
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
-		<meta content="telephone=no" name="format-detection">		
-		<meta name="screen-orientation" content="portrait">		
-		<meta name="x5-orientation" content="portrait">	
-		<meta name="full-screen" content="yes">		
-		<meta name="x5-fullscreen" content="true">	
-		<meta name="browsermode" content="application">		
-		<meta name="x5-page-mode" content="app">		
-		<meta name="msapplication-tap-highlight" content="no">
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
-		<link rel="stylesheet" href="css/mycenter.css" />
-		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-		<script>
-			(function() {
-				var html = document.documentElement;
-				var hWidth = html.getBoundingClientRect().width;
-				html.style.fontSize = hWidth / 15 + "px";
-			})();
-		</script>
-	</head>
-	<body>
-		<header>富乐农庄--个人中心</header>
-		<section class="main">
-			<div class="banner clearfix">
-				<div class="b-left">
+<head>
+	<meta charset="utf-8" />
+	<title>富乐山庄--个人中心</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+	<meta content="telephone=no" name="format-detection">		
+	<meta name="screen-orientation" content="portrait">		
+	<meta name="x5-orientation" content="portrait">	
+	<meta name="full-screen" content="yes">		
+	<meta name="x5-fullscreen" content="true">	
+	<meta name="browsermode" content="application">		
+	<meta name="x5-page-mode" content="app">		
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/modal.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.css" />
+	<link rel="stylesheet" href="css/mycenter.css" />
+	<style type="text/css">
+		hr {
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+			border-top: 1px solid #d8d8d8;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script>
+		(function() {
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth / 15 + "px";
+		})();
+	</script>
+</head>
+<body>
+	<header>富乐山庄
+--个人中心</header>
+	<section class="main">
+		<div class="banner clearfix">
+			<div class="b-left">
 				<form id="avatar">
 					<p class="photo">
 						<input type="file" name="avatar" id="userimg" hidden="true" value="" onchange="uploadHeader()" />
 						<label for="userimg"></label>
 					</p>
-					</form>
-					<div class="username"></div>
-					<div class="userid">我的ID：</div>
-				</div>
-					<div class="b-right">
-						<div class="statistic">
-						<li>总量：</li>
-						<li>鸡蛋：</li>
-						<li>金蛋：</li><button class="withdrawalsBtn">提现</button>
-						<li>金币：</li>
-						<li>医疗：</li>
-						<li>饲料：</li>
-					</div>
+				</form>
+				<div class="username"></div>
+				<div class="userid">我的ID：</div>
+			</div>
+			<div class="b-right">
+				<div class="statistic">
+					<li>总量：</li>
+					<li>鸡蛋：</li>
+					<li>金蛋：</li><button class="withdrawalsBtn">提现</button>
+					<li>金币：</li>
+					<li>医疗：</li>
+					<li>饲料：</li>
 				</div>
 			</div>
-			<div class="body-record">
+		</div>
+		<div class="body-record">
 				<!-- <a class="openrecord" href="sweeprecord.html">
 					<img class="record-img" src="img\mycenter\menu-ico01.png" alt="">
 					<li id="sweep-secord"><b>打扫记录</b>
@@ -199,7 +210,35 @@
 				<hr>
 			</div>
 		</section>
-	</body>
-	<script src="js/base.js"></script>
-	<script type="text/javascript" src="js/mycenter.js"></script>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal" 
+                        aria-hidden="true">×
+                    </button> -->
+                    <h4 class="modal-title" id="myModalLabel">
+                    提现金币
+                    </h4>
+                </div>
+                <div class="modal-body">
+                	<label>数量：</label><input class="num" type="number" name="num" placeholder="" />
+                </div>
+                <div class="modal-footer">
+                	<button type="button" class="btn btn-default" 
+                	data-dismiss="modal">关 闭
+                </button>
+                <button type="button" class="btn btn-primary withdrawalsCoinBtn">
+                	提 现
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<section class="animated zoomIn prompt"></section>
+</body>
+<script src="js/base.js"></script>
+<script type="text/javascript" src="js/modal.min.js"></script>
+<script type="text/javascript" src="js/mycenter.js"></script>
 </html>

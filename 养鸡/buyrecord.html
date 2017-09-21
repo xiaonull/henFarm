@@ -1,54 +1,92 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>富乐农庄--个人中心</title>
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
-		<meta content="telephone=no" name="format-detection">		
-		<meta name="screen-orientation" content="portrait">		
-		<meta name="x5-orientation" content="portrait">	
-		<meta name="full-screen" content="yes">		
-		<meta name="x5-fullscreen" content="true">	
-		<meta name="browsermode" content="application">		
-		<meta name="x5-page-mode" content="app">		
-		<meta name="msapplication-tap-highlight" content="no">
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
-		<link rel="stylesheet" href="css/mycenter.css" />
-		<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-		<script>
-			(function() {
-				var html = document.documentElement;
-				var hWidth = html.getBoundingClientRect().width;
-				html.style.fontSize = hWidth / 15 + "px";
-			})();
-		</script>
-	</head>
-	<body>
-        <header class="fixed"><a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>购买记录</header>
-        <div class="container">
-	        <!-- <div class="do-record">
-				<font class="prop-name">医疗包</font>
-				<br>
-				<div class="buy-successfully">购买成功</div>
-				<div class="date-record">aaaaaa</div>
-	            <hr>
-	        </div>
-			<div class="do-record">
-				<font class="prop-name">医疗包</font>
-				<br>
-				<div class="buy-successfully">购买成功</div>
-				<div class="date-record">aaaaaa</div>
-				<hr>
-			</div>
-			<div class="do-record">
-				<font class="prop-name">医疗包</font>
-				<br>
-				<div class="buy-successfully">购买成功</div>
-				<div class="date-record">aaaaaa</div>
-				<hr>
-			</div> -->
+<head>
+	<meta charset="utf-8" />
+	<title>富乐山庄--个人中心</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+	<meta content="telephone=no" name="format-detection">		
+	<meta name="screen-orientation" content="portrait">		
+	<meta name="x5-orientation" content="portrait">	
+	<meta name="full-screen" content="yes">		
+	<meta name="x5-fullscreen" content="true">	
+	<meta name="browsermode" content="application">		
+	<meta name="x5-page-mode" content="app">		
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" href="css/mycenter.css" />
+	<style type="text/css">
+		.buyRecordNav ul {
+			display: flex;
+			text-align: center;
+			border-bottom: 1px solid #E6E6E6;
+		}
+
+		.buyRecordNav li {
+			display: block;
+			flex: 1;
+			padding-bottom: 5px;
+			font-size: 0.7rem;
+		}
+
+		.buyRecordNav .active {
+			color: #76af20;
+			border-bottom: 2px solid #76af20;
+		}
+
+		.buyRecordPanel section {
+			display: none;
+		}
+
+		.buyRecordPanel .active {
+			display: block;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script>
+		(function() {
+			var html = document.documentElement;
+			var hWidth = html.getBoundingClientRect().width;
+			html.style.fontSize = hWidth / 15 + "px";
+		})();
+	</script>
+</head>
+<body>
+	<header class="fixed"><a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>购买记录</header>
+	<div class="container">
+		<nav class="buyRecordNav">
+			<ul>
+				<li class="active propItem">
+					道具
+				</li>
+				<li class="giftItem">
+					大礼包
+				</li>
+				<li class="sendItem">
+					转赠
+				</li>
+			</ul>
+		</nav>
+		<div class="buyRecordPanel">
+			<section class="active propPannel">
+				
+
+			</section>
+			<section class="giftPannel">
+				
+			</section>
+			<section class="sendPannel">
+				
+			</section>
 		</div>
-		<script src="js/base.js"></script>
-		<script type="text/javascript" src="js/buyrecord.js"></script>
-    </body>
+	    <!-- <div class="do-record">
+			<font class="prop-name">医疗包</font>
+			<br>
+			<div class="buy-successfully">购买成功</div>
+			<div class="date-record">aaaaaa</div>
+	        <hr>
+	    </div>  -->
+	</div>
+	<script src="js/base.js"></script>
+	<script type="text/javascript" src="js/buyrecord.js"></script>
+</body>
 </html>

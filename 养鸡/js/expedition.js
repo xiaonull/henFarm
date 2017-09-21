@@ -1,28 +1,32 @@
 // 控制背景音乐
+if(!localStorage.musicFlag) {
+	localStorage.musicFlag = 'open';
+}
+
 (function() {
-	var musicFlag = true;
+	var mainBgMusic = document.getElementById('mainBgMusic');
+	if(localStorage.musicFlag === 'close') {
+		// 关闭音乐
+		mainBgMusic.pause();
+		$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music-close.png")');
+	}
+
 	$('.mainBgMusicCtrl').on('click', function() {
 		var mainBgMusic = document.getElementById('mainBgMusic');
-		// console.log(mainBgMusic);
-		if(musicFlag) {
+		if(localStorage.musicFlag === 'open') {
 			// 关闭音乐
-			// $('.mainBgMusic').attr({
-			// 	volume: '0'
-			// });
 			mainBgMusic.pause();
-			musicFlag = false;
+			localStorage.musicFlag = 'close';
 			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music-close.png")');
 		}else {
 			// 开启音乐
-			// $('.mainBgMusic').attr({
-			// 	volume: '70'
-			// });
 			mainBgMusic.play();
-			musicFlag = true;
+			localStorage.musicFlag = 'open';
 			$('.mainBgMusicCtrl').css('backgroundImage', 'url("./img/home/music.png")');
 		}
 	});
 })();
+
 
 
 $(function(){
@@ -57,8 +61,8 @@ var option = {
 				src: 'img/expedition/correct.png'
 			});
 			$(".box-glod .box-glod-r li").eq(0).text('恭喜探险成功');
-			if(result.data.award.number) {
-				$(".box-glod .box-glod-r li").eq(1).html('获得<span>' + result.data.award.number + '</span>' + result.data.award.item_name);
+			if(result.data.number) {
+				$(".box-glod .box-glod-r li").eq(1).html('获得<span>' + result.data.number + '个</span>' + result.data.item);
 			}
 			
 		}else {

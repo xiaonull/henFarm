@@ -1,6 +1,6 @@
 function myAjax(option) {
-	var domainName = 'http://farmapi.niowoo.cn/';
-	// var domainName = 'http://zhifu.jlb66.com/';
+	// var domainName = 'http://farmapi.niowoo.cn/';
+	var domainName = 'http://zhifu.jlb66.com/';
 	$.ajax({
 		url: domainName + option.url,
 		type: option.type || 'GET',
@@ -32,7 +32,7 @@ function myAjax(option) {
 		error: function() {
 			sessionStorage.error = 'true';
 			// alert('error');
-			// window.location.assign("index.html");
+			window.location.assign("index.html");
 		}
 	});
 }
