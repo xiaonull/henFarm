@@ -454,10 +454,10 @@ $(".exchange").on('click', function(e) {
 				$('.exchangePannel .exchangeTable-goldEggprice').text(result.data.golden_egg.current);
 			}	
 			if(result.data.wild_goose_egg.current) {
-				$('.exchangePannel .exchangeTable-gooseEggPrice').text(result.data.egg.current);
+				$('.exchangePannel .exchangeTable-gooseEggPrice').text(result.data.wild_goose_egg.current);
 			}
 			if(result.data.peacock_egg.current) {
-				$('.exchangePannel .exchangeTable-peacockEggPrice').text(result.data.golden_egg.current);
+				$('.exchangePannel .exchangeTable-peacockEggPrice').text(result.data.peacock_egg.current);
 			}			
 		}
 	}
