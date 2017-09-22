@@ -33,7 +33,7 @@ $(function(){
 	var registerUrl = 'api/register';
 	var referrerPhone = GetQueryString('referrer');
 	if(referrerPhone !== null) {
-		registerUrl = 'api/register/referrer=' + referrerPhone;
+		registerUrl = 'api/register?referrer=' + referrerPhone;
 		$('.forget .toregister').click();
 	}
 	

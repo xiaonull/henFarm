@@ -938,6 +938,14 @@ header {
     font-size: 0.8rem;
     font-family: simhei;
   }
+  .friendsPannel .sweepNum {
+    text-align: center;
+    font-size: 0.5rem;
+  }
+  .friendsPannel .sweepNum span {
+    color: #76af20;
+    font-size: 0.7rem;
+  }
   .friendsPannel .friendsTable {
     width: 100%;
     height: 11rem;

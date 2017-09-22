@@ -604,6 +604,8 @@ $('.friends').on('click', function() {
 		},
 		success: function(result) {
 			// console.log(result);
+			$('.friendsPannel .sweepNum span').html(result.data.today_sweep_times);
+
 			var lv1List = [];
 			var lv2List = [];
 			var lv3List = [];
@@ -618,26 +620,70 @@ $('.friends').on('click', function() {
 			}
 			var friendsList = lv1List.concat(lv2List, lv3List);
 			$('.friendsPannel table').html('');
-			$('.friendsPannel table').html('<tr><th>好友</th><th><button disabled>一键打扫</button></th></tr>');
+			$('.friendsPannel table').html('<tr><th>好友</th><th><button class="onekeySweepBtn">一键打扫</button></th></tr>');
 			for(var i = 0, j = friendsList.length; i < j; i++) {
 				var templ = '';
 				templ += '<tr>';
 				templ += 	'<td class="friengName">' + friendsList[i].name + '</td>';
-				templ += 	'<td><button class="sweepForFriend" disabled>打扫</button></td>';
+				templ += 	'<td><button class="sweepForFriend">打扫</button></td>';
 				templ += '</tr>';
 				$('.friendsPannel table').append(templ);
-			}					
+			}
+			
+			// 一键打扫
+			$('.friendsPannel .onekeySweepBtn').on('click', function(e) {
+				e.preventDefault();
+				var option = {
+					url: 'api/personal/friends/sweepforall',
+					beforeSend: function(xhr) {
+					},
+					complete: function(xhr) {
+					},
+					success: function(result) {
+						$('.popup').text(result.message);
+						$('.popup').css('display','block');
+						setTimeout(function(){
+							$('.popup').css('display','none');
+						},3000);
+
+						// 更新打扫次数
+						var option = {
+							url: 'api/personal/friends',
+							beforeSend: function(xhr) {
+							},
+							complete: function(xhr) {
+							},
+							success: function(result) {
+								$('.friendsPannel .sweepNum span').html(result.data.today_sweep_times);
+							}
+						};
+						myAjax(option);
+
+					}
+				}
+
+				myAjax(option);
+			});
+			// 为好友打扫
+			$('.friendsPannel .sweepForFriend').on('click', function(e) {
+				$('.popup').text('暂未开放！');
+				$('.popup').css('display','block');
+				setTimeout(function(){
+					$('.popup').css('display','none');
+				},3000);
+			});
+
 		}
 	}
 
 	myAjax(option);
 });
 // 关闭好友
-$('.friendsPannel .s-close').on('click',function(){
+$('.friendsPannel .s-close').on('click', function(){
 	$('.mark').css('display','none');
 	$('.mark .friendsPannel').css('display','none');
 });
-$('.friendsPannel .s-sure').on('click',function(){
+$('.friendsPannel .s-sure').on('click', function(){
 	$('.mark').css('display','none');
 	$('.mark .friendsPannel').css('display','none');
 });
