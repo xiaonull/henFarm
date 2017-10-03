@@ -1109,45 +1109,45 @@ header {
       width: 2rem;
       height: 2rem;
       margin-top: 0.5rem;
-    }*/
+      }*/
     /*.mark .m-shop .s-buy .giftPackage-img .price {
       margin-top: -0.8rem;
-    }*/
-    .mark .m-shop .s-buy .item .i-con .i-num {
-      text-align: center;
-      line-height: 2;
-    }
-    .mark .m-shop .s-buy .item .i-con .i-num i {
-      display: inline-block;
-      width: 0.5rem;
-      height: 0.5rem;
-      background-image: url(../img/home/gold.png);
-      background-size: 100%;
-      background-repeat: no-repeat;
-      background-position: center center;
-    }
-    .mark .m-shop .s-buy .item .i-con .i-num span {
-      display: inline-block;
-      font-size: 0.64rem;
-      font-weight: 600;
-    }
-    .mark .m-shop .s-buy .item .i-buy {
-      width: 3.34rem;
-      height: 1rem;
-      margin-top: 0.4rem;
-    }
-    .mark .m-shop .s-buy .item .i-buy img {
-      width: 95%;
-      margin: auto;
-      height: 100%;
-    }
-    .mark .m-shop .s-buy .food {
+      }*/
+      .mark .m-shop .s-buy .item .i-con .i-num {
+        text-align: center;
+        line-height: 2;
+      }
+      .mark .m-shop .s-buy .item .i-con .i-num i {
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-image: url(../img/home/gold.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      .mark .m-shop .s-buy .item .i-con .i-num span {
+        display: inline-block;
+        font-size: 0.64rem;
+        font-weight: 600;
+      }
+      .mark .m-shop .s-buy .item .i-buy {
+        width: 3.34rem;
+        height: 1rem;
+        margin-top: 0.4rem;
+      }
+      .mark .m-shop .s-buy .item .i-buy img {
+        width: 95%;
+        margin: auto;
+        height: 100%;
+      }
+      .mark .m-shop .s-buy .food {
        margin-left: 0.8rem;
-    }
-    .mark .m-shop .s-buy .food2 {
+     }
+     .mark .m-shop .s-buy .food2 {
        margin-left: 0.8rem;
-    }
-    .mark .s-sure {
+     }
+     .mark .s-sure {
       width: 3.94rem;
       height: 1.26rem;
       margin: auto;
@@ -1316,7 +1316,7 @@ header {
       color: #fff;
       font-size: 0.8rem;
       font-family: simhei;
-      z-index: 1100;
+      z-index: 110000;
     }
     .footer {
       width: 100%;
@@ -1748,4 +1748,106 @@ header {
     top: 2.7rem;
     right: 0.3rem;
     z-index: 99;
+  }
+
+  .payModal {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: #f8e8b0;
+    text-align: center;
+    overflow-y: scroll;
+  }
+  .payModal h2 {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+  .payModal .line {
+    display: inline-block;
+    width: 4rem;
+    height: 1px;
+    background-color: #34B646;
+  }
+  .payModal input[type="radio" i] {
+    -webkit-appearance: radio;
+  }
+  .payModal .radios {
+    width: 45%;
+    margin: 1rem auto;
+    text-align: left;
+    /*position: relative;
+    left: 0.5rem;*/
+  }
+  .payModal .radios input {
+    position: relative;
+    left: 0.8rem;
+  }
+  .payModal .radios label {
+    position: relative;
+    top: -0.05rem;
+    left: 1.1rem;
+  }
+  .payModal .radios .toPay {
+    width: 80%;
+    height: 25px;
+    display: block;
+    margin: 1rem auto 0.5rem auto;
+    text-align: center;
+    color:white;
+    background-color: #00A508;
+    border-radius: 12px;
+  }
+  .payModal .radios .back {
+    width: 80%;
+    height: 25px;
+    display: block;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+    color:white;
+    background-color: #E6522C;
+    border-radius: 12px;
+  }
+  .payModal .payCodeImg {
+    display: none;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .payModal .payCodeImg img {
+    width: 100%;
+  }
+  .modal .modal-body input[type="radio" i] {
+    -webkit-appearance: radio;
+    width: 0.8rem;
+    margin-left: 4rem;
+  }
+  .modal .pay-body {
+    height: 9rem;
+  }
+  .modal .pay-body label {
+    font-size: 0.6rem;
+    position: relative;
+    top: 0.02rem;
+    width: auto;
+    margin-left: 0.5rem;
+  }
+  .modal .pay-body #wepay {
+    margin-left: 1.6rem;
+  }
+  .modal .pay-body .title {
+    text-align: left;
+    margin-left: 0;
+  }
+  .modal .payCodeImg2 {
+    width: 8rem;
+    height: 8rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .modal .payCodeImg2 img {
+    width: 100%;
   }

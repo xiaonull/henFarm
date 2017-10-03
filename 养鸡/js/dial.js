@@ -76,6 +76,7 @@ $(function() {
 				break;
 				case 1:
 				rotateFn(1, -45, img_path);
+				break;
 				case 2:
 				rotateFn(2, -90, img_path);
 				break;
@@ -162,7 +163,6 @@ function addTurntableText() {
 		complete: function(xhr) {
 		},
 		success: function(result) {
-			// console.log(result);
 			var all_awards = result.data.all_awards;
 			if(all_awards.length > 0) {
 				$('.turntable .wheel-item').find('.wheel-itext').html('');

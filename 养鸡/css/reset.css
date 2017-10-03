@@ -71,7 +71,7 @@ input,a{
 	border: none;
 	outline: none;
 	/*清除移动端默认的表单样式*/
-	-webkit-appearance: none;
+	/*-webkit-appearance: none;*/
 }
 img {
     display: block;

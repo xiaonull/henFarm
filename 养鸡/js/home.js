@@ -1309,16 +1309,35 @@ $('.m-giftPackage .s-close').on('click',function(){
 
 });
 
-// 确定购买大礼包
 $('.m-giftPackage .s-sure').on('click',function(){
+	$('.payModal .payCodeImg img').attr('src', '');
+	$('.payModal .payCodeImg').css('display', 'none');
+	$('.payModal').css('display', 'block');
+});
+$('.payModal .back').on('click', function() {
+	window.location.assign('home.html');
+});
+$('.payModal .toPay').on('click', function() {
+	$('.m-giftPackage .s-sure').trigger('payForGift');
+	$('.payModal .toPay').attr('disabled', true);
+	$('.popup').show().delay(4000).hide(300);
+	$('.popup').html('操作成功，请稍后');
+	setTimeout(function() {
+		$('.payModal .toPay').attr('disabled', false);
+	}, 5000);
+});
+
+// 确定购买大礼包
+$('.m-giftPackage .s-sure').on('payForGift',function(){
 	// $('.mark').css('display','none');
 	// $('.m-giftPackage').css('display','none');
-
+	var pay_type = $(".payModal .radios input[type='radio']:checked").val();
 	var option = {
 		url: 'api/shop/giftpack',
 		data: {
 			name: 'giftpack',
-			num: 1
+			num: 1,
+			pay_type: pay_type
 		},
 		type: 'POST',
 		success: function(result) {
@@ -1328,20 +1347,19 @@ $('.m-giftPackage .s-sure').on('click',function(){
 				// setTimeout(function(){
 				// 	$('.s-success').css('display','none');
 				// },3000);
-				
-				if(result.data.redirect_url) {
+				// console.log(result);
+				if(result.data.redirect_url !== '') {
 					window.location.assign(result.data.redirect_url);
-				}else {
-					$('.popup').show().delay(2000).hide(300);
+				}else if(result.data.qrcode_img !== '') {
+					$('.popup').show().delay(5000).hide(300);
 					$('.popup').html(result.message);
+					$('.payModal .payCodeImg img').attr('src', result.data.qrcode_img);
+					$('.payModal .payCodeImg').css('display', 'block');
 				}
 
 			}else {
-				$('.s-error').text(result.message);
-				$('.s-error').css('display','block');
-				setTimeout(function(){
-					$('.s-error').css('display','none');
-				},3000);
+				$('.popup').show().delay(2000).hide(300);
+				$('.popup').html(result.message);
 			}
 		},
 		beforeSend: function(xhr) {
@@ -1359,6 +1377,8 @@ $('.m-giftPackage .s-giveGiftPackage').on('click', function() {
 	$('#myModal').modal({
 		keyboard: true
 	});
+	$('.modal .payCodeImg2 img').attr('src', '');
+	$('.modal .payCodeImg2').css('display', 'none');
 });
 
 // $(".giveGiftPackage").on('click', function() {
@@ -1375,13 +1395,20 @@ $(".sendGiftToFriend").on('click', function() {
 		$('.popup').html('请填写手机号码！');
 		return;
 	}
+	var pay_type = $(".modal .pay-body input[type='radio']:checked").val();
+	if(pay_type === '' || pay_type === null || pay_type === undefined) {
+		$('.popup').show().delay(2000).hide(300);
+		$('.popup').html('请选择支付方式！');
+		return;
+	}
 
 	var option = {
 		url: 'api/shop/giftpack/present',
 		data: {
 			name: 'giftpack',
 			num: 1,
-			phone: phone
+			phone: phone,
+			pay_type: pay_type
 		},
 		type: 'POST',
 		beforeSend: function(xhr) {
@@ -1390,7 +1417,16 @@ $(".sendGiftToFriend").on('click', function() {
 		},
 		success: function(result) {
 			if(result.status_code === 0) {
-				window.location.assign(data.redirect_url);
+				// window.location.assign(data.redirect_url);
+				if(result.data.redirect_url !== '') {
+					window.location.assign(result.data.redirect_url);
+				}else if(result.data.qrcode_img !== '') {
+					$('.popup').show().delay(5000).hide(300);
+					$('.popup').html(result.message);
+					$('.modal .payCodeImg2 img').attr('src', result.data.qrcode_img);
+					$('.modal .payCodeImg2').css('display', 'block');
+				}
+				
 			}else {
 				$('.popup').show().delay(2000).hide(300);
 				$('.popup').html(result.message);
