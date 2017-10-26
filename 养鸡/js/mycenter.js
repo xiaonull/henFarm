@@ -49,7 +49,7 @@ myAjax(option);
 
 function uploadHeader() {
 	var data = new FormData(document.getElementById('avatar'));
-	console.log(document.getElementById('avatar'));
+	console.log(data);
 	var option = {
 		url: 'api/personal/avatar/change',
 		data: data,
