@@ -1813,12 +1813,17 @@ header {
   }
   .payModal .payCodeImg {
     display: none;
-    width: 40%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1.5rem;
   }
   .payModal .payCodeImg img {
     width: 100%;
+  }
+  .payModal .payCodeImg .info {
+    margin-top: 0.5rem;
+    font-size: 0.6rem;
   }
   .modal .modal-body input[type="radio" i] {
     -webkit-appearance: radio;

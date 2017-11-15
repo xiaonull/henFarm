@@ -1312,6 +1312,7 @@ $('.m-giftPackage .s-close').on('click',function(){
 $('.m-giftPackage .s-sure').on('click',function(){
 	$('.payModal .payCodeImg img').attr('src', '');
 	$('.payModal .payCodeImg').css('display', 'none');
+	$('.m-giftPackage .s-sure').trigger('payForGift');
 	$('.payModal').css('display', 'block');
 });
 $('.payModal .back').on('click', function() {
@@ -1320,8 +1321,8 @@ $('.payModal .back').on('click', function() {
 $('.payModal .toPay').on('click', function() {
 	$('.m-giftPackage .s-sure').trigger('payForGift');
 	$('.payModal .toPay').attr('disabled', true);
-	$('.popup').show().delay(4000).hide(300);
-	$('.popup').html('操作成功，请稍后');
+	// $('.popup').show().delay(4000).hide(300);
+	// $('.popup').html('操作成功，请稍后');
 	setTimeout(function() {
 		$('.payModal .toPay').attr('disabled', false);
 	}, 5000);
@@ -1331,7 +1332,8 @@ $('.payModal .toPay').on('click', function() {
 $('.m-giftPackage .s-sure').on('payForGift',function(){
 	// $('.mark').css('display','none');
 	// $('.m-giftPackage').css('display','none');
-	var pay_type = $(".payModal .radios input[type='radio']:checked").val();
+	// var pay_type = $(".payModal .radios input[type='radio']:checked").val();
+	var pay_type ='wepay';
 	var option = {
 		url: 'api/shop/giftpack',
 		data: {
@@ -1351,8 +1353,8 @@ $('.m-giftPackage .s-sure').on('payForGift',function(){
 				if(result.data.redirect_url !== '') {
 					window.location.assign(result.data.redirect_url);
 				}else if(result.data.qrcode_img !== '') {
-					$('.popup').show().delay(5000).hide(300);
-					$('.popup').html(result.message);
+					// $('.popup').show().delay(5000).hide(300);
+					// $('.popup').html(result.message);
 					$('.payModal .payCodeImg img').attr('src', result.data.qrcode_img);
 					$('.payModal .payCodeImg').css('display', 'block');
 				}
