@@ -96,13 +96,13 @@
 			<!-- <img src="img/home/warehouse.jpg" class="warehouse" /> -->
 			<div>
 				<!-- <a href="warehouse.html"> -->
-				<img src="img/home/house.png" />
+				<img class="houseImg" src="img/home/house.png" />
 				<!-- <span>仓库</span> -->
 				<!-- </a> -->
 			</div>
 		</div>
 		<div class="runs">
-			<div class="runsContainer"></div>
+			<!-- <div class="runsContainer"></div> -->
 			
 				<!-- <div class="run1">
 					<img src="img/home/chook04.png" />
@@ -382,7 +382,7 @@
 							<button class="sure">确 认</button>
 						</section>
 						<section class="pannel agencyTransaction-pannel">
-							<p class="eggRadio">
+							<p class="eggRadioGroup">
 								<input type="radio" class="eggRadio" name="henEgg" value="egg">普通鸡蛋
 								<input type="radio" class="goldEggRadio" name="henEgg" value="golden_egg">金鸡蛋
 							</p>
@@ -455,8 +455,8 @@
 							<div class="i-con">
 								<img src="img/home/store-ico07.png"/>
 								<p class="i-num">
-									<i></i>
-									<span>10000</span>
+									<!-- <i></i> -->
+									<span class="peacockPrice"></span>
 								</p>
 							</div>
 							<span>孔 雀</span>
@@ -466,8 +466,8 @@
 							<div class="i-con">
 								<img src="img/home/store-ico08.png"/>
 								<p class="i-num">
-									<i></i>
-									<span>1000</span>
+									<!-- <i></i> -->
+									<span class="wild_goosePrice"></span>
 								</p>
 							</div>
 							<span>大 雁</span>
@@ -478,7 +478,7 @@
 								<img src="img/home/store-ico04.png"/>
 								<p class="i-num">
 									<!-- <i></i> -->
-									<span class="price">98元</span>
+									<span class="price giftpackPrice"></span>
 								</p>
 							</div>
 							<span>大礼包</span>
@@ -551,7 +551,7 @@
 		<footer class="footer">
 			<div class="egg">
 				<!-- 根据蛋的数量显示图片 -->
-				<!-- <img src="img/home/egg.png" alt="" /> -->
+				<img class="eggImg" src="img/home/egg.png" alt="" />
 				<!-- <p>
 					<i></i>
 					蛋的总数
@@ -561,23 +561,23 @@
 			<div class="railContainer">
 				<div class="rail-bg"></div>
 				<ul class="clearfix rail">
-					<li class="rail-l"><img src="img/home/rail-ico01.png" /></li>
+					<li class="rail-l"><img class="img" src="img/home/rail-ico01.png" /></li>
 					<li class="rail-c">
 						<div class="rail-inf">
 							<ul class="rail-num">
 								<li>
-									<img src="img/home/rail-ico03.png" /><!-- &nbsp;x&nbsp;<span>20</span> -->
+									<img class="img1" src="img/home/rail-ico03.png" />&nbsp;x&nbsp;<span>??</span>
 								</li>
 								<li>
-									<img src="img/home/rail-ico04.png" /><!-- &nbsp;x&nbsp;<span>20</span> -->
+									<img class="img2" src="img/home/rail-ico04.png" />&nbsp;x&nbsp;<span>??</span>
 								</li>
 								<li>
-									<img src="img/home/rail-ico05.png" /><!-- &nbsp;x&nbsp;<span>20</span> -->
+									<img class="img3" src="img/home/rail-ico05.png" />&nbsp;x&nbsp;<span>??</span>
 								</li>
 							</ul>
 						</div>
 					</li>
-					<li class="rail-r"><img src="img/home/rail-ico02.png" class="rail-r" /></li>
+					<li class="rail-r"><img src="img/home/rail-ico02.png" class="rail-r img" /></li>
 				<!-- <div class="giftPackage">
 					<img src="img/home/gift-icon.png" class="giftPackage-img" />
 					<span>大礼包</span>
@@ -667,7 +667,7 @@
 </div>
 <div class="payModal">
 	<div class="payModal-body">
-		<h2>购买98元大礼包</h2>
+		<h2 class="title"></h2>
 		<span class="line"></span>
 		<div class="payCodeImg">
 			<img src="">
@@ -692,6 +692,10 @@
 <script src="js/base.js"></script>
 <script type="text/javascript" src="js/css-animations.js"></script>
 <script type="text/javascript" src="js/modal.min.js"></script>
-<script type="text/javascript" src="js/home.js"></script>
+<!-- <script type="text/javascript" src="js/home.js"></script> -->
+<script type="text/javascript" src="js/home/animal.js"></script>
+<script type="text/javascript" src="js/home/modal.js"></script>
+<script type="text/javascript" src="js/home/operation.js"></script>
+<script type="text/javascript" src="js/home/tradingcenter.js"></script>
 
 </html>

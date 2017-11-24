@@ -1322,7 +1322,7 @@ header {
       width: 100%;
       height: 10rem;
       position: relative;
-      overflow: hidden;
+      /* overflow: hidden; */
       z-index: 9;
     }
     .footer .egg {
@@ -1335,12 +1335,13 @@ header {
       float: right;
       margin-right: 0.72rem;
     }
-    .footer .egg img {
+    .footer .egg .eggImg {
       width: 1.8rem;
       height: 0.9rem;
       position: absolute;
       right: 1.6rem;
       top: 0rem;
+      display: none;
     }
 
     .railContainer {
@@ -1407,12 +1408,13 @@ header {
       vertical-align: middle;
       display: inline-block;
       height: 0.7rem;
+      width: 0.7rem;
     }
     .footer .rail .rail-r {
       float: left;
       position: absolute;
       top: -0.1rem;
-      left: 5.0rem;
+      left: 5.2rem;
     }
     .footer .rail .rail-r img {
       height: 3.2rem;
@@ -1426,7 +1428,7 @@ header {
       margin-top: -1.6rem;
       position: fixed;
       bottom: 0.3rem;
-      z-index: 999;
+      z-index: 1100;
     }
     .footer .nav .nav-bg {
       margin-top: -1.2rem;

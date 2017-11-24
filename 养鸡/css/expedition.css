@@ -11,6 +11,28 @@ body {
   position: relative;
   text-align: center;
 }
+
+.back {
+  position: fixed;
+  width: 100%;
+  height: 1.3rem;
+  line-height: 1.3rem;
+  top: 0rem;
+  z-index: 100;
+  font-size: 0.6rem;
+  color: #060606;
+  background-color: #fff;
+  padding: 0.1rem 0.5rem 0.1rem 0.3rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  text-align: left;
+}
+
+.back a {
+  display: inline-block;
+  padding: 0rem 0.3rem; 
+  color: #060606;
+}
+
 .main .count-down {
   width: 13.22rem;
   height: 1.66rem;
