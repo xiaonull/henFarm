@@ -23,6 +23,35 @@
 			margin-bottom: 0.5rem;
 			border-top: 1px solid #d8d8d8;
 		}
+		.share {
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 1060;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+		.wrap {
+			position: relative;
+		}
+		.shareImg {
+			width: 80%;
+			height: 85%;
+			margin: 5% auto;
+		}
+		.money {
+			position: absolute;
+			bottom: 2%;
+			right: 12%;
+			font-size: 1.3rem;
+			color: #F22323;
+		}
+		.text {
+			font-size: 0.7rem;
+			position: relative;
+			top: -0.2rem;
+			font-weight: 600;
+		}
 	</style>
 	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 	<script>
@@ -34,40 +63,38 @@
 	</script>
 </head>
 <body>
+	<section class="share">
+		<div class="wrap">
+			<img src="./img/mycenter/commissionWithdrawals.jpg" class="shareImg">
+			<p class="money"><span class="text">提现了：</span><span class="money_text">￥???</span></p>
+		</div>
+	</section>
 	<header>富乐山庄
---个人中心</header>
-	<section class="main">
-		<div class="banner clearfix">
-			<div class="b-left">
-				<form id="avatar">
-					<p class="photo">
-						<input type="file" name="avatar" id="userimg" hidden="true" value="" onchange="uploadHeader()" />
-						<label for="userimg"></label>
-					</p>
-				</form>
-				<div class="username"></div>
-				<div class="userid">我的ID：</div>
-			</div>
-			<div class="b-right">
-				<div class="statistic">
-					<li>总量：</li>
-					<li>鸡蛋：</li>
-					<li>金蛋：</li><button class="withdrawalsBtn">提现</button>
-					<li>金币：</li>
-					<li>医疗：</li>
-					<li>饲料：</li>
+		--个人中心</header>
+		<section class="main">
+			<div class="banner clearfix">
+				<div class="b-left">
+					<form id="avatar">
+						<p class="photo">
+							<input type="file" name="avatar" id="userimg" hidden="true" value="" onchange="uploadHeader()" />
+							<label for="userimg"></label>
+						</p>
+					</form>
+					<div class="username"></div>
+					<div class="userid">我的ID：</div>
+				</div>
+				<div class="b-right">
+					<div class="statistic">
+						<li>总量：</li>
+						<li>鸡蛋：</li>
+						<li>金蛋：</li><button class="withdrawalsBtn">提现</button>
+						<li>金币：</li>
+						<li>医疗：</li>
+						<li>饲料：</li>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="body-record">
-				<!-- <a class="openrecord" href="sweeprecord.html">
-					<img class="record-img" src="img\mycenter\menu-ico01.png" alt="">
-					<li id="sweep-secord"><b>打扫记录</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-
+			<div class="body-record">
 				<a class="openrecord" href="profile.html">
 					<img class="record-img" src="img\mycenter\menu-ico14.png" alt="">
 					<li id="money-secord"><b>个人资料</b>
@@ -82,27 +109,6 @@
 					</li>
 				</a>
 				<hr>
-				<!-- <a class="openrecord" href="hts-tradingcenter.html">
-					<img class="record-img" src="img\mycenter\menu-ico02.png" alt="">
-					<li id="money-secord"><b>交易中心</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="eggExchangeGold.html">
-					<img class="record-img" src="img\mycenter\menu-ico02.png" alt="">
-					<li id="money-secord"><b>鸡蛋兑换</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="transferEgg.html">
-					<img class="record-img" src="img\mycenter\menu-ico16.png" alt="">
-					<li id="money-secord"><b>鸡蛋转赠</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
 				<a class="openrecord" href="commissionWithdrawals.html">
 					<img class="record-img" src="img\mycenter\menu-ico17.png" alt="">
 					<li id="money-secord"><b>佣金提现</b>
@@ -110,55 +116,6 @@
 					</li>
 				</a>
 				<hr>
-				<!-- <a class="openrecord" href="WithdrawalsRecord.html">
-					<img class="record-img" src="img\mycenter\menu-ico02.png" alt="">
-					<li id="money-secord"><b>提现记录</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="buyAnimal.html">
-					<img class="record-img" src="img\mycenter\menu-ico02.png" alt="">
-					<li id="money-secord"><b>购买动物</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="hts-growlog.html">
-					<img class="record-img" src="img\mycenter\menu-ico03.png" alt="">
-					<li id="grow-secord"><b>生长日志</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="hts-collecteggsrecord.html">
-					<img class="record-img" src="img\mycenter\menu-ico04.png" alt="">
-					<li id="pickegg-secord"><b>收蛋记录</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="hts-feedrecord.html">
-				    <img class="record-img" src="img\mycenter\menu-ico05.png" alt="">
-					<li id="feed-secord"><b>喂食记录</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="hts-curerecord.html">
-					<img class="record-img" src="img\mycenter\menu-ico06.png" alt="">
-					<li id="tread-secord"><b>治疗记录</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
-				<!-- <a class="openrecord" href="hts-considerationrecord.html">
-					<img class="record-img" src="img\mycenter\menu-ico07.png" alt="">
-					<li id="care-secord"><b>照顾记录</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
 				<a class="openrecord" href="buyrecord.html">
 					<img class="record-img" src="img\mycenter\menu-ico08.png" alt="">
 					<li id="shop-secord"><b>购物记录</b>
@@ -166,13 +123,6 @@
 					</li>
 				</a>
 				<hr>
-				<!-- <a class="openrecord" href="hts-expeditionlog.html">
-					<img class="record-img" src="img\mycenter\menu-ico09.png" alt="">
-					<li id="explore-secord"><b>探险记录</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
 				<a class="openrecord" href="home.html">
 					<img class="record-img" src="img\mycenter\menu-ico10.png" alt="">
 					<li id="mine-secord"><b>我的鸡场</b>
@@ -180,13 +130,6 @@
 					</li>
 				</a>
 				<hr>
-				<!-- <a class="openrecord" href="developfarm.html">
-					<img class="record-img" src="img\mycenter\menu-ico11.png" alt="">
-					<li id="farm-secord"><b>开发鸡场</b>
-						<img class="arrows-right" src="img\mycenter\arrows-right.png" alt="">
-					</li>
-				</a>
-				<hr> -->
 				<a class="openrecord" href="recommend.html">
 					<img class="record-img" src="img\mycenter\menu-ico18.png" alt="">
 					<li id="money-secord"><b>推荐给别人</b>
@@ -222,28 +165,25 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-                        <!-- <button type="button" class="close" data-dismiss="modal" 
-                        aria-hidden="true">×
-                    </button> -->
-                    <h4 class="modal-title" id="myModalLabel">
-                    提现金币
-                    </h4>
-                </div>
-                <div class="modal-body">
-                	<label>数量：</label><input class="num" type="number" name="num" placeholder="" />
-                </div>
-                <div class="modal-footer">
-                	<button type="button" class="btn btn-default" 
-                	data-dismiss="modal">关 闭
-                </button>
-                <button type="button" class="btn btn-primary withdrawalsCoinBtn">
-                	提 现
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<section class="animated zoomIn prompt"></section>
+						<h4 class="modal-title" id="myModalLabel">
+							提现金币（截图分享到朋友圈后请联系客服提现）
+						</h4>
+					</div>
+					<div class="modal-body">
+						<label>数量：</label><input class="num" type="number" name="num" placeholder="" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" 
+						data-dismiss="modal">关 闭
+					</button>
+					<button type="button" class="btn btn-primary withdrawalsCoinBtn">
+						提 现
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<section class="animated zoomIn prompt"></section>
 </body>
 <script src="js/base.js"></script>
 <script type="text/javascript" src="js/modal.min.js"></script>

@@ -79,7 +79,7 @@ $(function(){
 						prompt.html(result.message);
 						sessionStorage.token = result.data.token;
 						setTimeout(function() {
-							window.location.assign("home.html");
+							window.location.assign("downloadApp.html");
 						}, 2000);	
 					}else {
 						prompt.show().delay(2000).hide(300);

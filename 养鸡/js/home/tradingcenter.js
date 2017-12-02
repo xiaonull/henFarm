@@ -1,10 +1,10 @@
 // 显示交易中心
-$(".tradingcenter").on('click', function() {
-	$('.mark').css('display','block');
-	$('.mark .transactionPannel').css('display','block');
-	
-	loadtransactionsList();
-});
+// $(".tradingcenter").on('click', function() {
+// 	$('.mark').css('display','block');
+// 	$('.mark .transactionPannel').css('display','block');
+
+// 	loadtransactionsList();
+// });
 
 // 交易中心的tab切换
 $(".transactionTab ul li").on("click", function() {
@@ -307,6 +307,20 @@ $('.transactionPannel .agencyTransaction-pannel .sure').on('click', function() {
 
 	myAjax(option);
 
+});
+
+
+// 交易改为商城
+
+// 打开商城
+$(".tradingcenter").on('click', function() {
+	$('.mark').css('display','block');
+	$('.mark .shoppingPannel').css('display','block');
+});
+
+$('.shoppingPannel .s-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .shoppingPannel').css('display','none');
 });
 
 

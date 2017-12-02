@@ -58,14 +58,6 @@ function showResources() {
 	var option = {
 		url: 'api/henyard',
 		success: function(result, status, xhr) {
-
-			// 是否显示喂食提示气泡框
-			if(result.data.feedable_num > 0) {
-				$(".feedBubble .feedBubbleText").text('有 ' + result.data.feedable_num + ' 只鸡可以于今天喂食');
-				$(".feedBubble").css({
-					display: 'block'
-				});
-			}
 			
 			// 如果需要打扫，则显示垃圾背景图
 			if(result.data.sweep_chance_num > 0) {
@@ -81,9 +73,13 @@ function showResources() {
 			// 切换动物的房子
 			// 页尾资源--动物和动物蛋的数量
 			// 显示蛋窝的蛋的图片
+			// 是否显示喂食提示气泡框
+			// 是否显示治疗提示气泡框
 			if(window.farm === 'henFarm') {
+				// 切换动物的房子
 				$('.m-right .houseImg').attr('src', 'img/home/house.png');
-
+				
+				// 页尾资源--动物和动物蛋的数量
 				$(".rail-inf .rail-num .img1").attr({
 					src: 'img/home/rail-ico03.png',
 				});
@@ -93,15 +89,52 @@ function showResources() {
 				$(".rail-inf .rail-num .img3").attr({
 					src: 'img/home/rail-ico05.png',
 				});
-
+				
 				$(".rail-inf .rail-num li span").eq(0).html(result.data.hen_num );
 				$(".rail-inf .rail-num li span").eq(1).html(result.data.egg_num);
 				$(".rail-inf .rail-num li span").eq(2).html(result.data.golden_egg_num);
-
-				if(result.data.pickable_egg_num > 0 || result.data.pickable_golden_egg_num > 0) {
+				$('.rail-inf .goldEggList').css('display', 'inline-block');
+				
+				// 显示蛋窝的蛋的图片
+				if(result.data.pickable_egg_num > 0 && result.data.pickable_golden_egg_num <= 0) {
+					$(".footer .egg .eggImg").attr('src', 'img/home/egg1.png');
+					$(".footer .egg .eggImg").css('display', 'inline-block');
+				}else if(result.data.pickable_golden_egg_num > 0) {
+					$(".footer .egg .eggImg").attr('src', 'img/home/egg.png');
 					$(".footer .egg .eggImg").css('display', 'inline-block');
 				}else {
 					$(".footer .egg .eggImg").css('display', 'none');
+				}
+				
+				// 是否显示喂食提示气泡框
+				if(result.data.feedable_num > 0) {
+					$(".feedBubble .feedBubbleText").html('有 ' + result.data.feedable_num + ' 只鸡可以于今天喂食');
+					$(".feedBubble").css({
+						display: 'block'
+					});
+				}else {
+					$(".feedBubble").css({
+						display: 'none'
+					});
+				}
+
+				// 是否显示治疗提示气泡框
+				var animals = result.data.hen_details;
+				var sickNum = 0;
+				for(var i = 0, l = animals.length; i < l; i++) {
+					if(animals[i].is_sick === 'true') {
+						sickNum++;
+					}
+				}
+				if(sickNum > 0) {
+					$(".cureBubble .cureBubbleText").html('有 ' + sickNum + ' 只鸡生病了');
+					$(".cureBubble").css({
+						display: 'block'
+					});
+				}else {
+					$(".cureBubble").css({
+						display: 'none'
+					});
 				}
 			}else if(window.farm === 'wild_goosesFarm') {
 				$('.m-right .houseImg').attr('src', 'img/home/house01.png');
@@ -119,11 +152,42 @@ function showResources() {
 				$(".rail-inf .rail-num li span").eq(0).html(result.data.wild_gooses.length );
 				$(".rail-inf .rail-num li span").eq(1).html(result.data.wild_goose_egg);
 				$(".rail-inf .rail-num li span").eq(2).html(result.data.golden_egg_num);
+				$('.rail-inf .goldEggList').css('display', 'none');
 
 				if(result.data.wild_goose_pickable_egg_num > 0) {
+					$(".footer .egg .eggImg").attr('src', 'img/home/egg1.png');
 					$(".footer .egg .eggImg").css('display', 'inline-block');
 				}else {
 					$(".footer .egg .eggImg").css('display', 'none');
+				}
+
+				if(result.data.wild_gooses_feedable_num > 0) {
+					$(".feedBubble .feedBubbleText").html('有 ' + result.data.wild_gooses_feedable_num + ' 只大雁可以于今天喂食');
+					$(".feedBubble").css({
+						display: 'block'
+					});
+				}else {
+					$(".feedBubble").css({
+						display: 'none'
+					});
+				}
+
+				var animals = result.data.wild_gooses;
+				var sickNum = 0;
+				for(var i = 0, l = animals.length; i < l; i++) {
+					if(animals[i].is_sick === 'true') {
+						sickNum++;
+					}
+				}
+				if(sickNum > 0) {
+					$(".cureBubble .cureBubbleText").html('有 ' + sickNum + ' 只大雁生病了');
+					$(".cureBubble").css({
+						display: 'block'
+					});
+				}else {
+					$(".cureBubble").css({
+						display: 'none'
+					});
 				}
 			}else if(window.farm === 'peacockFarm') {
 				$('.m-right .houseImg').attr('src', 'img/home/house02.png');
@@ -141,11 +205,42 @@ function showResources() {
 				$(".rail-inf .rail-num li span").eq(0).html(result.data.peacocks.length );
 				$(".rail-inf .rail-num li span").eq(1).html(result.data.peacock_egg);
 				$(".rail-inf .rail-num li span").eq(2).html(result.data.golden_egg_num);
-
+				$('.rail-inf .goldEggList').css('display', 'none');
+				
 				if(result.data.peacock_pickable_egg_num > 0) {
+					$(".footer .egg .eggImg").attr('src', 'img/home/egg1.png');
 					$(".footer .egg .eggImg").css('display', 'inline-block');
 				}else {
 					$(".footer .egg .eggImg").css('display', 'none');
+				}
+
+				if(result.data.peacocks_feedable_num > 0) {
+					$(".feedBubble .feedBubbleText").html('有 ' + result.data.peacocks_feedable_num + ' 只孔雀可以于今天喂食');
+					$(".feedBubble").css({
+						display: 'block'
+					});
+				}else {
+					$(".feedBubble").css({
+						display: 'none'
+					});
+				}
+
+				var animals = result.data.peacocks;
+				var sickNum = 0;
+				for(var i = 0, l = animals.length; i < l; i++) {
+					if(animals[i].is_sick === 'true') {
+						sickNum++;
+					}
+				}
+				if(sickNum > 0) {
+					$(".cureBubble .cureBubbleText").html('有 ' + sickNum + ' 只孔雀生病了');
+					$(".cureBubble").css({
+						display: 'block'
+					});
+				}else {
+					$(".cureBubble").css({
+						display: 'none'
+					});
 				}
 			}
 			
@@ -175,9 +270,9 @@ function showResources() {
 							img = '<img class="hen' + i + '" src="img/home/chook02/chooktu01.png" />';
 						}
 					}else if(window.farm === 'wild_goosesFarm') {
-						img = '<img class="hen' + i + '" src="img/home/goose01.gif" />';
+						img = '<img class="hen' + i + '" src="img/home/duck.gif" />';
 					}else if(window.farm === 'peacockFarm') {
-						img = '<img class="hen' + i + '" src="img/home/peacock01.gif" />';
+						img = '<img class="hen' + i + '" src="img/home/peacock.gif" />';
 					}
 				}else {
 					state = '成年期';

@@ -22,7 +22,7 @@ body {
   width: 11.26rem;
   margin: auto;
   margin-top: 3.6rem;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .register .phone {
   width: 11.26rem;
@@ -338,4 +338,17 @@ body {
   position: absolute;
   left: 2.4rem;
   top: 7rem;
+}
+
+.download {
+  margin-top: 0.7rem;
+  text-align: center;
+}
+
+.download a {
+  padding: 0.3rem 0.5rem;
+  background-color: #76af20;
+  border-radius: 1.2rem;
+  font-size: 0.5rem;
+  color: #fff;
 }

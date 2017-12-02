@@ -203,6 +203,10 @@ $('.friends').on('click', function() {
 	$('.mark').css('display','block');
 	$('.mark .friendsPannel').css('display','block');
 
+	loadFriends();
+});
+
+function loadFriends() {
 	var option = {
 		url: 'api/personal/friends',
 		beforeSend: function(xhr) {
@@ -230,9 +234,16 @@ $('.friends').on('click', function() {
 			$('.friendsPannel table').html('<tr><th>好友</th><th><button class="onekeySweepBtn">一键打扫</button></th></tr>');
 			for(var i = 0, j = friendsList.length; i < j; i++) {
 				var templ = '';
+				var state = '打扫';
+				if(friendsList[i].sweep_chance <= 0) {
+					state = '不可打扫';
+				}else if(friendsList[i].has_swept === true) {
+					state = '已打扫';
+				}
+
 				templ += '<tr>';
 				templ += 	'<td class="friengName">' + friendsList[i].name + '</td>';
-				templ += 	'<td><button class="sweepForFriend">打扫</button></td>';
+				templ += 	'<td><button class="sweepForFriend" friendId="' + friendsList[i].id + '">' + state + '</button></td>';
 				templ += '</tr>';
 				$('.friendsPannel table').append(templ);
 			}
@@ -253,18 +264,8 @@ $('.friends').on('click', function() {
 							$('.popup').css('display','none');
 						},3000);
 
-						// 更新打扫次数
-						var option = {
-							url: 'api/personal/friends',
-							beforeSend: function(xhr) {
-							},
-							complete: function(xhr) {
-							},
-							success: function(result) {
-								$('.friendsPannel .sweepNum span').html(result.data.today_sweep_times);
-							}
-						};
-						myAjax(option);
+						// 更新打扫状态
+						loadFriends();
 
 					}
 				}
@@ -274,18 +275,36 @@ $('.friends').on('click', function() {
 
 			// 为好友打扫
 			$('.friendsPannel .sweepForFriend').on('click', function(e) {
-				$('.popup').text('暂未开放！');
-				$('.popup').css('display','block');
-				setTimeout(function(){
-					$('.popup').css('display','none');
-				},3000);
+				var option = {
+					url: 'api/personal/friends/sweep',
+					type: 'POST',
+					data: {
+						friend_user_id: $(this).attr('friendId')
+					},
+					beforeSend: function(xhr) {
+					},
+					complete: function(xhr) {
+					},
+					success: function(result) {
+						$('.popup').text(result.message);
+						$('.popup').css('display', 'block');
+						setTimeout(function(){
+							$('.popup').css('display','none');
+						},3000);
+
+						// 更新打扫状态
+						loadFriends();
+					}
+				}
+
+				myAjax(option);
 			});
 
 		}
 	}
 
 	myAjax(option);
-});
+}
 
 // 关闭好友
 $('.friendsPannel .s-close').on('click', function(){
@@ -312,6 +331,166 @@ $('.tutorial .r-close').on('click',function(){
 $('.tutorial .r-sure').on('click',function(){
 	$('.mark').css('display','none');
 	$('.mark .tutorial').css('display','none');
+});
+
+
+// 显示邮箱
+$(".email").on('click', function() {
+	$('.mark').css('display','block');
+	$('.mark .emailPannel').css('display','block');
+
+	// 加载数据
+	loadEmail();
+});
+
+function loadEmail() {
+	var option = {
+		url: 'api/gmmail/mail',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {						
+		},
+		success: function(result) {
+			// console.log(result)
+			if(result.status_code === 0) {
+				$('.emailPannel .emailPannel_main').css('display', 'block');
+				var data = result.data;
+				$('.emailPannel .emailPannel_main').empty();
+				for(var i = 0, l = data.length; i < l; i++) {
+					var templ = '';
+					var title = data[i].mail_title.length > 13 ? data[i].mail_title.slice(0, 13) + '...' : data[i].mail_title;
+					var state =  data[i].status === '-1' ? '<span class="state">未读</span>' : '';
+					templ += '<div class="item">';
+					templ += 	'<span class="title">' + title + '</span>';
+					templ += 	'<span class="item_btn item_btn_' + data[i].id + '">';
+					templ += 		state;
+					templ += 	'</span>';
+					templ += 	'<p class="content">' + data[i].contents + '</p>';
+					templ += '</div>';
+
+					$('.emailPannel .emailPannel_main').append(templ);
+					
+					(function() {
+						// 查看邮件内容
+						var id = data[i].id;
+						var sender = data[i].sender;
+						var time = data[i].created_at;
+						var contents =  data[i].contents;
+						$('.emailPannel .emailPannel_main ' + '.item_btn_' + id).on('click', function() {
+							$('.emailPannel .emailPannel_main').css('display', 'none');
+							$('.emailPannel .emailContent').css('display', 'block');
+							$('.emailPannel .emailContent .emailId').html(id);
+							$('.emailPannel .emailContent .sender').html(sender);
+							$('.emailPannel .emailContent .time').html(time);
+							$('.emailPannel .emailContent .content').html(contents);
+
+							markread(id);
+						});
+					})();
+				}
+			}
+		}
+	}
+
+	myAjax(option);
+}
+
+function markread(id) {
+	var option = {
+		url: 'api/gmmail/markread/' + id,
+		type: 'POST',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {						
+		},
+		success: function(result) {
+			
+		}
+	}
+
+	myAjax(option);
+}
+
+// 是否有未读邮件
+function emailStatus() {
+	var option = {
+		url: 'api/gmmail/mail',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {						
+		},
+		success: function(result) {
+			if(result.status_code === 0) {
+				var data = result.data;
+				for(var i = 0, l = data.length; i < l; i++) {
+					if(data[i].status === '-1') {
+						$('.email .hasNotRead').css('display', 'block');
+						return;
+					}
+				}
+
+				$('.email .hasNotRead').css('display', 'none');
+			}
+		}
+	}
+
+	myAjax(option);
+};
+
+emailStatus();
+
+// 返回邮件列表
+$('.emailContent .backBtn').on('click', function() {
+	loadEmail();
+
+	$('.emailPannel .emailPannel_main').css('display', 'block');
+	$('.emailPannel .emailContent').css('display', 'none');
+	$('.emailPannel .emailContent .emailId').html('');
+	$('.emailPannel .emailContent .sender').html('');
+	$('.emailPannel .emailContent .time').html('');
+	$('.emailPannel .emailContent .content').html('');
+});
+
+// 删除邮件
+$('.emailContent .delBtn').on('click', function() {
+	var id = $('.emailPannel .emailContent .emailId').html();
+	var option = {
+		url: 'api/gmmail/delmail/' + id,
+		type: 'POST',
+		beforeSend: function(xhr) {
+		},
+		complete: function(xhr) {						
+		},
+		success: function(result) {
+			if(result.status_code === 0) {
+				loadEmail();
+				
+				$('.emailPannel .emailPannel_main').css('display', 'block');
+				$('.emailPannel .emailContent').css('display', 'none');
+				$('.emailPannel .emailContent .emailId').html('');
+				$('.emailPannel .emailContent .sender').html('');
+				$('.emailPannel .emailContent .time').html('');
+				$('.emailPannel .emailContent .content').html('');
+			}
+		}
+	}
+
+	myAjax(option);
+});
+
+// 关闭邮箱
+$('.emailPannel .s-close').on('click',function(){
+	$('.mark').css('display','none');
+	$('.mark .emailPannel').css('display','none');
+
+	//清空数据
+	$('.emailPannel .emailContent').css('display', 'none');
+	$('.emailPannel .emailContent .emailId').html('');
+	$('.emailPannel .emailContent .sender').html('');
+	$('.emailPannel .emailContent .time').html('');
+	$('.emailPannel .emailContent .content').html('');
+
+	emailStatus();
 });
 
 
@@ -418,37 +597,51 @@ $(".m-shop .s-sure").on("click", function() {
 	window.refreshResources();
 })
 
+// 批量购买
+$('.m-shop .count .add').on('click', function() {
+	var num = $(this).next().html() * 1 + 1;
+	$(this).next().html(num);
+});
+
+$('.m-shop .count .reduce').on('click', function() {
+	var num = $(this).prev().html() * 1 - 1;
+	if(num <= 0) {
+		return;
+	}
+	$(this).prev().html(num);
+});
+
 // 购买商品
 $('.m-shop .i-buy').on('click',function(){
 	var data = {};
 	if(this === $('.m-shop .i-buy').eq(0)[0]) {
 		data = {
 			identity: 'medikit',
-			num: 1
+			num: $('.medicalKit_num').html() *1
 		};
 	}
 	if(this === $('.m-shop .i-buy').eq(1)[0]) {
 		data = {
 			identity: 'fodder',
-			num: 1
+			num: $('.fodder_num').html() *1
 		};
 	}
 	if(this === $('.m-shop .i-buy').eq(2)[0]) {
 		data = {
 			identity: 'adventure_kit',
-			num: 1
+			num: $('.adventureKit_num').html() *1
 		};
 	}
 	if(this === $('.m-shop .i-buy').eq(3)[0]) {
 		data = {
 			identity: 'peacock',
-			num: 1
+			num: $('.peacock_num').html() *1
 		};
 	}
 	if(this === $('.m-shop .i-buy').eq(4)[0]) {
 		data = {
 			identity: 'wild_goose',
-			num: 1
+			num: $('.wild_gooses_num').html() *1
 		};
 	}
 	if(this === $('.m-shop .i-buy').eq(5)[0]) {
@@ -476,6 +669,12 @@ $('.m-shop .i-buy').on('click',function(){
 					$('.payModal .payCodeImg img').attr('src', result.data.qrcode_img);
 					$('.payModal .payCodeImg').css('display', 'block');
 					$('.payModal').css('display', 'block');
+				}else {
+					$('.popup').text(result.message);
+					$('.popup').css('display','block');
+					setTimeout(function(){
+						$('.popup').css('display','none');
+					},2000);
 				}
 			}else {
 				$('.s-error').text(result.message);

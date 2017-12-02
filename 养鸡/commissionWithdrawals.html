@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>富乐山庄--交易大厅</title>
+    <title>富乐山庄--佣金提现</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
     <meta content="telephone=no" name="format-detection">       
     <meta name="screen-orientation" content="portrait">     
@@ -18,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="css/animate.css" />
     <link rel="stylesheet" href="css/mycenter.css" />
     <link rel="stylesheet" href="css/hts-tradingcenter.css" />
-    
     <style type="text/css"> 
         .container {
             margin-top: 0.5rem;
@@ -80,11 +79,59 @@
           position: absolute;
           left: 2.4rem;
           top: 9rem;
-      }
-  </style>
+      } 
+      .share {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1060;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .wrap {
+        position: relative;
+    }
+    .shareImg {
+        width: 80%;
+        height: 85%;
+        margin: 5% auto;
+    }
+    .money {
+        position: absolute;
+        bottom: 2%;
+        right: 12%;
+        font-size: 1.3rem;
+        color: #F22323;
+    }
+    .text {
+        font-size: 0.7rem;
+        position: relative;
+        top: -0.2rem;
+        font-weight: 600;
+    }
+    .rebateDeatil .list {
 
-  <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-  <script>
+    }
+    .rebateDeatil .list .item {
+        height: 1.4rem;
+        line-height: 1.4rem;
+        border-bottom: 1px solid #E6E5E5;
+    }
+    .rebateDeatil .list .item .from_user {
+        width: 50%;
+        float: left;
+        padding-left: 0.5rem;
+    }
+    .rebateDeatil .list .item .rebate {
+        width: 50%;
+        float: right;
+        text-align: right;
+        padding-right: 0.5rem;
+    }
+</style>
+
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script>
     (function() {
         var html = document.documentElement;
         var hWidth = html.getBoundingClientRect().width;
@@ -93,6 +140,12 @@
 </script>
 </head>
 <body>
+    <section class="share">
+        <div class="wrap">
+            <img src="./img/mycenter/commissionWithdrawals.jpg" class="shareImg">
+            <p class="money"><span class="text">提现了金币：</span><span class="money_text">￥100</span></p>
+        </div>
+    </section>
     <header>
         <a href="mycenter.html"><img class="arrows-left" src="img/mycenter/arrows-left.png" alt=""></a>
         佣金提现
@@ -111,6 +164,9 @@
                 <li>
                     三级好友
                 </li>
+                <li class="rebateDeatilNav">
+                    佣金详情
+                </li>
             </ul>
         </nav>
         <div class="tradingPanel">
@@ -120,27 +176,35 @@
                 </div>
             </section>
             <section>
-               <!-- 这是面板-二级好友 -->
-               <div class="container">
-               </div>
-           </section>
-           <section>
-               <!-- 这是面板-三级好友 -->
-               <div class="container">
-               </div>
-           </section>
-       </div>
-   </div>
-   <!-- 模态框（Modal） -->
-   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                        <!-- <button type="button" class="close" data-dismiss="modal" 
-                        aria-hidden="true">×
-                    </button> -->
+                <!-- 这是面板-二级好友 -->
+                <div class="container">
+                </div>
+            </section>
+            <section>
+                <!-- 这是面板-三级好友 -->
+                <div class="container">
+                </div>
+            </section>
+            <section>
+                <!-- 这是面板-佣金详情 -->
+                <div class="container rebateDeatil">
+                    <div class="list">
+                        <!-- <div class="item">
+                            <p class="from_user">某某某</p>
+                            <p class="rebate">0.3元</p>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">
-                        提取佣金
+                        提取佣金（截图分享到朋友圈后请联系客服提现）
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -154,9 +218,9 @@
                     提 现
                 </button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 <section class="animated zoomIn prompt"></section>
 <script src="js/base.js"></script>
 <script type="text/javascript" src="js/modal.min.js"></script>
@@ -174,56 +238,84 @@
 
         this.template = templ;
     }
-
-    var option = {
-        url: 'api/personal/friends',
-        beforeSend: function(xhr) {
-        },
-        complete: function(xhr) {
-        },
-        success: function(result) {
-            var lv1 = [];
-            var lv2 = [];
-            var lv3= [];
-            
-            if(result.data.lv1) {
-                lv1 = result.data.lv1;
-            }
-            if(result.data.lv2) {
-                lv2 = result.data.lv2;
-            }
-            if(result.data.lv3) {
-                lv3 = result.data.lv3;
-            }
-
-            // console.log(result);
-            for(var i = 0, j = lv1.length; i < j; i++) {
-                $(".container").eq(0).append((new FrientList(lv1[i])).template);
-            }
-            for(var i = 0, j = lv2.length; i < j; i++) {
-                $(".container").eq(1).append((new FrientList(lv2[i])).template);
-            }
-            for(var i = 0, j = lv3.length; i < j; i++) {
-                $(".container").eq(2).append((new FrientList(lv3[i])).template);
-            }
-        }
-    }
-
-    myAjax(option);
     
-    var option = {
-        url: 'api/personal/profile',
-        beforeSend: function(xhr) {
-        },
-        complete: function(xhr) {
-        },
-        success: function(result) {
-            $('.coinNum span').html(result.data.profile.rebate);
+    (function() {
+        var option = {
+            url: 'api/personal/friends',
+            beforeSend: function(xhr) {
+            },
+            complete: function(xhr) {
+            },
+            success: function(result) {
+                var lv1 = [];
+                var lv2 = [];
+                var lv3= [];
+
+                if(result.data.lv1) {
+                    lv1 = result.data.lv1;
+                }
+                if(result.data.lv2) {
+                    lv2 = result.data.lv2;
+                }
+                if(result.data.lv3) {
+                    lv3 = result.data.lv3;
+                }
+
+                for(var i = 0, j = lv1.length; i < j; i++) {
+                    $(".container").eq(0).append((new FrientList(lv1[i])).template);
+                }
+                for(var i = 0, j = lv2.length; i < j; i++) {
+                    $(".container").eq(1).append((new FrientList(lv2[i])).template);
+                }
+                for(var i = 0, j = lv3.length; i < j; i++) {
+                    $(".container").eq(2).append((new FrientList(lv3[i])).template);
+                }
+            }
         }
-    }
 
-    myAjax(option);
+        myAjax(option);
+    })();
 
+    (function() {
+        var option = {
+            url: 'api/personal/profile',
+            beforeSend: function(xhr) {
+            },
+            complete: function(xhr) {
+            },
+            success: function(result) {
+                $('.coinNum span').html(result.data.profile.rebate);
+            }
+        }
+
+        myAjax(option);
+    })();
+    
+    $('.rebateDeatilNav').on('click', function() {
+        var option = {
+            url: 'api/personal/rebate/records',
+            beforeSend: function(xhr) {
+            },
+            complete: function(xhr) {
+            },
+            success: function(result) {
+                if(result.status_code === 0) {
+                    var data = result.data.records;
+                    $('.rebateDeatil .list').empty();
+                    for(var i = 0, l = data.length; i < l; i++) {
+                        var templ = '';
+                        templ += '<div class="item">';
+                        templ +=    '<p class="from_user">' + data[i].from_user + '</p>';
+                        templ +=    '<p class="rebate">' + data[i].rebate + '元</p>';
+                        templ += '</div>';
+                        $('.rebateDeatil .list').append(templ);
+                    }
+                }
+            }
+        }
+
+        myAjax(option);
+    });
 
     $('.withdrawals').on('click', function(event) {
         event.preventDefault();
@@ -243,6 +335,7 @@
             return;
         }
 
+
         var option = {
             url: 'api/personal/rebate2coin',
             type: 'POST',
@@ -256,15 +349,25 @@
             success: function(result) {
                 prompt.show().delay(2000).hide(300);
                 prompt.html(result.message);  
+
+                if(result.status_code === 0) {
+                    $('.money_text').html($('.num').val());
+                    $('.share').css('display', 'block');
+                }
             }
         }
 
         myAjax(option);
 
-
     });
 
+    $('.shareImg').on('click', function(e) {
+        e.stopPropagation();
+    })
 
+    $('.share').on('click', function() {
+        $('.share').css('display', 'none');
+    })
 </script>
 </body>
 </html>
