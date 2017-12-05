@@ -727,6 +727,14 @@ $('.payModal .back').on('click', function() {
 	window.location.assign('home.html');
 });
 
+$('#wepay2').on('click', function() {
+	$('.payModal .radios .toPay').html('刷新二维码');
+});
+
+$('#fastpay').on('click', function() {
+	$('.payModal .radios .toPay').html('确定支付');
+});
+
 // 确认支付
 $('.payModal .toPay').on('click', function() {
 	$('.m-giftPackage .s-sure').trigger('payForGift');
@@ -742,8 +750,8 @@ $('.payModal .toPay').on('click', function() {
 $('.m-giftPackage .s-sure').on('payForGift',function(){
 	// $('.mark').css('display','none');
 	// $('.m-giftPackage').css('display','none');
-	// var pay_type = $(".payModal .radios input[type='radio']:checked").val();
-	var pay_type ='wepay';
+	var pay_type = $(".payModal .radios input[type='radio']:checked").val();
+	// var pay_type ='wepay';
 	var option = {
 		url: 'api/shop/giftpack',
 		data: {
