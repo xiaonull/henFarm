@@ -277,11 +277,11 @@ function showResources() {
 				}else {
 					state = '成年期';
 					if(window.farm === 'henFarm') {
-						img = '<img class="hen' + i + '" src="img/home/chook03/chooktu01.png" />';
+						img = '<img class="hen' + i + ' bigHen' + '" src="img/home/chook03/chooktu01.png" />';
 					}else if(window.farm === 'wild_goosesFarm') {
-						img = '<img class="hen' + i + '" src="img/home/goose.gif" />';
+						img = '<img class="hen' + i + ' big' + '" src="img/home/goose.gif" />';
 					}else if(window.farm === 'peacockFarm') {
-						img = '<img class="hen' + i + '" src="img/home/peacock.gif" />';
+						img = '<img class="hen' + i + ' big' + '" src="img/home/peacock-tu.gif" />';
 					}
 				}
 

@@ -650,7 +650,21 @@ $('.m-shop .i-buy').on('click',function(){
 
 	var url = 'api/shop/props';
 	if(data.identity === 'peacock' || data.identity === 'wild_goose') {
-		url = 'api/shop/animal';
+		// url = 'api/shop/animal';
+
+		if(data.identity === 'peacock') {
+			$('.payModal .title').html('购买' + $('.peacock_num').html() *1 + '只孔雀');
+		}else if(data.identity === 'wild_goose') {
+			$('.payModal .title').html('购买' + $('.wild_gooses_num').html() *1 + '只大雁');
+		}
+		window.hts_identity = data.identity,
+		window.hts_num = data.num,
+		window.buyAnimal = true;
+		$('.payModal .payCodeImg').css('display', 'block');
+		$('.payModal').css('display', 'block');
+
+		return;
+
 	}
 
 	var option = {
@@ -717,7 +731,8 @@ $('.m-giftPackage .s-close').on('click',function(){
 $('.m-giftPackage .s-sure').on('click',function(){
 	$('.payModal .payCodeImg img').attr('src', '');
 	$('.payModal .payCodeImg').css('display', 'none');
-	$('.m-giftPackage .s-sure').trigger('payForGift');
+	// $('.m-giftPackage .s-sure').trigger('payForGift');
+	window.buyAnimal = false;
 	$('.payModal .title').html('购买' + sessionStorage.giftpackPrice + '元大礼包');
 	$('.payModal').css('display', 'block');
 });
@@ -727,13 +742,17 @@ $('.payModal .back').on('click', function() {
 	window.location.assign('home.html');
 });
 
-$('#wepay2').on('click', function() {
-	$('.payModal .radios .toPay').html('刷新二维码');
-});
+// $('#wepay2').on('click', function() {
+// 	$('.payModal .radios .toPay').html('刷新二维码');
+// });
 
-$('#fastpay').on('click', function() {
-	$('.payModal .radios .toPay').html('确定支付');
-});
+// $('#alipay2').on('click', function() {
+// 	$('.payModal .radios .toPay').html('刷新二维码');
+// });
+
+// $('#fastpay').on('click', function() {
+// 	$('.payModal .radios .toPay').html('确定支付');
+// });
 
 // 确认支付
 $('.payModal .toPay').on('click', function() {
@@ -748,17 +767,36 @@ $('.payModal .toPay').on('click', function() {
 
 // 确定购买大礼包
 $('.m-giftPackage .s-sure').on('payForGift',function(){
-	// $('.mark').css('display','none');
-	// $('.m-giftPackage').css('display','none');
+	$('.mark').css('display','none');
+	$('.m-giftPackage').css('display','none');
 	var pay_type = $(".payModal .radios input[type='radio']:checked").val();
-	// var pay_type ='wepay';
+	
+	if(pay_type === 'wepay' || pay_type === 'alipay') {
+		$('.popup').show().delay(2000).hide(300);
+		$('.popup').html('系统繁忙');
+		return;
+	}
+	
+	var pay_type ='wepay';
+	var url = 'api/shop/giftpack';
+	var data = {
+		name: 'giftpack',
+		num: 1,
+		pay_type: pay_type
+	};
+
+	if(window.buyAnimal === true) {
+		// 购买动物
+		url = 'api/shop/animal';
+		data = {
+			identity: window.hts_identity,
+			num: window.hts_num
+		}
+	}
+
 	var option = {
-		url: 'api/shop/giftpack',
-		data: {
-			name: 'giftpack',
-			num: 1,
-			pay_type: pay_type
-		},
+		url: url,
+		data: data,
 		type: 'POST',
 		success: function(result) {
 			if(result.status_code === 0) {
