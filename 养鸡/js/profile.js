@@ -96,13 +96,16 @@ $(".profileContainer .confirmSubmit-btn").on('click', function() {
 			complete: function(xhr) {
 			},
 			success: function(result) {
-				if(result.data.errors.verification_code[0] === "validation.verify_phone") {
-					prompt.show().delay(2000).hide(300);
-					prompt.html('验证码错误');
-				}else {
-					prompt.show().delay(2000).hide(300);
-					prompt.html(result.message);
-				}
+				// if(result.data.errors.verification_code[0] === "validation.verify_phone") {
+				// 	prompt.show().delay(2000).hide(300);
+				// 	prompt.html('验证码错误');
+				// }else {
+				// 	prompt.show().delay(2000).hide(300);
+				// 	prompt.html(result.message);
+				// }
+
+				prompt.show().delay(2000).hide(300);
+				prompt.html(result.message);
 			}
 		};
 
