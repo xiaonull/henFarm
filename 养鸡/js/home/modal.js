@@ -562,9 +562,9 @@ $('.shop').on('click',function(){
 		success: function(result) {
 			if(result.status_code === 0) {
 				// console.log(result)
-				$('.m-shop .peacockPrice').html(result.data.peacock / 100 + '元');
-				$('.m-shop .wild_goosePrice').html(result.data.wild_goose / 100 + '元');
-				$('.m-shop .giftpackPrice').html(result.data.giftpack / 100 + '元');
+				$('.m-shop .peacockPrice').html(result.data.peacock / 100 + '￥');
+				$('.m-shop .wild_goosePrice').html(result.data.wild_goose / 100 + '￥');
+				$('.m-shop .giftpackPrice').html(result.data.giftpack / 100 + '￥');
 				sessionStorage.giftpackPrice = result.data.giftpack / 100;
 			}else {
 				$('.s-error').text(result.message);
